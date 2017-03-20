@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Regole tecniche Service Provider &mdash; SPID - Regole Tecniche 1.0 documentazione</title>
+               
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />   
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="top" title="SPID - Regole Tecniche 1.0 documentazione" href="index.html" />
+    <link rel="next" title="Regole tecniche Attribute Authority" href="regole-tecniche-aa.html" />
+    <link rel="prev" title="Regole tecniche Identity Provider" href="regole-tecniche-idp.html" />  
+    <script src="_static/js/modernizr.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+     
+    <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-side-nav-search">
+                    
+
+                    <div class="branding clearfix">
+                        <div class="branding--logo">
+                            <a href="https://docs.developers.italia.it">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+                              <g fill="none" fill-rule="evenodd">
+                                <path d="M0 0h160v160H0z"/>
+                                <path fill="#fff" d="M58.28 131.956V49.918h21.5v82.184h-21.5v-.146zm84.435-63.353h-19.65v33.72c0 3.358.143 5.547.285 7.007.143 1.314.712 2.482 1.71 3.504.996 1.02 2.562 1.46 4.698 1.46l12.245-.293.997 17.52c-7.12 1.606-12.673 2.48-16.375 2.48-9.682 0-16.232-2.19-19.65-6.713-3.56-4.38-5.267-12.554-5.267-24.524V27h21.5v22.772h19.65v18.83h-.143zM25.957 74.88c-3.702 0-6.834-1.314-9.255-3.94C14.282 68.31 13 65.1 13 61.303c0-3.795 1.28-7.007 3.56-9.634 2.42-2.63 5.553-3.798 9.255-3.798 3.702 0 6.835 1.314 9.255 3.942 2.42 2.627 3.56 5.84 3.56 9.78 0 3.942-1.14 7.007-3.56 9.635-2.278 2.335-5.268 3.65-9.113 3.65z"/>
+                              </g>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="branding--content">
+                            <h2 class="branding--title">
+                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
+                                <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
+                            </h2>
+                        </div>
+                        <h3 class="branding--tagline">La community italiana degli sviluppatori di servizi pubblici</h3>
+                    </div>
+
+            
+            
+            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            
+
+
+                     
+                    
+                    <div class="version">1</div>
+                      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div> 
+                </div>
+
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduzione.html">Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-idp.html">Regole tecniche Identity Provider</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regole tecniche Service Provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#processamento-della-response">Processamento della &lt;Response&gt;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verifiche-della-response">Verifiche della response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entitydescriptor">&lt;EntityDescriptor&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esempio-metadata-sp">Esempio: Metadata SP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disponibilita-dei-metadata">Disponibilità dei Metadata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-aa.html">Regole tecniche Attribute Authority</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sessioni.html">Sessioni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registro.html">Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elenco-attributi.html">Elenco attributi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="messaggi-errore.html">Messaggi di errore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacce.html">Regole tecniche Attribute Authority</a></li>
+</ul>
+  
+                </div>
+            </div>
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+            
+            <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="index.html">SPID - Regole Tecniche</a> 
+            </nav>
+
+
+            
+            <div class="wy-nav-content">
+                <div class="rst-content">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Regole tecniche Service Provider</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/regole-tecniche-sp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+                            
+  <div class="section" id="regole-tecniche-service-provider">
+<h1>Regole tecniche Service Provider<a class="headerlink" href="#regole-tecniche-service-provider" title="Link a questa intestazione">¶</a></h1>
+<p><strong>Il fornitore di servizi (Service Provider o SP)</strong> eroga i servizi agli utenti, richiede l&#8217;autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio per la realizzazione dei profili SSO previsti, SP-Initiated Redirect/POST binding e POST/POST binding, deve mettere a disposizione le seguenti interfacce:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>IAuthnResponse:</strong> ricezione delle risposte di autenticazione SAML</li>
+<li><strong>IMetadataRetrieve:</strong> permette il reperimento dei SAML metadata del Service Provider da parte dell&#8217;Identity Provider.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="processamento-della-response">
+<h2>Processamento della &lt;Response&gt;<a class="headerlink" href="#processamento-della-response" title="Link a questa intestazione">¶</a></h2>
+<p>Alla ricezione &lt;Response&gt; qualunque sia il binding utilizzato il Service Provider prima di utilizzare l&#8217;asserzione deve operare almeno le seguenti verifiche:</p>
+<div class="section" id="verifiche-della-response">
+<h3>Verifiche della response<a class="headerlink" href="#verifiche-della-response" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li>controllo delle firme presenti nella <strong>&lt;Assertion&gt;</strong> e nella <strong>&lt;response&gt;</strong>;</li>
+<li><dl class="first docutils">
+<dt>nell&#8217;elemento <strong>&lt;SubjectConfirmationData&gt;</strong> verificare che:</dt>
+<dd><ul class="first last">
+<li>l&#8217;attributo <strong>Recipient</strong> coincida con la assertion consuming service URL a cui la <strong>&lt;Response&gt;</strong> è pervenuta</li>
+<li>l&#8217;attributo <strong>NotOnOrAfter</strong> non sia scaduto;</li>
+<li>l&#8217;attributo <strong>InResponseTo</strong> riferisca correttamente all&#8217;ID della &lt;AuthnRequest&gt; di richiesta</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<p>Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (<strong>ID</strong>) usati come per le <strong>&lt;AuthnRequest&gt;</strong> per tutta la durata di tempo per cui l&#8217;asserzione risulta essere valida in base dell&#8217;attributo <strong>NotOnOrAfter</strong> dell&#8217;elemento <strong>&lt;SubjectConfirmationData&gt;</strong> presente nell&#8217;asserzione stessa.</p>
+</div>
+</div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link a questa intestazione">¶</a></h2>
+<p>Le caratteristiche del Service Provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata) e rispettare le condizioni di seguito indicate:</p>
+<div class="section" id="entitydescriptor">
+<h3>&lt;EntityDescriptor&gt;<a class="headerlink" href="#entitydescriptor" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>nell&#8217;elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>entityID:</strong> indicante l&#8217;identificativo univoco (un URI) dell&#8217;entità</li>
+<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
+</ul>
+</div></blockquote>
+</div>
+<p>deve l&#8217;elemento &lt;KeyDescriptor&gt; contenenete il certificato della corrispondente
+chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale
+entità nelle sue interazioni con le altre (cfr.[SAML-Metadata], sez. 2.4.1.1);
+· deve essere l&#8217;elemento &lt;Signature&gt; riportante la firma sui metadata . La firma deve essere
+prodotta secondo il profilo specificato per SAML (cfr. [SAML-Metadata] cap3) utilizzando
+chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;</p>
+<p>deve essere presente l&#8217;elemento &lt;SPSSODescriptor&gt; riportante i seguenti attributi:
+- protocolSupportEnumeration: che enumera, separati da uno spazio, gli URI
+associati ai protocolli supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0,
+deve indicare almeno il valore del relativo protocollo:
+&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>&#8221;);
+- AuthnRequestSigned: valorizzato true attributo con valore booleano che esprime il
+requisito che le richieste di autenticazione inviate dal service provider siano
+firmate;
+· deve essere presente almeno un elemento &lt;AssertionConsumerService&gt; indicante
+il servizio (in termini di URL e relativo binding &#8220;HTTP POST&#8221;) a cui contattare il Service
+Provider per l&#8217;invio di risposte SAML, riportanti i seguenti attributi:
+- index che può assumere valori unsigned;
+- Binding posto al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8221;
+- Location url endpoint del servizio per la ricezione delle risposte;
+In particolare il primo di questi elementi (o l&#8217;unico elemento riportato) deve
+obbligatoriamente riportare:
+- l&#8217;attributo index posto al valore 0;
+- l&#8217;atrtibuto isDefault posto al valore true;
+· deve essere presente uno o più elementi &lt;AttributeConsumingService&gt; a
+descrizione dei set di attributi richiesti dal Service Provider , riportante:
+- l&#8217;attributo index, indice posizionale dell&#8217;elemento relativo all&#8217;i-esimo servizio
+richiamato dalla authReq mediante l&#8217;attributo
+AttributeConsumingServiceIndex dell&#8217;elemento &lt;AuthnRequest&gt;;
+- l&#8217;elemento &lt;ServiceName&gt;, riportante l&#8217;identificatore dell&#8217;i-esimo set minimo di
+attributi necessari1 per l&#8217;autorizzazione all&#8217;acceso;
+- uno o più elementi di tipo &lt;RequestedAttribute&gt;, ciascuno di essi
+costituente la lista degli attributi associati all&#8217;i-esimo servizio;
+· è consigliata la presenza di un elemento &lt;Organization&gt; a indicare l&#8217;organizzazione a
+cui afferisce l&#8217;entità specificata, riportante gli elementi:
+- &lt;OrganizationName&gt; indicante un identificatore language-qualified
+dell&#8217;organizzazione a cui l&#8217;entità afferisce;
+- &lt;OrganizationURL&gt; riportante in modalità language-qualified la url
+istituzionale dell&#8217;organizzazione.</p>
+<p><em>Per la massima tutela della privacy dell&#8217;utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati. In questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l&#8217;autorizzazione.</em></p>
+</div>
+<div class="section" id="esempio-metadata-sp">
+<h3>Esempio: Metadata SP<a class="headerlink" href="#esempio-metadata-sp" title="Link a questa intestazione">¶</a></h3>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;md:EntityDescriptor</span> <span class="na">xmlns:md=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:metadata&quot;</span>
+    <span class="na">entityID=</span><span class="s">&quot;https://spid.serviceprovider.it&quot;</span>
+    <span class="na">ID=</span><span class="s">&quot;_0j40cj0848d8e3jncjdjss...&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/ds:Signature&gt;</span>
+    <span class="nt">&lt;md:SPSSODescriptor</span>
+        <span class="na">protocolSupportEnumeration=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+        <span class="na">AuthnRequestsSigned=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">WantAssertionsSigned=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;md:KeyDescriptor</span> <span class="na">use=</span><span class="s">&quot;signing&quot;</span><span class="nt">&gt;</span>
+            [...]
+        <span class="nt">&lt;/md:KeyDescriptor&gt;</span>
+        <span class="nt">&lt;SingleLogoutService</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.serviceprovider.it/slo-location&quot;</span>
+            <span class="na">ResponseLocation=</span><span class="s">&quot;https://spid.serviceprovider.it/slo-location&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;NameIDFormat&gt;</span>urn:oasis:names:tc:SAML:2.0:nameid-format:transient<span class="nt">&lt;/NameIDFormat&gt;</span>
+        <span class="nt">&lt;md:AssertionConsumerService</span>
+            <span class="na">index=</span><span class="s">&quot;0&quot;</span> <span class="na">isDefault=</span><span class="s">&quot;true&quot;</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.serviceprovider.it/sso-location&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:AssertionConsumerService</span>
+            <span class="na">index=</span><span class="s">&quot;1&quot;</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spidSP.serviceProvider.it/sso-location&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:AttributeConsumingService</span> <span class="na">index=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;md:ServiceName</span> <span class="na">xml:lang=</span><span class="s">&quot;it&quot;</span><span class="nt">&gt;</span>Set 0<span class="nt">&lt;/md:ServiceName&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;familyName&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;fiscalNumber&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;email&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/md:AttributeConsumingService&gt;</span>
+            <span class="nt">&lt;md:AttributeConsumingService</span> <span class="na">index=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;md:ServiceName</span> <span class="na">xml:lang=</span><span class="s">&quot;it&quot;</span><span class="nt">&gt;</span>Set 1<span class="nt">&lt;/md:ServiceName&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;spidCode&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;md:RequestedAttribute</span> <span class="na">Name=</span><span class="s">&quot;fiscalNumber&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/md:AttributeConsumingService&gt;</span>
+    <span class="nt">&lt;/md:SPSSODescriptor&gt;</span>
+    <span class="nt">&lt;md:Organization&gt;</span>
+        <span class="nt">&lt;OrganizationName</span> <span class="na">xml:lang=</span><span class="s">&quot;it&quot;</span><span class="nt">&gt;</span>Service provider<span class="nt">&lt;/OrganizationName&gt;</span>
+        <span class="nt">&lt;OrganizationDisplayName</span> <span class="na">xml:lang=</span><span class="s">&quot;it&quot;</span><span class="nt">&gt;</span>Nome service provider<span class="nt">&lt;/OrganizationDisplayName&gt;</span>
+        <span class="nt">&lt;OrganizationURL</span> <span class="na">xml:lang=</span><span class="s">&quot;it&quot;</span><span class="nt">&gt;</span>http://spid.serviceprovider.it<span class="nt">&lt;/OrganizationURL&gt;</span>
+    <span class="nt">&lt;/md:Organization&gt;</span>
+<span class="nt">&lt;/md:EntityDescriptor&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="disponibilita-dei-metadata">
+<h3>Disponibilità dei Metadata<a class="headerlink" href="#disponibilita-dei-metadata" title="Link a questa intestazione">¶</a></h3>
+<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l&#8217;interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall&#8217;Agenzia per l&#8217;Italia Digitale.
+L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
+</div>
+</div>
+</div>
+
+
+                        </div>
+                        <div class="articleComments">
+                            
+                        </div>
+                    </div>
+                    <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regole-tecniche-aa.html" class="btn float-right" title="Regole tecniche Attribute Authority" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="regole-tecniche-idp.html" class="btn" title="Regole tecniche Identity Provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
+      Ultimo aggiornamento 20/03/2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using the official <a href="https://github.com/italia/sphinx_italia_theme">Italia theme</a> based on the <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    
+ 
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT: './',
+            VERSION: '1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE: true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>   
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+      
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+     
+
+</body>
+
+</html>

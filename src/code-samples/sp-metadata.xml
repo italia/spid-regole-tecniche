@@ -1,0 +1,45 @@
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+    entityID="https://spid.serviceprovider.it"
+    ID="_0j40cj0848d8e3jncjdjss...">
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        [...]
+    </ds:Signature>
+    <md:SPSSODescriptor
+        protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"
+        AuthnRequestsSigned="true"
+        WantAssertionsSigned="true">
+        <md:KeyDescriptor use="signing">
+            [...]
+        </md:KeyDescriptor>
+        <SingleLogoutService
+            Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+            Location="https://spid.serviceprovider.it/slo-location"
+            ResponseLocation="https://spid.serviceprovider.it/slo-location"/>
+        <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+        <md:AssertionConsumerService
+            index="0" isDefault="true"
+            Location="https://spid.serviceprovider.it/sso-location"
+            Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:AssertionConsumerService
+            index="1"
+            Location="https://spidSP.serviceProvider.it/sso-location"
+            Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:AttributeConsumingService index="0">
+            <md:ServiceName xml:lang="it">Set 0</md:ServiceName>
+            <md:RequestedAttribute Name="name"/>
+            <md:RequestedAttribute Name="familyName"/>
+            <md:RequestedAttribute Name="fiscalNumber"/>
+            <md:RequestedAttribute Name="email"/>
+        </md:AttributeConsumingService>
+            <md:AttributeConsumingService index="1">
+            <md:ServiceName xml:lang="it">Set 1</md:ServiceName>
+            <md:RequestedAttribute Name="spidCode"/>
+            <md:RequestedAttribute Name="fiscalNumber"/>
+        </md:AttributeConsumingService>
+    </md:SPSSODescriptor>
+    <md:Organization>
+        <OrganizationName xml:lang="it">Service provider</OrganizationName>
+        <OrganizationDisplayName xml:lang="it">Nome service provider</OrganizationDisplayName>
+        <OrganizationURL xml:lang="it">http://spid.serviceprovider.it</OrganizationURL>
+    </md:Organization>
+</md:EntityDescriptor>

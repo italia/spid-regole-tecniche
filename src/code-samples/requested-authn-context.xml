@@ -1,0 +1,5 @@
+<samlp:RequestedAuthnContext Comparison="minimum">
+    <saml:AuthnContextClassRef>
+        https://www.spid.gov.it/SpidL2
+    </saml:AuthnContextClassRef>
+</samlp:RequestedAuthnContext>

@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Regole tecniche Attribute Authority &mdash; SPID - Regole Tecniche 1.0 documentazione</title>
+               
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />   
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="top" title="SPID - Regole Tecniche 1.0 documentazione" href="index.html" />
+    <link rel="prev" title="Messaggi di errore" href="messaggi-errore.html" />  
+    <script src="_static/js/modernizr.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+     
+    <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-side-nav-search">
+                    
+
+                    <div class="branding clearfix">
+                        <div class="branding--logo">
+                            <a href="https://docs.developers.italia.it">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+                              <g fill="none" fill-rule="evenodd">
+                                <path d="M0 0h160v160H0z"/>
+                                <path fill="#fff" d="M58.28 131.956V49.918h21.5v82.184h-21.5v-.146zm84.435-63.353h-19.65v33.72c0 3.358.143 5.547.285 7.007.143 1.314.712 2.482 1.71 3.504.996 1.02 2.562 1.46 4.698 1.46l12.245-.293.997 17.52c-7.12 1.606-12.673 2.48-16.375 2.48-9.682 0-16.232-2.19-19.65-6.713-3.56-4.38-5.267-12.554-5.267-24.524V27h21.5v22.772h19.65v18.83h-.143zM25.957 74.88c-3.702 0-6.834-1.314-9.255-3.94C14.282 68.31 13 65.1 13 61.303c0-3.795 1.28-7.007 3.56-9.634 2.42-2.63 5.553-3.798 9.255-3.798 3.702 0 6.835 1.314 9.255 3.942 2.42 2.627 3.56 5.84 3.56 9.78 0 3.942-1.14 7.007-3.56 9.635-2.278 2.335-5.268 3.65-9.113 3.65z"/>
+                              </g>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="branding--content">
+                            <h2 class="branding--title">
+                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
+                                <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
+                            </h2>
+                        </div>
+                        <h3 class="branding--tagline">La community italiana degli sviluppatori di servizi pubblici</h3>
+                    </div>
+
+            
+            
+            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            
+
+
+                     
+                    
+                    <div class="version">1</div>
+                      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div> 
+                </div>
+
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduzione.html">Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-idp.html">Regole tecniche Identity Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-sp.html">Regole tecniche Service Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-aa.html">Regole tecniche Attribute Authority</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sessioni.html">Sessioni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registro.html">Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elenco-attributi.html">Elenco attributi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="messaggi-errore.html">Messaggi di errore</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regole tecniche Attribute Authority</a></li>
+</ul>
+  
+                </div>
+            </div>
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+            
+            <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="index.html">SPID - Regole Tecniche</a> 
+            </nav>
+
+
+            
+            <div class="wy-nav-content">
+                <div class="rst-content">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Regole tecniche Attribute Authority</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/interfacce.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+                            
+  <div class="section" id="regole-tecniche-attribute-authority">
+<h1>Regole tecniche Attribute Authority<a class="headerlink" href="#regole-tecniche-attribute-authority" title="Link a questa intestazione">¶</a></h1>
+<p>Un Gestore di attributi qualificati, nel seguito indicato anche con il termine tecnico Attribute
+Authority, deve essere in grado di certificare un determinato set di attributi relativi ad un
+soggetto titolare di una identità digitale. A fronte di una richiesta di uno o più attributi l&#8217;Attribute
+Authority deve essere in grado di:
+1. ricevere ed interpretare la richiesta di attributo pervenuta da una Service Provider;
+2. elaborare la richiesta;
+3. costruire la risposta inerente la richiesta pervenuta ed inoltrarla alla Service Provider.
+Il componente Attribute Authority deve esporre le seguenti interfacce:
+· IAttributeQuery: interfaccia applicativa che supporta le operazioni di richiesta di
+attributo SAML;
+· IMetadataRetrive: permette il reperimento dei SAML metadata da parte delle Service
+Provider.</p>
+<p>2.1. SCENARIO DI INTERAZIONE
+Descrizione Interfaccia SAML Binding
+1
+La Service Provider invia all&#8217;Attribute
+Authority una richiesta di attributi.
+Ciò avviene utilizzando il costrutto
+&lt;AttributeQuery&gt; della specifica
+SAML e interagendo mediante
+&#8220;SAML SOAP binding&#8221;.
+IAttributeQuery &lt;AttributeQuery&gt;
+SOAP
+Over
+HTTP
+2 L&#8217;Authority Registry elabora la
+richiesta ricevuta.
+- - -
+3
+La Attribute Authority risponde alla
+richiesta di attributi del Service
+Provider con una &lt;Response&gt; SAML
+contenente l&#8217;asserzione, interagendo
+mediante &#8220;SAML SOAP binding&#8221;.
+IAttributeQuery &lt;Response&gt;
+SOAP
+Over
+HTTP
+Tabella 2 - AttributeRequest</p>
+<p>2.2. SPECIFICHE DELLE INTERFACCE
+Di seguito vengono esposte le specifiche delle interfacce dell&#8217;Attribute Authority riportanti:
+- le caratteristiche delle asserzioni prodotte;
+- le caratteristiche delle AttributeQuery e della Response;
+- le caratteristiche del binding;
+- i metadati.
+2.2.1. CARATTERISTICHE DELLE ASSERZIONI
+Le asserzioni prodotte dall&#8217; Attribute Authority devono essere conformi allo standard SAML v2.0
+(cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
+L&#8217;Asserzione deve avere le seguenti caratteristiche:
+· nell&#8217;elemento &lt;Assertion&gt; devono essere presenti i seguenti attributi:
+- l&#8217;attributo ID univoco, per esempio basato su un Universally Unique Identifier (UUID)
+o su una combinazione origine + timestamp (quest&#8217;ultimo generato con una
+precisione di almeno un millesimo di secondo per garantire l&#8217;univocità);
+- l&#8217;attributo Version, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la versione
+della specifica SAML adottata;
+- l&#8217;attributo IssueInstant a indicare l&#8217;istante di emissione della richiesta, in formato
+UTC (esempio: &#8220;2008-03-13T18:04:15.531Z&#8221;);
+· deve essere presente l&#8217;elemento &lt;Subject&gt; a indicare il soggetto a cui si riferiscono gli
+attributi in cui deve comparire:
+- l&#8217;elemento &lt;NameID&gt; atto a qualificare il soggetto dell&#8217;asserzione, in cui sono
+presenti i seguenti attributi:
+ Format che deve assumere il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:1.1:nameidformat">urn:oasis:names:tc:SAML:1.1:nameidformat</a>:
+unspecified&#8221; (cfr. SAMLCore, sez. 8.3);
+ NameQualifier che qualifica il dominio a cui afferisce tale valore (URI
+riconducibile all&#8217;Attribute Authority);
+· l&#8217;elemento &lt;Issuer&gt; a indicare l&#8217;entityID dell&#8217;Attribute Authority emittente ( attualizzato
+come l&#8217;attributo entityID presente nei corrispondenti AAA metadata.) con l&#8217;attributo Format
+riportante il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8221;;
+· deve essere presente l&#8217;elemento &lt;Conditions&gt; in cui devono essere presenti gli attributi:
+- NotBefore,
+- NotOnOrAfter;</p>
+<p>e l&#8217;elemento:
+- &lt;AudienceRestriction&gt; riportante a sua volta l&#8217;elemento &lt;Audience&gt;
+attualizzato con l&#8217;entityID del ServiceProvider per il quale l&#8217;asserzione è emessa;
+· deve essere presente l&#8217;elemento &lt;AttributeStatement&gt; riportante gli attributi
+certificati dall&#8217;Attribute Authority. Tale elemento dovrà comprendere uno o più elementi di
+tipo &lt;Attribute&gt;;
+· un elemento di tipo &lt;Attribute&gt; relativo ad un attributo certificato dovrà
+comprendere:
+- l&#8217;attributo Name attualizzato con identificativi di attributo definiti nella tabella
+attributi SPID (cfr. SPID - Tabella attributi);
+- uno o più elementi &lt;AttributeValue&gt; ciascuno riportante l&#8217;attributo Type (cfr.
+SPID - Tabella attributi) e attualizzato con il valore assunto dall&#8217;attributo;
+· l&#8217;elemento &lt;Assertion&gt; può eventualmente presentare l&#8217;elemento &lt;Advice&gt;,
+contenente altri elementi &lt;Assertion&gt; di cui è necessario fornire evidenza in forma
+originale in sede di risposta alla richiesta di attributo;
+· l&#8217;elemento &lt;Signature&gt; riportante la firma sull&#8217;asserzione apposta dall&#8217;Identity Provider
+emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr
+[SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256
+o superiore.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;ns2:Assertion</span> <span class="na">xmlns:ns2=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+<span class="na">ID=</span><span class="s">&quot;_27e00421b56a5aa5b73329240ce3bb832caa&quot;</span>
+<span class="na">IssueInstant=</span><span class="s">&quot;2015-01-29T10:01:03Z&quot;</span>
+<span class="na">Version=</span><span class="s">&quot;2.0&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span> ……<span class="nt">&lt;/ds:Signature&gt;</span>
+<span class="nt">&lt;ns2:Issuer</span> <span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;</span><span class="nt">&gt;</span>
+spidIAA.spidiAADomain.it
+<span class="nt">&lt;/ns2:Issuer&gt;</span>
+<span class="nt">&lt;ns2:Subject&gt;</span>
+<span class="nt">&lt;ns2:NameID</span>
+<span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&quot;</span>
+<span class="na">NameQualifier=</span> <span class="s">&quot;http://spidIAA.spidiAADomain.it&quot;</span><span class="nt">&gt;</span>
+TINIT-BNLFNC68E28F205T
+<span class="nt">&lt;/ns2:NameID&gt;</span>
+<span class="nt">&lt;/ns2:Subject&gt;</span>
+<span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">&quot;2015-01-29T10:00:33Z&quot;</span> <span class="na">NotOnOrAfter=</span><span class="s">&quot;2015-01-29T10:02:33Z&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;saml:AudienceRestriction&gt;</span>
+<span class="nt">&lt;saml:Audience&gt;</span>
+https:// spidSP.serviceProvider.it
+<span class="nt">&lt;/saml:Audience&gt;</span>
+<span class="nt">&lt;/saml:AudienceRestriction&gt;</span>
+<span class="nt">&lt;/saml:Conditions&gt;</span>
+<span class="nt">&lt;ns2:AttributeStatement</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchemainstance&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:Attribute</span> <span class="na">Name=</span><span class="s">&quot;NomeAttributo&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ns2:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="nt">&gt;</span>ValoreAttributo<span class="nt">&lt;/ns2:AttributeValue&gt;</span>
+<span class="nt">&lt;/ns2:Attribute&gt;</span>
+<span class="nt">&lt;/ns2:AttributeStatement&gt;</span>
+<span class="nt">&lt;/ns2:Assertion&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>2.2.2. CARATTERISTICHE DELLE ATTRIBUTEQUERY E DELLA RESPONSE
+Il protocollo attributeQuery previsto per l&#8217;Attribute Authority deve essere conforme allo standard
+SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
+2.2.2.1. ATTRIBUTEQUERY
+L&#8217; attributeQuery deve avere le seguenti caratteristiche:
+· nell&#8217; elemento &lt;AttributeQuery&gt; devono essere presenti i seguenti attributi:
+- l&#8217;attributo ID univoco, per esempio basato su un Universally Unique Identifier
+(UUID) o su una combinazione origine + timestamp;
+- l&#8217;attributo Version, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la versione
+della specifica SAML adottata;
+- l&#8217;attributo IssueInstant a indicare l&#8217;istante di emissione della richiesta, in formato
+UTC;
+- l&#8217;attributo Destination, a indicare l&#8217;indirizzo (URI reference) a cui è inviata la
+richiesta, cioè l&#8217;AttributeService della Attribute Authority;
+· deve essere presente l&#8217;elemento &lt;Issuer&gt; a indicare l&#8217;identificatore univoco del Service
+Provider emittente attualizzato come l&#8217;attributo entityID riportato nel corrispondente SP
+metadata.. L&#8217;elemento deve riportare l&#8217;attributo Format attualizzato con il valore
+&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8221;;
+· deve essere presente l&#8217;elemento &lt;Subject&gt; a referenziare il soggetto a cui si riferisce la
+richiesta di attributo, in cui deve comparire:
+- l&#8217;elemento &lt;NameID&gt; attualizzato con il codice fiscale del soggetto (cfr. Tabella
+attributi SPID), in cui dee essere presente l&#8217;attributo:
+ Format che deve assumere il &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:1.1:nameidformat">urn:oasis:names:tc:SAML:1.1:nameidformat</a>:
+unspecified&#8221; (cfr. SAMLCore, sez. 8.3);
+ NameQualifier che qualifica il dominio a cui afferisce tale valore (URI
+riconducibile all&#8217;Attribute Authority);
+· deve essere presente uno o più elementi &lt;Attribute&gt;, il cui attributo Name indica lo
+specifico attributo di cui si vuole conoscere il valore (cfr. SPID - Tabella attributi);
+· in ciascun elemento &lt;Attribute&gt; possono essere presenti uno o più elementi
+&lt;AttributeValue&gt; per richiedere la verifica che l&#8217;attributo abbia i valori specificati;
+· deve essere presente l&#8217;elemento &lt;Signature&gt; riportante la firma sull&#8217;asserzione apposta
+dall&#8217;Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato
+per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di
+digest SHA-256 o superiore.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;samlp:AttributeQuery</span> <span class="na">xmlns:samlp=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+<span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+<span class="na">ID=</span><span class="s">&quot;_4d38c302617b5bf98951e65b4cf304711e2166df20&quot;</span>
+<span class="na">Version=</span><span class="s">&quot;2.0&quot;</span>
+<span class="na">IssueInstant=</span><span class="s">&quot;2015-01-29T10:00:31Z&quot;</span>
+<span class="na">Destination=</span><span class="s">&quot; spidIAA.spidiAADomain.it &quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span> …… <span class="nt">&lt;/ds:Signature&gt;</span>
+<span class="nt">&lt;saml:Issuer</span>
+<span class="na">Format=</span><span class="s">&quot; urn:oasis:names:tc:SAML:2.0:nameid-format:entity &quot;</span> <span class="nt">&gt;</span>
+https:// spidSP.spidSPDomain.it
+<span class="nt">&lt;/saml:Issuer&gt;</span>
+<span class="nt">&lt;saml:Subject&gt;</span>
+<span class="nt">&lt;saml:NameID</span>
+<span class="na">NameQualifier=</span> <span class="s">&quot;http://spidIAA.spidAADomain.it&quot;</span>
+<span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&quot;</span><span class="nt">&gt;</span>
+TINIT-BNLFNC68E28F205T
+<span class="nt">&lt;/saml:NameID&gt;</span>
+<span class="nt">&lt;/saml:Subject&gt;</span>
+<span class="nt">&lt;saml:Attribute</span>
+<span class="na">Name=</span><span class="s">&quot;NomeAttributo&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/samlp:AttributeQuery &gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>2.2.2.2. RESPONSE
+Le caratteristiche che deve avere la risposta inviata dall&#8217; Attribute Authority al Service Provider a
+seguito di una richiesta di attributi sono le seguenti:
+· nell&#8217; elemento &lt;Response&gt; devono essere presenti i seguenti attributi:
+- deve essere presente l&#8217;attributo ID univoco, per esempio basato su un Universally
+Unique Identifier (UUID) (cfr. UUID) o su una combinazione origine + timestamp;
+- deve essere presente l&#8217;attributo Version, che deve valere sempre &#8220;2.0&#8221;,
+coerentemente con la versione della specifica SAML adottata;
+- deve essere presente l&#8217;attributo IssueInstant a indicare l&#8217;istante di emissione della
+risposta, in formato UTC;
+- deve essere presente l&#8217;attributo InResponseTo, il cui valore deve fare riferimento
+all&#8217;ID della richiesta a cui si risponde;
+- deve essere presente l&#8217;attributo Destination, a indicare l&#8217;indirizzo (URI reference) a
+cui è inviata la richiesta, cioè l&#8217;AttributeService del Service Provider;
+· deve essere presente l&#8217;elemento &lt;Issuer&gt; a indicare l&#8217;identificatore univoco dall&#8217;
+Attribute Authority emittente attualizzato come l&#8217;attributo entityID riportato nel
+corrispondente AA metadata.,. L&#8217;elemento deve riportare l&#8217;attributo Format attualizzato
+con il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8221;;
+· deve essere presente l&#8217;elemento &lt;Status&gt; a indicare l&#8217;esito della attributeQuery secondo
+quanto definito nelle specifiche SAML (cfr. [SAML-Core] par. 3.2.2.1 e ss.) comprendente
+il sotto-elemento &lt;StatusCode&gt; ed opzionalmente i sotto-elementi
+&lt;StatusMessage&gt; &lt;StatusDetail&gt; (cfr [SPID-TabErr]);
+· deve essere presente l&#8217;elemento &lt;Assertion&gt; come specificato al paragrafo 2.3.1,
+contenenti elementi &lt;AttributeStatement&gt; relativi agli attributi richiesti;
+· può presente l&#8217;elemento &lt;Signature&gt; riportante la firma sull&#8217;asserzione apposta
+dall&#8217;Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato
+per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di
+digest SHA-256 o superiore.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;samlp:Response</span> <span class="na">xmlns:samlp=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+<span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+<span class="na">ID=</span><span class="s">&quot;_66bc42b27638a8641536e534ec09727a8aaa&quot;</span>
+<span class="na">Version=</span><span class="s">&quot;2.0&quot;</span>
+<span class="na">InResponseTo=</span><span class="s">&quot;_4d38c302617b5bf98951e65b4cf304711e2166df20&quot;</span>
+<span class="na">IssueInstant=</span><span class="s">&quot;2015-01-29T10:01:03Z&quot;</span>
+<span class="na">Destination=</span><span class="s">&quot; http://spidIAA.spidiAADomain.it&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span> ……<span class="nt">&lt;/ds:Signature&gt;</span>
+<span class="nt">&lt;saml:Issuer</span>
+<span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;</span><span class="nt">&gt;</span>
+https:// spidAA.spidAADomain.it
+<span class="nt">&lt;/saml:Issuer&gt;</span>
+<span class="nt">&lt;samlp:Status&gt;</span>
+<span class="nt">&lt;samlp:StatusCode</span>
+<span class="na">Value=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:status:Success&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/samlp:Status&gt;</span>
+<span class="nt">&lt;saml:Assertion</span> <span class="na">xmlns:ns2=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span><span class="nt">&gt;</span>
+………….
+<span class="nt">&lt;/saml:Assertion&gt;</span>
+<span class="nt">&lt;/samlp:Response&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>2.2.3. CARATTERISTICHE DEL BINDING
+Il binding previsto per il trasporto di messaggi è il SAML SOAPbinding su http(cfr. [SAMLBin]
+par. 3.2.).
+2.2.4. ATTRIBUTE AUTHORITY METADATA
+Le caratteristiche dell&#8217;Attribute Authority devono essere definite attraverso metadata conformi allo
+standard SAMLv2.0.( cfr. [SAML-Metadata]), e rispettare specificatamente le condizioni di
+seguito indicate:
+· nell&#8217;elemento &lt;EntityDescriptor&gt; devono essere presenti i seguenti attributi:
+- entityID: indicante l&#8217;identificativo univoco (un URI) dell&#8217;entità;
+· l&#8217;elemento &lt;AttributeAuthorityDescriptor&gt; specifico che contraddistingue
+l&#8217;entità di tipo Attribute Authority; deve riportare il seguente attributo:
+- protocolSupportEnumeration: che enumera gli URI indicanti i protocolli
+supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0, deve indicare almeno
+il valore del relativo protocollo: &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>&#8221;);
+inoltre al suo interno devono essere presenti:
+- l&#8217;elemento &lt;KeyDescriptor&gt; che contiene l&#8217;elenco dei certificati e delle
+corrispondenti chiavi pubbliche dell&#8217;entità, utili per la verifica della firma dei
+messaggi prodotti da tale entità nelle sue interazioni con le altre (cfr.[SAMLMetadata],
+sez. 2.4.1.1);
+- uno o più elementi &lt;AttributeService&gt; indicante il servizio a cui contattare
+l&#8217;Attribute Authority riportante i seguenti attributi:
+ Binding posto al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:SOAP">urn:oasis:names:tc:SAML:2.0:bindings:SOAP</a>&#8221;;
+ Location url endpoint del servizio per la ricezione delle richieste;
+- l&#8217;elemento &lt;NameIDFormat&gt; riportante l&#8217;attributo:
+ format , indicante il formato &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:1.1:nameidformat">urn:oasis:names:tc:SAML:1.1:nameidformat</a>:
+unspecified&#8221; come quello supportato per l&#8217;elemento di &lt;NameID&gt;
+utilizzato nelle richieste e risposte SAML per identificare il subject cui si
+riferisce un&#8217;asserzione;
+- &lt;AttributeProfile&gt;: enumerazione dei profili di rappresentazione di
+attributi supportati dall&#8217;entità (cfr.[SAML-Profile], sez. 8); nel caso specifico solo
+&#8220;basic&#8221; (cfr. [SAML-Profile], sez. 8.1);
+- uno o più elementi &lt;Attribute&gt; riportanti gli attributi:
+ Name riportante l&#8217;identificativo dell&#8217;attributo;
+ NameFormat riportante il format dell&#8217;attributo;
+· deve essere l&#8217;elemento &lt;Signature&gt; riportante la firma sui metadata . La firma deve
+essere prodotta secondo il profilo specificato per SAML (cfr. [SAML-Metadata] cap3)
+utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
+· è consigliata la presenza di un elemento &lt;Organization&gt; a indicare l&#8217;organizzazione a
+cui afferisce l&#8217;entità specificata, riportante gli elementi:
+- &lt;OrganizationName&gt; indicante un identificatore language-qualified
+dell&#8217;organizzazione a cui l&#8217;entità afferisce;
+- &lt;OrganizationURL&gt; riportante in modalità language-qualified la url
+istituzionale dell&#8217;organizzazione.
+I metadata Attribute Authority saranno disponibili per tutte le entità SPID federate attraverso
+l&#8217;interfaccia IMetadataRetrive alla URL &lt;dominioAttributiQualificati&gt;/metadata, ove non
+diversamente specificato nel Registro SPID, e saranno firmate dell&#8217;Agenzia per l&#8217;Italia Digitale.
+L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente
+disponibile.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;md:EntityDescriptor</span> <span class="na">xmlns:md =</span> <span class="s">&quot;urn:oasis:names:tc:SAML:2.0:metadata&quot;</span>
+<span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchemainstance&quot;</span>
+<span class="na">entityID=</span><span class="s">&quot; https:// spidAA.spidAAProvider.it&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span> …… <span class="nt">&lt;/ds:Signature&gt;</span>
+<span class="nt">&lt;md:AttributeAuthorityDescriptor</span>
+<span class="na">protocolSupportEnumeration=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;md:KeyDescriptor</span> <span class="na">use=</span><span class="s">&quot;signing&quot;</span><span class="nt">&gt;</span> ……<span class="nt">&lt;/md:KeyDescriptor&gt;</span>
+<span class="nt">&lt;md:AttributeService</span>
+<span class="na">Location=</span><span class="s">&quot; https:// spidAA.spidAAProvider.it/AAService&quot;</span>
+<span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;md:NameIDFormat&gt;</span>
+urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+<span class="nt">&lt;/md:NameIDFormat&gt;</span>
+<span class="nt">&lt;md:AttributeProfile&gt;</span>
+urn:oasis:names:tc:SAML:2.0:attrname-format:basic
+<span class="nt">&lt;/md:AttributeProfile&gt;</span>
+<span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">&quot;IdentificativoAttributo1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">&quot;IdentificativoAttributo2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">&quot; IdentificativoAttributo3&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/md:AttributeAuthorityDescriptor&gt;</span>
+<span class="nt">&lt;/md:EntityDescriptor&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+                        </div>
+                        <div class="articleComments">
+                            
+                        </div>
+                    </div>
+                    <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="messaggi-errore.html" class="btn" title="Messaggi di errore" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
+      Ultimo aggiornamento 20/03/2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using the official <a href="https://github.com/italia/sphinx_italia_theme">Italia theme</a> based on the <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    
+ 
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT: './',
+            VERSION: '1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE: true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>   
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+      
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+     
+
+</body>
+
+</html>

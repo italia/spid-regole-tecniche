@@ -1,0 +1,1196 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Regole tecniche Identity Provider &mdash; SPID - Regole Tecniche 1.0 documentazione</title>
+               
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />   
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="top" title="SPID - Regole Tecniche 1.0 documentazione" href="index.html" />
+    <link rel="next" title="Regole tecniche Service Provider" href="regole-tecniche-sp.html" />
+    <link rel="prev" title="Introduzione" href="introduzione.html" />  
+    <script src="_static/js/modernizr.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+     
+    <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-side-nav-search">
+                    
+
+                    <div class="branding clearfix">
+                        <div class="branding--logo">
+                            <a href="https://docs.developers.italia.it">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+                              <g fill="none" fill-rule="evenodd">
+                                <path d="M0 0h160v160H0z"/>
+                                <path fill="#fff" d="M58.28 131.956V49.918h21.5v82.184h-21.5v-.146zm84.435-63.353h-19.65v33.72c0 3.358.143 5.547.285 7.007.143 1.314.712 2.482 1.71 3.504.996 1.02 2.562 1.46 4.698 1.46l12.245-.293.997 17.52c-7.12 1.606-12.673 2.48-16.375 2.48-9.682 0-16.232-2.19-19.65-6.713-3.56-4.38-5.267-12.554-5.267-24.524V27h21.5v22.772h19.65v18.83h-.143zM25.957 74.88c-3.702 0-6.834-1.314-9.255-3.94C14.282 68.31 13 65.1 13 61.303c0-3.795 1.28-7.007 3.56-9.634 2.42-2.63 5.553-3.798 9.255-3.798 3.702 0 6.835 1.314 9.255 3.942 2.42 2.627 3.56 5.84 3.56 9.78 0 3.942-1.14 7.007-3.56 9.635-2.278 2.335-5.268 3.65-9.113 3.65z"/>
+                              </g>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="branding--content">
+                            <h2 class="branding--title">
+                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
+                                <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
+                            </h2>
+                        </div>
+                        <h3 class="branding--tagline">La community italiana degli sviluppatori di servizi pubblici</h3>
+                    </div>
+
+            
+            
+            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            
+
+
+                     
+                    
+                    <div class="version">1</div>
+                      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div> 
+                </div>
+
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduzione.html">Introduzione</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regole tecniche Identity Provider</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#specifiche-delle-interfacce">Specifiche delle interfacce</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#assertion">&lt;Assertion&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subject">&lt;Subject&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issuer">&lt;Issuer&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authstatement">&lt;AuthStatement&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signature">&lt;Signature&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributestatement">&lt;AttributeStatement&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advice">&lt;Advice&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esempio-asserzione-di-autenticazione">Esempio: asserzione di autenticazione</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#authnrequest">AuthnRequest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">&lt;AuthnRequest&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">&lt;Subject&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">&lt;Issuer&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nameidpolicy">&lt;NameIDPolicy&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditions">&lt;Conditions&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requestedauthncontext">&lt;RequestedAuthnContext&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">&lt;Signature&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scoping">&lt;Scoping&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requesterid">&lt;RequesterID&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esempio-di-authnrequest">Esempio di AuthnRequest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#response">Response</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">&lt;Response&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status">&lt;Status&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">&lt;Issuer&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">&lt;Assertion&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#caratteristiche-del-binding">Caratteristiche del Binding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#binding-http-redirect">Binding HTTP Redirect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esempio-http-redirect-query-string">Esempio: HTTP redirect query string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binding-http-post">Binding HTTP POST</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gestione-della-sicurezza-sul-canale-di-trasmissione">Gestione della sicurezza sul canale di trasmissione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entitydescriptor">&lt;EntityDescriptor&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#idpssodescriptor">&lt;IDPSSODescriptor&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keydescriptor">&lt;KeyDescriptor&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nameidformat">&lt;NameIDFormat&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#singlelogoutservice">&lt;SingleLogoutService&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#singlesignonservice">&lt;SingleSignOnService&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attribute">&lt;Attribute&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">&lt;Signature&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organization">&lt;Organization&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esempio-metadata-idp">Esempio: Metadata IdP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disponibilita-dei-metadata">Disponibilità dei Metadata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-sp.html">Regole tecniche Service Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-aa.html">Regole tecniche Attribute Authority</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sessioni.html">Sessioni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registro.html">Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elenco-attributi.html">Elenco attributi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="messaggi-errore.html">Messaggi di errore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacce.html">Regole tecniche Attribute Authority</a></li>
+</ul>
+  
+                </div>
+            </div>
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+            
+            <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="index.html">SPID - Regole Tecniche</a> 
+            </nav>
+
+
+            
+            <div class="wy-nav-content">
+                <div class="rst-content">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Regole tecniche Identity Provider</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/regole-tecniche-idp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+                            
+  <div class="section" id="regole-tecniche-identity-provider">
+<h1>Regole tecniche Identity Provider<a class="headerlink" href="#regole-tecniche-identity-provider" title="Link a questa intestazione">¶</a></h1>
+<p><strong>Il Gestore delle identità (Identity Provider o IdP)</strong> <em>gestisce gli utenti e la procedura di autenticazione a seguito di una richiesta da parte di un Fornitore di Servizi (Service Provider o SP).</em></p>
+<div class="section" id="specifiche-delle-interfacce">
+<h2>Specifiche delle interfacce<a class="headerlink" href="#specifiche-delle-interfacce" title="Link a questa intestazione">¶</a></h2>
+<p>L&#8217;asserzione prodotta dall&#8217;Identity Provider deve essere conforme allo standard SAML v2.0 <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core)</a> e rispettare le seguenti condizioni:</p>
+<div class="section" id="assertion">
+<h3>&lt;Assertion&gt;<a class="headerlink" href="#assertion" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>nell&#8217;elemento <strong>&lt;Assertion&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>l&#8217;attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità);</li>
+<li>l&#8217;attributo <strong>Version</strong>, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la  versione della specifica SAML adottata;</li>
+<li>l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della richiesta, in formato UTC (esempio: &#8220;2017-03-01T15:05:10.531Z&#8221;);</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="subject">
+<h3>&lt;Subject&gt;<a class="headerlink" href="#subject" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;Subject&gt;</strong> a referenziare il soggetto che si è autenticato in cui devono comparire gli elementi:</p>
+<blockquote class="last">
+<div><ul>
+<li><p class="first"><strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto dell&#8217;asserzione, in cui sono presenti i seguenti attributi:</p>
+<ul class="simple">
+<li><strong>Format</strong> che deve assumere il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>&#8221; <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core, par8.3)</a></li>
+<li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI riconducibile all&#8217;Identity Provider stesso)</li>
+</ul>
+</li>
+<li><p class="first"><strong>&lt;SubjectConfirmation&gt;</strong> contenente l&#8217;attributo</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>Method</em> riportante il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:cm:bearer">urn:oasis:names:tc:SAML:2.0:cm:bearer</a>&#8220;</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>&lt;SubjectConfirmationData&gt;</strong> riportante gli attributi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>Recipient</em> riportante l&#8217;AssertionConsumerServiceURL relativa al servizio per cui è stata emessa l&#8217;asserzione e l&#8217;attributo</li>
+<li><em>NotOnOrAfter</em> che limita la finestra di tempo durante la quale l&#8217;asserzione può essere propagata.</li>
+<li><em>InResponseTo</em>, il cui valore deve fare riferimento all&#8217;ID della richiesta.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="issuer">
+<h3>&lt;Issuer&gt;<a class="headerlink" href="#issuer" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> a indicare l&#8217;entityID dell&#8217;Identity Provider emittente (attualizzato come l&#8217;attributo entityID presente nei corrispondenti IdP metadata) con l&#8217;attributo Format riportante il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:entity">urn:oasis:names:tc:SAML:2.0:nameidformat:entity</a>&#8221;;</p>
+<blockquote class="last">
+<div><ul>
+<li><p class="first">deve essere presente l&#8217;elemento <strong>&lt;Conditions&gt;</strong> in cui devono essere presenti gli attributi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>NotBefore</strong>,</li>
+<li><strong>NotOnOrAfter</strong>;</li>
+<li>l&#8217;elemento <strong>&lt;AudienceRestriction&gt;</strong> riportante a sua volta l&#8217;elemento <strong>&lt;Audience&gt;</strong> attualizzato con l&#8217;entityID del ServiceProvider per il quale l&#8217;asserzione è emessa;</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="authstatement">
+<h3>&lt;AuthStatement&gt;<a class="headerlink" href="#authstatement" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;AuthStatement&gt;</strong> a sua volta contenente l&#8217;elemento:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>&lt;AuthnContext&gt;</strong> riportante nel sotto elemento &lt;AuthnContextClassRef&gt; la classe relativa all&#8217;effettivo contesto di autenticazione (es. <a class="reference external" href="https://www.spid.gov.it/SpidL2">https://www.spid.gov.it/SpidL2</a>);</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="signature">
+<h3>&lt;Signature&gt;<a class="headerlink" href="#signature" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Deve essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong>
+riportante la firma sull&#8217;asserzione apposta dall&#8217;Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore</p>
+</div>
+</div>
+<div class="section" id="attributestatement">
+<h3>&lt;AttributeStatement&gt;<a class="headerlink" href="#attributestatement" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>può essere presente l&#8217;elemento <strong>&lt;AttributeStatement&gt;</strong> riportante gli attributi identificativi certificati dall&#8217;Identity provider. Tale elemento se presente dovrà comprendere:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>uno o più elementi di tipo <strong>&lt;Attribute&gt;</strong> relativi ad attributi che l&#8217;Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l&#8217;attributo AttributeConsumingServiceIndex quando presente nella authnrequest;</li>
+<li>per gli elementi &lt;AttributeValue&gt; si raccomanda l&#8217;uso dell&#8217;attributo xsi:type attualizzato come specificato nella Tabella attributi SPID;</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="advice">
+<h3>&lt;Advice&gt;<a class="headerlink" href="#advice" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>può essere presente un elemento <strong>&lt;Advice&gt;</strong></p>
+<blockquote>
+<div><em>può contenere a sua volta altri elementi **&lt;Assertion&gt;*</em>. La possibile presenza dell&#8217;elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall&#8217;Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.</div></blockquote>
+<p class="last"><em>L&#8217;elemento</em> <strong>&lt;Advice&gt;</strong> <em>è previsto per futuri usi ed al momento non deve essere utilizzato.</em></p>
+</div>
+</div>
+<div class="section" id="esempio-asserzione-di-autenticazione">
+<h3>Esempio: asserzione di autenticazione<a class="headerlink" href="#esempio-asserzione-di-autenticazione" title="Link a questa intestazione">¶</a></h3>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;saml:Assertion</span> <span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+    <span class="na">ID=</span><span class="s">&quot;_27e00421b56a5aa5b7332...&quot;</span> <span class="na">IssueInstant=</span><span class="s">&quot;2015-01-29T10:01:03Z&quot;</span> <span class="na">Version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ds:Signature&gt;</span>
+    <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;</span><span class="nt">&gt;</span>spididp.it<span class="nt">&lt;/saml:Issuer&gt;</span>
+    <span class="nt">&lt;saml:Subject&gt;</span>
+        <span class="nt">&lt;saml:NameID</span> <span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&quot;</span>
+            <span class="na">NameQualifier=</span><span class="s">&quot;http://spid.idpprovider.it&quot;</span><span class="nt">&gt;</span>_06e983facd7cd554cfe067e...<span class="nt">&lt;/saml:NameID&gt;</span>
+        <span class="nt">&lt;saml:SubjectConfirmation</span> <span class="na">Method=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:cm:bearer&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;saml:SubjectConfirmationData</span> <span class="na">Recipient=</span><span class="s">&quot;https://spid.serviceprovider.it/location0&quot;</span>
+                <span class="na">NotOnOrAfter=</span><span class="s">&quot;2017-03-19T12:05:33Z&quot;</span>
+                <span class="na">InResponseTo=</span><span class="s">&quot;_4d38c302617b5bf98951e...&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;/saml:SubjectConfirmationData&gt;</span>
+        <span class="nt">&lt;/saml:SubjectConfirmation&gt;</span>
+    <span class="nt">&lt;/saml:Subject&gt;</span>
+    <span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">&quot;2017-03-19T12:05:33Z&quot;</span> <span class="na">NotOnOrAfter=</span><span class="s">&quot;2017-03-19T12:07:33Z&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;saml:AudienceRestriction&gt;</span>
+            <span class="nt">&lt;saml:Audience&gt;</span>https://spidSP.serviceProvider.it <span class="nt">&lt;/saml:Audience&gt;</span>
+        <span class="nt">&lt;/saml:AudienceRestriction&gt;</span>
+    <span class="nt">&lt;/saml:Conditions&gt;</span>
+    <span class="nt">&lt;saml:AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">&quot;2017-03-19T12:05:33Z&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;saml:AuthnContext&gt;</span>
+            <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>https://www.spid.gov.it/SpidL2<span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
+        <span class="nt">&lt;/saml:AuthnContext&gt;</span>
+    <span class="nt">&lt;/saml:AuthnStatement&gt;</span>
+    <span class="nt">&lt;saml:AttributeStatement</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchemainstance&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">&quot;familyName&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span><span class="nt">&gt;</span>Rossi<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+        <span class="nt">&lt;/saml:Attribute&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">&quot;spidCode&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span><span class="nt">&gt;</span>ABC123<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+        <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;/saml:AttributeStatement&gt;</span>
+<span class="nt">&lt;/saml:Assertion&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="authnrequest">
+<h2>AuthnRequest<a class="headerlink" href="#authnrequest" title="Link a questa intestazione">¶</a></h2>
+<p>Il protocollo AuthnRequest previsto per l&#8217;Identity Provider deve essere conforme allo standard
+SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
+<div class="section" id="id1">
+<h3>&lt;AuthnRequest&gt;<a class="headerlink" href="#id1" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>nell&#8217; elemento &lt;AuthnRequest&gt; devono essere presenti i seguenti attributi:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>l&#8217;attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
+<li>l&#8217;attributo <strong>Version</strong>, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la versione della specifica SAML adottata;</li>
+<li>l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della richiesta, in formato UTC (esempio: &#8220;2017-03-05T18:03:10.531Z&#8221;)</li>
+<li>l&#8217;attributo <strong>Destination</strong>, a indicare l&#8217;indirizzo (URI reference) dell&#8217;Identity provider a cui è inviata la richiesta, come risultante nell&#8217;attributo entityID presente nel metadata IdP dell&#8217;Identity Provider a cui viene inviata la richiesta</li>
+<li>l&#8217;attributo <strong>ForceAuthn</strong> nel caso in cui si richieda livelli di autenticazione superiori a SPIDL1 ( SPIDL2 o SPIDL3)</li>
+<li><dl class="first docutils">
+<dt>l&#8217;attributo <strong>AssertionConsumerServiceIndex</strong>, riportante un indice posizionale facente riferimento ad uno degli elementi &lt;AttributeConsumerService &gt; presenti nei metadata del Service Provider, atto ad indicare, mediante l&#8217;attributo Location, l&#8217;URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l&#8217;attributo Binding, il binding da utilizzare, quest&#8217;ultimo valorizzato obbligatoriamente con &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>in alternativa, scelta sconsigliata, possono essere presenti</dt>
+<dd><ul class="first last">
+<li>l&#8217;attributo <strong>AssertionConsumerServiceURL</strong> ad indicare l&#8217;URL a cui inviare il messaggio di risposta alla richiesta di autenticazione (l&#8217;indirizzo deve coincidere con quello del servizio riportato dall&#8217;elemento &lt;AssertionConsumingService&gt; presente nei metadata del Service Provider);</li>
+<li>l&#8217;attributo <strong>ProtocolBinding</strong>, identificante il binding da utilizzare per inoltrare il messaggio di risposta, valorizzato con &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8221;;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">nell&#8217; elemento <strong>&lt;AuthnRequest&gt;</strong> non deve essere presente l&#8217;attributo IsPassive (ad indicare &#8220;false&#8221; come valore di default)</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>nell&#8217; elemento <strong>&lt;AuthnRequest&gt;</strong> si può utilizzare opzionalmente l&#8217;attributo:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>AttributeConsumingServiceIndex</strong> riportante un indice posizionale in riferimento alla struttura <strong>&lt;AttributeConsumingService&gt;</strong> presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell&#8217;asserzione prodotta. Nel caso l&#8217;attributo fosse assente l&#8217;asserzione prodotta non riporterà alcuna attestazione di attributo</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>&lt;Subject&gt;<a class="headerlink" href="#id2" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>può essere presente l&#8217;elemento <strong>&lt;Subject&gt;</strong> a indicare il soggetto per cui si chiede l&#8217;autenticazione in cui deve comparire:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>l&#8217;elemento <strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto in cui sono presenti i seguenti attributi</dt>
+<dd><ul class="first last">
+<li><strong>Format</strong> che deve assumere il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified">urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified</a>&#8221; (cfr. SAMLCore, sez. 8.3)</li>
+<li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>&lt;Issuer&gt;<a class="headerlink" href="#id3" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> attualizzato come l&#8217;attributo entityID riportato nel corrispondente SP metadata, a indicare l&#8217;identificatore univoco del Service Provider emittente. L&#8217;elemento deve riportare gli attributi:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>Format</strong> fissato al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8220;</li>
+<li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI riconducibile al Service Provider stesso)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="nameidpolicy">
+<h3>&lt;NameIDPolicy&gt;<a class="headerlink" href="#nameidpolicy" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;NameIDPolicy&gt;</strong> avente gli attributi</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>AllowCreate</strong>, se presente, valorizzato a &#8220;true&#8221;</li>
+<li><strong>Format</strong> valorizzato come &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</a>&#8220;</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="conditions">
+<h3>&lt;Conditions&gt;<a class="headerlink" href="#conditions" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>l&#8217;elemento <strong>&lt;Conditions&gt;</strong>, se presente, deve indicare i limiti di validità attesi dell&#8217;asserzione ricevuta in risposta, per esempio specificando gli attributi</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>NotBefore</strong> e <strong>NotOnOrAfter</strong> opportunamente valorizzati in formato UTC</li>
+</ul>
+</div></blockquote>
+<p class="last"><em>N.B. L&#8217;Identity Provider non è obbligato a tener conto dell&#8217;indicazione nel caso che questa non sia confacente con i criteri di sicurezza da esso adottati.</em></p>
+</div>
+</div>
+<div class="section" id="requestedauthncontext">
+<h3>&lt;RequestedAuthnContext&gt;<a class="headerlink" href="#requestedauthncontext" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong> (SAMLCore, sez. 3.3.2.2.1) ad indicare il contesto di autenticazione atteso, ossia la &#8220;robustezza&#8221; delle credenziali richieste. Allo scopo sono definite le seguenti &#8220;authentication context class&#8221; estese (SAMLAuthContext, sez. 3) in riferimento SPID:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>https://www.spid.gov.it/SpidL1</strong></li>
+<li><strong>https://www.spid.gov.it/SpidL2</strong></li>
+<li><strong>https://www.spid.gov.it/SpidL3</strong></li>
+</ul>
+</div></blockquote>
+<p>referenziate dagli elementi <strong>&lt;AuthnContextClassRef&gt;</strong></p>
+<p>Ciascuna di queste classi, indica in ordine di preferenza il contesto di autenticazione (atteso o effettivo) secondo alcune dimensioni di riferimento, quali per esempio i meccanismi di autenticazione con cui l&#8217;Identity Provider può identificare l&#8217;utente. L&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong> prevede un attributo <strong>Comparison</strong> con il quale indicare il metodo per stabilire il rispetto del vincolo sul contesto di abilitazione: i valori ammessi per questo attributo sono:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>exact</strong></li>
+<li><strong>minimum</strong></li>
+<li><strong>better</strong></li>
+<li><strong>maximum</strong></li>
+</ul>
+</div></blockquote>
+<p>Nel caso dell&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong>, questa informazione si riflette sulle tipologie di meccanismi utilizzabili dall&#8217;Identity Provider ai fini dell&#8217;autenticazione dell&#8217;utente. L&#8217;esempio seguente di <strong>&lt;RequestedAuthnContext&gt;</strong> fa riferimento a una &#8220;authentication context class&#8221; di tipo &#8220;SpidL2&#8221; o superiore.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;samlp:RequestedAuthnContext</span> <span class="na">Comparison=</span><span class="s">&quot;minimum&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>
+        https://www.spid.gov.it/SpidL2
+    <span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
+<span class="nt">&lt;/samlp:RequestedAuthnContext&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p class="last"><em>N.B. L&#8217;Identity Provider ha facoltà di utilizzare per l&#8217;autenticazione un livello SPID più alto rispetto a quelli risultanti dall&#8217;indicazione del richiedente mediante l&#8217;attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.</em></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>&lt;Signature&gt;<a class="headerlink" href="#id4" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">nel caso del binding <strong>HTTP POST</strong> deve essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.</p>
+</div>
+</div>
+<div class="section" id="scoping">
+<h3>&lt;Scoping&gt;<a class="headerlink" href="#scoping" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">se presente l&#8217;elemento <strong>&lt;Scoping&gt;</strong> il relativo attributo ProxyCount deve assumere valore <em>&#8220;0&#8221;</em> per indicare che l&#8217;Identity Provider invocato non può delegare il processo di autenticazione ad altra Asserting Party.</p>
+</div>
+</div>
+<div class="section" id="requesterid">
+<h3>&lt;RequesterID&gt;<a class="headerlink" href="#requesterid" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>eventuali elementi <strong>&lt;RequesterID&gt;</strong> contenuti devono indicare l&#8217;URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l&#8217;ordine che indichi la sequenza di propagazione (il primo elemento <em>&lt;RequesterID&gt;</em> dell&#8217;elemento <em>&lt;Scoping&gt;</em> è relativo all&#8217;ultima entità che ha propagato la richiesta).</p>
+<p class="last">Gli elementi <em>&lt;Scoping&gt; &lt;RequesterID&gt;</em> sono previsti per futuri usi ed al momento non devono essere utilizzati. Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell&#8217;Identity Provider.</p>
+</div>
+</div>
+<div class="section" id="esempio-di-authnrequest">
+<h3>Esempio di AuthnRequest<a class="headerlink" href="#esempio-di-authnrequest" title="Link a questa intestazione">¶</a></h3>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;samlp:AuthnRequest</span> <span class="na">xmlns:samlp=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+    <span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+    <span class="na">ID=</span><span class="s">&quot;_4d38c302617b5bf98951e65b4cf304711e2166df20&quot;</span>
+    <span class="na">Version=</span><span class="s">&quot;2.0&quot;</span>
+    <span class="na">IssueInstant=</span><span class="s">&quot;2015-01-29T10:00:31Z&quot;</span>
+    <span class="na">Destination=</span><span class="s">&quot;https://spid.identityprovider.it&quot;</span>
+    <span class="na">AssertionConsumerServiceURL=</span><span class="s">&quot;http://spid.serviceprovider.it&quot;</span>
+    <span class="na">ProtocolBinding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span>
+    <span class="na">AttributeConsumingServiceIndex=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/ds:Signature&gt;</span>
+    <span class="nt">&lt;saml:Issuer</span>
+        <span class="na">NameQualifier=</span><span class="s">&quot;http://spid.serviceprovider.it&quot;</span>
+        <span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;</span><span class="nt">&gt;</span>
+        spid-sp
+    <span class="nt">&lt;/saml:Issuer&gt;</span>
+    <span class="nt">&lt;samlp:NameIDPolicy</span> <span class="na">Format=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;samlp:RequestedAuthnContext</span> <span class="na">Comparison=</span><span class="s">&quot;exact&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>
+            https://www.spid.gov.it/SpidL2
+        <span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
+    <span class="nt">&lt;/samlp:RequestedAuthnContext&gt;</span>
+<span class="nt">&lt;/samlp:AuthnRequest&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="response">
+<h2>Response<a class="headerlink" href="#response" title="Link a questa intestazione">¶</a></h2>
+<p>Le caratteristiche che deve avere la risposta inviata dall&#8217;Identity Provider al Service Provider a seguito di una richiesta di autenticazione sono le seguenti:</p>
+<div class="section" id="id5">
+<h3>&lt;Response&gt;<a class="headerlink" href="#id5" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>nell&#8217; elemento &lt;Response&gt; devono essere presenti i seguenti attributi:</p>
+<ul class="last simple">
+<li>l&#8217;attributo <em>ID</em> univoco basato, per esempio, su un Universally Unique Identifier (UUID) (cfr. UUID) o su una combinazione origine + timestamp (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità);</li>
+<li>deve essere presente l&#8217;attributo <strong>Version</strong>, che deve valere sempre <em>&#8220;2.0&#8221;</em>, coerentemente con la versione della specifica SAML adottata;</li>
+<li>deve essere presente l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della risposta, in formato UTC;</li>
+<li>deve essere presente l&#8217;attributo <strong>InResponseTo</strong>, il cui valore deve fare riferimento all&#8217;ID della richiesta a cui si risponde;</li>
+<li>deve essere presente l&#8217;attributo Destination, a indicare l&#8217;indirizzo (URI reference) del Service provider a cui è inviata la risposta;</li>
+</ul>
+</div>
+</div>
+<div class="section" id="status">
+<h3>&lt;Status&gt;<a class="headerlink" href="#status" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento &lt;Status&gt; a indicare l&#8217;esito della AuthnRequest secondo quanto definito nelle specifiche SAML (SAML-Core, par. 3.2.2.1 e successivi) comprendente il sotto-elemento</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>&lt;StatusCode&gt;</strong></li>
+</ul>
+</div></blockquote>
+<p>ed opzionalmente i sotto-elementi</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>&lt;StatusMessage&gt;</strong></li>
+<li><strong>&lt;StatusDetail&gt;</strong></li>
+</ul>
+</div></blockquote>
+<p class="last">(Messaggi di errore SPID)</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>&lt;Issuer&gt;<a class="headerlink" href="#id6" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> a indicare l&#8217;entityID dell&#8217;entità emittente, cioè l&#8217;Identity Provider stesso. L&#8217;elemento</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>Format</strong> omesso o fissato al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8220;</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>&lt;Assertion&gt;<a class="headerlink" href="#id7" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">deve essere presente un elemento <strong>&lt;Assertion&gt;</strong> ad attestare l&#8217;avvenuta autenticazione, contenente almeno un elemento <strong>&lt;AuthnStatement&gt;</strong>.
+Nel caso l&#8217;Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l&#8217;elemento
+<strong>&lt;Assertion&gt;</strong> non deve essere presente.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">può essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla risposta apposta dall&#8217;Identity Provider.
+La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
+Per l&#8217;asserzione veicolata resta valido quanto già specificato nei dettagli delle <a class="reference external" href="regole-tecniche-idp.html#assertion">&lt;Assertion&gt;</a></p>
+</div>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;md:EntityDescriptor</span> <span class="na">xmlns:md =</span> <span class="s">&quot;urn:oasis:names:tc:SAML:2.0:metadata&quot;</span>
+    <span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchemainstance&quot;</span>
+    <span class="na">entityID=</span><span class="s">&quot;http://spidIdp.idpProvider.it&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ds:Signature&gt;</span>
+    <span class="nt">&lt;md:IDPSSODescriptor</span>
+        <span class="na">protocolSupportEnumeration=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+        <span class="na">WantAuthnRequestsSigned=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;md:KeyDescriptor</span> <span class="na">use=</span><span class="s">&quot;signing&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/md:KeyDescriptor&gt;</span>
+        <span class="nt">&lt;md:NameIDFormat&gt;</span>
+            urn:oasis:names:tc:SAML:2.0:nameid-format:transient
+        <span class="nt">&lt;/md:NameIDFormat&gt;</span>
+        <span class="nt">&lt;md:SingleSignOnService</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/redirect-Post-saml2sso&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:SingleSignOnService</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/Post-Post-saml2sso&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;familyName&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;spidCode&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;fiscalNumber&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;gender&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;dateOfBirth&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;placeOfBirth&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;companyName&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;registeredOffice&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;ivaCode&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;idCard&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;mobilePhone&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;email&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;address&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;digitalAddress&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/md:IDPSSODescriptor&gt;</span>
+<span class="nt">&lt;/md:EntityDescriptor&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="caratteristiche-del-binding">
+<h2>Caratteristiche del Binding<a class="headerlink" href="#caratteristiche-del-binding" title="Link a questa intestazione">¶</a></h2>
+<div class="section" id="binding-http-redirect">
+<h3>Binding HTTP Redirect<a class="headerlink" href="#binding-http-redirect" title="Link a questa intestazione">¶</a></h3>
+<p>Nel caso del binding HTTP Redirect la richiesta viene veicolata con le seguenti modalità:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>come risposta alla richiesta di accesso</strong> dell&#8217;end user ad un servizio o risorsa, il Service Provider invia allo User Agent un messaggio HTTP di redirezione, cioè avente uno status code con valore 302 (&#8220;Found&#8221;) o 303 (&#8220;See Other&#8221;)</li>
+<li><strong>il Location Header del messaggio HTTP contiene</strong> l&#8217;URI di destinazione del servizio di Single Sign-On esposto dall&#8217; Identity Provider. L&#8217;interfaccia è sempre la <strong>IAuthnRequest</strong></li>
+<li><dl class="first docutils">
+<dt><strong>il messaggio HTTP trasporta i seguenti parametri</strong> (tutti URL-encoded):</dt>
+<dd><ol class="first last arabic">
+<li><strong>&#8220;SAMLRequest&#8221;</strong>: un costrutto SAML &lt;AuthnRequest&gt; codificato in formato Base64 e compresso con algoritmo DEFLATE. Come da specifica, il messaggio SAML non contiene la firma in formato XML Digital Signature esteso (come avviene in generale nel caso di binding HTTP POST). Ciò a causa delle dimensioni eccessive che esso raggiungerebbe per essere veicolato in una query string. La specifica indica come modalità alternativa quella di specificare con parametri aggiuntivi l&#8217;algoritmo utilizzato per firmare e la stringa con la codifica Base64 URL-encoded dei byte del messaggio SAML</li>
+<li><strong>&#8220;RelayState&#8221;</strong>: identifica la risorsa (servizio) originariamente richiesta dall&#8217;utente e a cui trasferire il controllo alla fine del processo di autenticazione. Il Service Provider a tutela della privacy dell&#8217;utente nell&#8217;utilizzare questo parametro deve mettere in atto accorgimenti tali da rendere minima l&#8217;evidenza possibile sulla natura o tipologia della risorsa (servizio) richiesta</li>
+<li><strong>&#8220;SigAlg&#8221;</strong>: identifica l&#8217;algoritmo usato per la firma prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore; il valore esteso di questo parametro è contestualizzato da un namespace appartenente allo standard XML Digital Signature. Come indicato al punto 1, tuttavia, la firma prodotta non fa uso della struttura XML definita in tale standard</li>
+<li><strong>&#8220;Signature&#8221;</strong>: contiene la firma digitale della query string, così come prodotta prima di aggiungere questo parametro, utilizzando l&#8217;algoritmo indicato al parametro precedente;</li>
+<li><strong>Il browser dell&#8217;utente elabora quindi tale messaggio HTTP Redirect</strong> indirizzando una richiesta HTTP con metodo GET al servizio di Single Sign-On dell&#8217; Identity Provider (interfaccia IAuthnRequest) sotto forma di URL con tutti i sopraindicati parametri contenuti nella query string. Un esempio di tale URL è il seguente, nel quale sono evidenziati in grassetto i parametri citati (i valori di alcuni parametri sono stati ridotti per brevità, inoltre il valore del parametro &#8220;RelayState&#8221; è stato reso non immediatamente intellegibile, come suggerito dalla specifica, sostituendo la stringa in chiaro con l&#8217;Id della richiesta: il Service Provider tiene traccia della corrispondenza)</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="esempio-http-redirect-query-string">
+<h3>Esempio: HTTP redirect query string<a class="headerlink" href="#esempio-http-redirect-query-string" title="Link a questa intestazione">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;SAMLRequest&#39;</span><span class="o">=</span><span class="n">nVPLbtswELz3KwTeZb0M2SYsBa6NoAbSRrGUHnqjqFVDQCJVLuU4f19KlhEDb</span>
+<span class="n">VygR5K7O7Mzw</span><span class="o">%</span><span class="mi">2</span><span class="n">FXdqW2cI2gUSiYkmPnEAclVJeTPhDwX</span><span class="o">%</span><span class="mi">2</span><span class="n">B6S3KWf1sjapqOb3rzIA</span><span class="o">%</span><span class="mi">2</span><span class="n">FzqAY2zQQRtbNtWSe</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="n">ZwPAU88aUQvQ</span><span class="o">%</span><span class="mi">2</span><span class="n">F8oe8S68piBDNabB5s3AyThb1XZMCxxEhhPj5qLZddW2sZIcoP4fBW</span><span class="o">%</span><span class="mi">2</span><span class="n">BWccqH0fZ6iNir0tU</span>
+<span class="n">QGeCWZaGZxE5pM4n8Nz7p</span><span class="o">%</span><span class="mi">2</span><span class="n">Be2D3S6L51x1NljO</span><span class="o">%</span><span class="mi">2</span><span class="n">BCO2qh8zO</span><span class="o">%</span><span class="mi">2</span><span class="n">Bji</span><span class="o">%</span><span class="mi">2</span><span class="n">FfnN098</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">&amp;</span><span class="s1">&#39;RelayState&#39;</span><span class="o">=</span><span class="n">s29f6c7d</span>
+<span class="mi">6</span><span class="n">bbf9e62968d27309e2e4beb6133663a2e</span><span class="o">&amp;</span><span class="s1">&#39;SigAlg&#39;</span><span class="o">=</span><span class="n">http</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">2</span><span class="n">F</span><span class="o">%</span><span class="mi">2</span><span class="n">Fwww</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">%</span><span class="mi">2</span><span class="n">F2000</span><span class="o">%</span><span class="mi">2</span><span class="n">F09</span><span class="o">%</span><span class="mi">2</span><span class="n">Fxmldsig</span>
+<span class="o">%</span><span class="mi">23</span><span class="n">rsa</span><span class="o">-</span><span class="n">sha1</span><span class="o">&amp;</span><span class="s1">&#39;Signature&#39;</span><span class="o">=</span><span class="n">LtNj</span><span class="o">%</span><span class="mi">2</span><span class="n">BbMc8j</span><span class="o">%</span><span class="mi">2</span><span class="n">FhglWzHPMmo0ESQzBaWlmQbZxas</span><span class="o">%</span><span class="mi">2</span><span class="n">B</span><span class="o">%</span><span class="mi">2</span><span class="n">FIfNO4F</span><span class="o">%</span><span class="mi">2</span><span class="n">F7WNoMKDZ4</span>
+<span class="n">VVYeBtCEQKWp12pU7vPB5WVVMRMrGB8ZRAdHmmPp0hJ9opO3NdafRc04Z</span><span class="o">%</span><span class="mi">2</span><span class="n">BbfnkSuQCN9NcGV</span><span class="o">%</span><span class="mi">2</span><span class="n">BajT</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="n">ra169jhaGRReRQ9KkgSB3aTpQGaffAYUPVo2XZiWy6f9Z7zsmV</span><span class="o">%</span><span class="mi">2</span><span class="n">FFoT8dg</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="binding-http-post">
+<h3>Binding HTTP POST<a class="headerlink" href="#binding-http-post" title="Link a questa intestazione">¶</a></h3>
+<p>Nel caso del binding HTTP POST, come risposta alla richiesta di accesso dell&#8217;utente ad un
+servizio o risorsa, il SP invia allo User Agent (il browser dell&#8217;utente) un messaggio HTTP con
+status code avente valore 200 (&#8220;OK&#8221;):</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>il messaggio HTTP contiene una form HTML</strong> all&#8217;interno della quale è trasportato un costrutto SAML &lt;AuthnRequest&gt; codificato come valore di un hidden form control di nome &#8220;SAMLRequest&#8221;. Rispetto al binding HTTP Redirect, l&#8217;utilizzo di una form HTML permette di superare i limiti di dimensione della query string. Pertanto, l&#8217;intero messaggio SAML in formato XML può essere firmato in accordo alla specifica XML Digital Signature. Il risultato a valle della firma è quindi codificato in formato Base64</li>
+<li>la form HTML contiene un secondo hidden form control di nome <strong>&#8220;RelayState&#8221;</strong> che contiene il corrispondente valore del Relay State, cioè della risorsa originariamente richiesta dall&#8217;utente e alla quale dovrà essere trasferito il controllo al termine della fase di autenticazione</li>
+<li><strong>la form HTML è corredata da uno script che la rende auto-postante</strong> all&#8217;indirizzo indicato nell&#8217;attributo &#8220;action&#8221;</li>
+<li><strong>Il browser</strong> dell&#8217;utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST verso il componente Single Sign-On dell&#8217;Identity Provider (interfaccia IAuthnRequest).</li>
+</ul>
+</div></blockquote>
+<p>Un esempio di form HTML per trasferire in HTTP POST la richiesta di autenticazione è descritto nell&#8217;esempio successivo. Osservando attentamente il codice riportato in figura si può notare il valore del parametro &#8220;SAMLRequest&#8221; (ridotto per brevità); il valore del parametro RelayState reso non immediatamente intellegibile (cfr. sez. precedente); l&#8217;elemento <em>&lt;input type=&#8221;submit&#8221; value=&#8221;Invia&#8221;/&gt;</em>, che ha lo scopo di visualizzare all&#8217;interno del web browser il pulsante di invio della form utilizzabile dall&#8217;utente, non strettamente necessario in quanto la form è resa autopostante.</p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        [...]
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;javascript:document.forms[0].submit()&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;https://spid.identityprovider.it/SSOServiceProxy&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;SAMLRequest&quot;</span>
+                <span class="na">value</span><span class="o">=</span><span class="s">&quot;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZVRGLTgiPz4KPHNhbWxwOkF1dGhuUmVxdWVzdCBB</span>
+<span class="s">                c3NlcnRpb25Db25zdW1lclNlcnZpY2VVUkw9Imh0dHA6Ly9zcC5pY2FyLml0OjgwODAvaWNhc</span>
+<span class="s">                [...]</span>
+<span class="s">                N0ZWRUcmFuc3BvcnQ8L3NhbWw6QXV0aG5Db250ZXh0Q2xhc3NSZWY+PC9zYW1scDpSZXF1ZXN0ZWRBdXRobkNvb</span>
+<span class="s">                nRleHQ+PHNhbWxwOlNjb3BpbmcgUHJveHlDb3VudD0iMiIgeG1sbnM6c2FtbHA9InVybjpvYXNpczpuYW1lczp0</span>
+<span class="s">                YzpTQU1MOjIuMDpwcm90b2NvbCIvPjwvc2FtbG5SZXF1ZXN0Pg==&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;RelayState&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;s2645f48777bd62ec83eddc62...&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Invia&quot;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Conclusa la fase di autenticazione, l&#8217;Identity Provider costruisce una <strong>&lt;Response&gt;</strong> firmata diretta al Service Provider, e in particolare al relativo servizio <strong>AssertionConsumerService</strong>. La <strong>&lt;Response&gt;</strong> viene inserita in una form HTML come campo nascosto di nome <strong>&#8220;SAMLResponse&#8221;</strong>. L&#8217;Identity Provider invia la form HTML al browser dell&#8217;utente in una risposta HTTP.</p>
+<p>Il browser dell&#8217;utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST contenente la <strong>&lt;Response&gt;</strong> firmata verso il Service Provider. Un esempio di tale form è riportato di seguito, anche in questo caso, il valore del parametro &#8220;SAMLResponse&#8221; è stato ridotto per brevità</p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        [...]
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;javascript:document.forms[0].submit()&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;https://spid.serviceprovider.it/AssertionConsumerService&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;SAMLResponse&quot;</span>
+                <span class="na">value</span><span class="o">=</span><span class="s">&quot;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHNhbWxwOlJlc3BvbnNlIERlc3Rp</span>
+<span class="s">                bmF0aW9uPSJodHRwOi8vc3AuaWNhci5pdDo4MDgwL2ljYXItc3AvQXNzZXJ0aW9uQ29uc3VtZXJTZXJ2aWNlIiB</span>
+<span class="s">                JRD0iczJhNTdmN2RhYTUyMTc2NWZmOTQ2ODM0ZmY2NjIzNTA3ZTcwNGI1MDQ3IiBJblJlc3BvbnNlVG89InMyOG</span>
+<span class="s">                Q5MWEyNmJkNGQ2MGY0N2E0OTkxMzMwMGZhZjc2MzFiZjMxNDBlOSIgSXNzdWVJbnN0YW50PSIyMDA4LTAzLTA0V</span>
+<span class="s">                DIyOjEzOjQ4LjUwMFoiIFZlcnNpb249IjIuMCIgeG1sbnM6c2Ftb</span>
+<span class="s">                [...]</span>
+<span class="s">                2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmFjOmNsYXNzZXM6UGFzc3dvcmRQcm90ZWN0ZWRUcmFuc3BvcnQ8L3NhbWw6</span>
+<span class="s">                QXV0aG5Db250ZXh0Q2xhc3NSZWY+PC9zYW1sOkF1dGhuQ29udGV4dD48L3NhbWw6QXV0aG5TdGF0ZW1lbnQ+PC9</span>
+<span class="s">                zYW1sOkFzc2VydGlvbj48L3NhbWxwOlJlc3BvbnNlPg==&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;RelayState&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;s28d91a26bd4d60f47a49913300f...&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Invia&quot;</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="gestione-della-sicurezza-sul-canale-di-trasmissione">
+<h2>Gestione della sicurezza sul canale di trasmissione<a class="headerlink" href="#gestione-della-sicurezza-sul-canale-di-trasmissione" title="Link a questa intestazione">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Il profilo SAML SSO raccomanda l&#8217;uso di <strong>TLS 1.2</strong> nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
+In ambito  SPID si rende obbligatorio l&#8217;impiego di TLS 1.2.
+In casi particolari e temporanei,  può  essere  adottata  la  versione  1.1,  fermo  restando  che  la  versione  1.2 deve  essere  adottata  lato server.
+Conseguentemente, le versioni più obsolete dei browser, che non supportano le versioni del protocollo indicate, non devono essere utilizzate e, i livelli minimi accettati per l’accesso ai servizi SPID, devono essere documentati nei confronti degli utenti.</p>
+</div>
+</div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link a questa intestazione">¶</a></h2>
+<p>Le caratteristiche dell&#8217;Identity provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata), e rispettare le condizioni di seguito indicate:</p>
+<div class="section" id="entitydescriptor">
+<h3>&lt;EntityDescriptor&gt;<a class="headerlink" href="#entitydescriptor" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>nell&#8217;elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<ul class="last simple">
+<li><strong>entityID</strong> indicante l&#8217;identificativo (URI) dell&#8217;entità univoco in ambito SPID</li>
+<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="idpssodescriptor">
+<h3>&lt;IDPSSODescriptor&gt;<a class="headerlink" href="#idpssodescriptor" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>l&#8217;elemento <strong>&lt;IDPSSODescriptor&gt;</strong> specifico che contraddistingue l&#8217;entità di tipo Identity provider deve riportare i seguenti attributi:</dt>
+<dd><ul class="first last">
+<li><strong>protocolSupportEnumeration</strong>: che enumera gli URI indicanti i protocolli supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>&#8221;)</li>
+<li><strong>WantAuthnRequestSigned</strong>: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l&#8217;obbligo della firma delle richieste di autenticazione;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="keydescriptor">
+<h3>&lt;KeyDescriptor&gt;<a class="headerlink" href="#keydescriptor" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>all&#8217;interno di IDPSSODescriptor devono essere presenti:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>l&#8217;elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene l&#8217;elenco dei certificati e delle corrispondenti chiavi pubbliche dell&#8217;entità, utili per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAMLMetadata, par. 2.4.1.1)</li>
+<li>l&#8217;elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene il certificato della corrispondente chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="nameidformat">
+<h3>&lt;NameIDFormat&gt;<a class="headerlink" href="#nameidformat" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>l&#8217;elemento <strong>&lt;NameIDFormat&gt;</strong> riportante l&#8217;attributo:</dt>
+<dd><ul class="first last">
+<li><strong>format</strong>, indicante il formato &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>&#8221; come quello supportato per l&#8217;elemento di <strong>&lt;NameID&gt;</strong> utilizzato nelle richieste e risposte SAML per identificare il subject cui si riferisce un&#8217;asserzione</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="singlelogoutservice">
+<h3>&lt;SingleLogoutService&gt;<a class="headerlink" href="#singlelogoutservice" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>uno o più elementi <strong>&lt;SingleLogoutService&gt;</strong> che specificano l&#8217;indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><strong>Location</strong> url endpoint del servizio per la ricezione delle richieste Binding che può assumere uno dei valori</dt>
+<dd><ul class="first last">
+<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>&#8220;</li>
+<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><strong>ResponseLocation</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="singlesignonservice">
+<h3>&lt;SingleSignOnService&gt;<a class="headerlink" href="#singlesignonservice" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>uno o più elementi <strong>&lt;SingleSignOnService&gt;</strong> che specificano l&#8217;indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><strong>Location</strong> url endpoint del servizio per la ricezione delle richieste Binding che può assumere uno dei valori</dt>
+<dd><ul class="first last">
+<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>&#8220;</li>
+<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="attribute">
+<h3>&lt;Attribute&gt;<a class="headerlink" href="#attribute" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>opzionalmente possono essere presenti:
+* uno o più elementi <strong>&lt;Attribute&gt;</strong> ad indicare nome e formato degli attributi certificabili dell&#8217;Identity provider (Tabella attributi SPID),riportanti gli attributi:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><strong>Name</strong> nome dell&#8217;attributo (colonna identificatore della Tabella attributi SPID)</li>
+<li><strong>xsi:type</strong> tipo dell&#8217;attributo (colonna tipo della Tabella attributi SPID)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>&lt;Signature&gt;<a class="headerlink" href="#id9" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">deve essere l&#8217;elemento <strong>&lt;Signature&gt;</strong> riportante la firma sui metadata.
+La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore;</p>
+</div>
+</div>
+<div class="section" id="organization">
+<h3>&lt;Organization&gt;<a class="headerlink" href="#organization" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<dl class="last docutils">
+<dt>è consigliata la presenza di un elemento <strong>&lt;Organization&gt;</strong> a indicare l&#8217;organizzazione a cui afferisce l&#8217;entità specificata, riportante gli elementi:</dt>
+<dd><ul class="first last simple">
+<li><strong>&lt;OrganizationName&gt;</strong> indicante un identificatore language-qualified dell&#8217;organizzazione a cui l&#8217;entità afferisce</li>
+<li><strong>&lt;OrganizationURL&gt;</strong> riportante in modalità language-qualified la url istituzionale dell&#8217;organizzazione</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="esempio-metadata-idp">
+<h3>Esempio: Metadata IdP<a class="headerlink" href="#esempio-metadata-idp" title="Link a questa intestazione">¶</a></h3>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;md:EntityDescriptor</span> <span class="na">xmlns:md =</span> <span class="s">&quot;urn:oasis:names:tc:SAML:2.0:metadata&quot;</span>
+    <span class="na">xmlns:saml=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchemainstance&quot;</span>
+    <span class="na">entityID=</span><span class="s">&quot;http://spid.identityprovider.it&quot;</span>
+    <span class="na">ID=</span><span class="s">&quot;_2ini49248n98dn984n...&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">&quot;http://www.w3.org/2000/09/xmldsig#&quot;</span><span class="nt">&gt;</span>
+        [...]
+    <span class="nt">&lt;/ds:Signature&gt;</span>
+    <span class="nt">&lt;md:IDPSSODescriptor</span>
+        <span class="na">protocolSupportEnumeration=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:protocol&quot;</span>
+        <span class="na">WantAuthnRequestsSigned=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;md:KeyDescriptor</span> <span class="na">use=</span><span class="s">&quot;signing&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/md:KeyDescriptor&gt;</span>
+        <span class="nt">&lt;md:SingleLogoutService</span> <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/Post-Post-saml2slo&quot;</span>
+            <span class="na">ResponseLocation=</span><span class="s">&quot;https://spid.identityprovider.it/Post-Post-saml2slo&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:SingleLogoutService</span> <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&quot;</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/redirect-Post-saml2slo&quot;</span>
+            <span class="na">ResponseLocation=</span><span class="s">&quot;https://spid.identityprovider.it/redirect-Post-saml2slo&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:NameIDFormat&gt;</span>urn:oasis:names:tc:SAML:2.0:nameid-format:transient<span class="nt">&lt;/md:NameIDFormat&gt;</span>
+        <span class="nt">&lt;md:SingleSignOnService</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/redirect-Post-saml2sso&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;md:SingleSignOnService</span>
+            <span class="na">Location=</span><span class="s">&quot;https://spid.identityprovider.it/Post-Post-saml2sso&quot;</span>
+            <span class="na">Binding=</span><span class="s">&quot;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;familyName&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;spidCode&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;fiscalNumber&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;gender&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;dateOfBirth&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;placeOfBirth&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;companyName&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;registeredOffice&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;ivaCode&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;idCard&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;mobilePhone&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;email&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;address&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;saml:Attribute</span> <span class="na">xsi:type=</span><span class="s">&quot;xsi:string&quot;</span> <span class="na">Name=</span><span class="s">&quot;digitalAddress&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/md:IDPSSODescriptor&gt;</span>
+<span class="nt">&lt;/md:EntityDescriptor&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="disponibilita-dei-metadata">
+<h3>Disponibilità dei Metadata<a class="headerlink" href="#disponibilita-dei-metadata" title="Link a questa intestazione">¶</a></h3>
+<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l&#8217;interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall&#8217;Agenzia per l&#8217;Italia Digitale.
+L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
+</div>
+</div>
+</div>
+
+
+                        </div>
+                        <div class="articleComments">
+                            
+                        </div>
+                    </div>
+                    <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regole-tecniche-sp.html" class="btn float-right" title="Regole tecniche Service Provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduzione.html" class="btn" title="Introduzione" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
+      Ultimo aggiornamento 20/03/2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using the official <a href="https://github.com/italia/sphinx_italia_theme">Italia theme</a> based on the <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    
+ 
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT: './',
+            VERSION: '1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE: true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>   
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+      
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+     
+
+</body>
+
+</html>

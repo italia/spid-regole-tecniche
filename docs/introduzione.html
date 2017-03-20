@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Introduzione &mdash; SPID - Regole Tecniche 1.0 documentazione</title>
+               
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />   
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="top" title="SPID - Regole Tecniche 1.0 documentazione" href="index.html" />
+    <link rel="next" title="Regole tecniche Identity Provider" href="regole-tecniche-idp.html" />
+    <link rel="prev" title="SPID - Regole tecniche" href="index.html" />  
+    <script src="_static/js/modernizr.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+     
+    <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-side-nav-search">
+                    
+
+                    <div class="branding clearfix">
+                        <div class="branding--logo">
+                            <a href="https://docs.developers.italia.it">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+                              <g fill="none" fill-rule="evenodd">
+                                <path d="M0 0h160v160H0z"/>
+                                <path fill="#fff" d="M58.28 131.956V49.918h21.5v82.184h-21.5v-.146zm84.435-63.353h-19.65v33.72c0 3.358.143 5.547.285 7.007.143 1.314.712 2.482 1.71 3.504.996 1.02 2.562 1.46 4.698 1.46l12.245-.293.997 17.52c-7.12 1.606-12.673 2.48-16.375 2.48-9.682 0-16.232-2.19-19.65-6.713-3.56-4.38-5.267-12.554-5.267-24.524V27h21.5v22.772h19.65v18.83h-.143zM25.957 74.88c-3.702 0-6.834-1.314-9.255-3.94C14.282 68.31 13 65.1 13 61.303c0-3.795 1.28-7.007 3.56-9.634 2.42-2.63 5.553-3.798 9.255-3.798 3.702 0 6.835 1.314 9.255 3.942 2.42 2.627 3.56 5.84 3.56 9.78 0 3.942-1.14 7.007-3.56 9.635-2.278 2.335-5.268 3.65-9.113 3.65z"/>
+                              </g>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="branding--content">
+                            <h2 class="branding--title">
+                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
+                                <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
+                            </h2>
+                        </div>
+                        <h3 class="branding--tagline">La community italiana degli sviluppatori di servizi pubblici</h3>
+                    </div>
+
+            
+            
+            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            
+
+
+                     
+                    
+                    <div class="version">1</div>
+                      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div> 
+                </div>
+
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduzione</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interfacce-logiche">Interfacce logiche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identity-provider">Identity Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-provider">Service Provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-di-interazione-in-modalita-single-sign-on-sso">Scenario di Interazione in modalità Single Sign On (SSO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-idp.html">Regole tecniche Identity Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-sp.html">Regole tecniche Service Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regole-tecniche-aa.html">Regole tecniche Attribute Authority</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sessioni.html">Sessioni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registro.html">Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elenco-attributi.html">Elenco attributi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="messaggi-errore.html">Messaggi di errore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacce.html">Regole tecniche Attribute Authority</a></li>
+</ul>
+  
+                </div>
+            </div>
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+            
+            <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="index.html">SPID - Regole Tecniche</a> 
+            </nav>
+
+
+            
+            <div class="wy-nav-content">
+                <div class="rst-content">
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduzione</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduzione.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+                            
+  <div class="section" id="introduzione">
+<h1>Introduzione<a class="headerlink" href="#introduzione" title="Link a questa intestazione">¶</a></h1>
+<p>SPID è basato sul framework SAML (Security Assertion Markup Language), sviluppato e manutenuto dal Security Services Technical Committee di OASIS, che permette la realizzazione di un sistema sicuro di Single Sign On (SSO) federato, ovvero, che permette ad un utente di accedere ad una moltitudine di servizi, anche su domini differenti, effettuando un solo accesso.</p>
+<p>Il sistema è composto da 3 entità:</p>
+<ul class="simple">
+<li><strong>Gestore delle identità (Identity Provider o IdP)</strong> che gestisce gli utenti e la procedura di autenticazione;</li>
+<li><strong>Fornitore di servizi (Service Provider o SP)</strong> che, dopo aver richiesto l&#8217;autenticazione dell&#8217;utente all&#8217;Identity Provider, gestisce l&#8217;autorizzazione, sulla base degli attributi restituiti dall&#8217;IdP, erogando il servizio richiesto;</li>
+<li><strong>Gestore di attributi qualificati (Attribute Authority o AA)</strong> che fornisce attributi certificati sulla base dell&#8217;utente autenticato.</li>
+</ul>
+<p>Le modalità di funzionamento del Sistema Pubblico di Identità Digitale sono quelle previste da SAML v2 per il profilo &#8220;Web
+Browser SSO&#8221; - <a class="reference external" href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html">SAML V2.0 Technical Overview - Oasis par4.3</a>.</p>
+<p>Devono essere previste le due versioni &#8220;<strong>SP-Initiated</strong>&#8221;:</p>
+<ul class="simple">
+<li><em>Redirect/POST binding</em></li>
+<li><em>POST/POST binding</em></li>
+</ul>
+<p>Il meccanismo di autenticazione è innescato dalla richiesta inoltrata dall&#8217;utente tramite browser ad un Fornitore di Servizi (Service Provider o SP) che si rivolge al Gestore delle Identità (Identity provider o IdP) selezionato dall&#8217;utente in modalità &#8220;pull&#8221;.</p>
+<p>La richiesta di autenticazione SAML, basata sul costrutto &lt;AuthnRequest&gt;, può essere inoltrata da un Service Provider all&#8217;Identity Provider usando il binding:</p>
+<ul class="simple">
+<li><em>HTTP Redirect</em></li>
+<li><em>HTTP POST</em></li>
+</ul>
+<p>La relativa risposta SAML, basata sul costrutto &lt;Response&gt;, può essere, invece, inviata dall&#8217;Identity Provider al Service Provider solo tramite il binding HTTP POST.</p>
+<div class="section" id="interfacce-logiche">
+<h2>Interfacce logiche<a class="headerlink" href="#interfacce-logiche" title="Link a questa intestazione">¶</a></h2>
+<div class="section" id="identity-provider">
+<h3>Identity Provider<a class="headerlink" href="#identity-provider" title="Link a questa intestazione">¶</a></h3>
+<p>Le interfacce logiche dell&#8217;<strong>Identity Provider</strong> coinvolte sono:</p>
+<ul class="simple">
+<li><em>IIDPUserInterface</em>: permette agli utenti l&#8217;interazione via web con il componente tramite</li>
+<li><em>User Agent (browser)</em>: in fase di challenge di autenticazione;</li>
+<li><em>IAuthnRequest (singleSignOnService)</em>: ricezione di richieste di autenticazione SAML;</li>
+<li><em>IMetadataRetrieve</em>: permette il reperimento dei SAML metadata dell&#8217;Identity Provider.</li>
+</ul>
+</div>
+<div class="section" id="service-provider">
+<h3>Service Provider<a class="headerlink" href="#service-provider" title="Link a questa intestazione">¶</a></h3>
+<p>Le Interfacce logiche del <strong>Service Provider</strong> coinvolte sono:</p>
+<ul class="simple">
+<li><em>IAuthnResponse (Assertion Consumer Service)</em>: ricezione delle risposte di autenticazione SAML.</li>
+<li><em>IMetadataRetrieve</em>: permette il reperimento dei SAML metadata del Service Provider</li>
+<li><em>IDSResponse</em>: ricezione delle risposte da parte del Discovery Service.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scenario-di-interazione-in-modalita-single-sign-on-sso">
+<h2>Scenario di Interazione in modalità Single Sign On (SSO)<a class="headerlink" href="#scenario-di-interazione-in-modalita-single-sign-on-sso" title="Link a questa intestazione">¶</a></h2>
+<p><strong>L&#8217;immagine successiva mostra il funzionamento di un&#8217;autenticazione SPID (SAML v2.0)</strong></p>
+<div class="figure" id="id1">
+<img alt="funzionamento di un'autenticazione SPID (SAML v2.0)" src="_images/spid-saml2.png" />
+<p class="caption"><span class="caption-text">Funzionamento di un&#8217;autenticazione SPID (SAML v2.0)</span></p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="1%" />
+<col width="85%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">##</th>
+<th class="head">Descrizione</th>
+<th class="head">Interfaccia</th>
+<th class="head">Saml</th>
+<th class="head">Binding</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>L&#8217;utente richiede l&#8217;accesso ad un servizio</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>B1</td>
+<td>Il Service Provider (SP) invia allo User Agent (UA) una richiesta di autenticazione da far pervenire all&#8217;Identity Provider (IdP)</td>
+<td>IAuthnRequest</td>
+<td>AuthnRequest</td>
+<td>HTTP POST/REDIRECT</td>
+</tr>
+<tr class="row-even"><td>B2</td>
+<td>Lo User Agent inoltra la richiesta di autenticazione contattando L&#8217;Identity Provider</td>
+<td>&nbsp;</td>
+<td>AuthnRequest</td>
+<td>HTTP POST/REDIRECT</td>
+</tr>
+<tr class="row-odd"><td>C1</td>
+<td>L&#8217;Identity Provider esamina la richiesta ricevuta e, se necessario, esegue una challenge di autenticazione con l&#8217;utente</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>HTTP</td>
+</tr>
+<tr class="row-even"><td>C2</td>
+<td>L&#8217;Identity Provider, portata a buon fine l&#8217;autenticazione, effettua lo user login e prepara l&#8217;asserzione contenente lo statement di autenticazione dell&#8217;utente destinato al Service Provider (più eventuali statement di attributo emessi dall&#8217;Identity Provider stesso)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>L&#8217;Identity Provider restituisce allo User Agent la &lt;Response&gt; SAML contenente l&#8217;asserzione preparata al punto precedente</td>
+<td>&nbsp;</td>
+<td>Response</td>
+<td>HTTP POST</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>Lo User Agent inoltra al Service Provider (SP) la &lt;Response&gt; SAML emessa dall&#8217;Identity Provider</td>
+<td>IAuthnResponse</td>
+<td>Response</td>
+<td>HTTP POST</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+                        </div>
+                        <div class="articleComments">
+                            
+                        </div>
+                    </div>
+                    <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regole-tecniche-idp.html" class="btn float-right" title="Regole tecniche Identity Provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn" title="SPID - Regole tecniche" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
+      Ultimo aggiornamento 20/03/2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using the official <a href="https://github.com/italia/sphinx_italia_theme">Italia theme</a> based on the <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    
+ 
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT: './',
+            VERSION: '1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE: true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>   
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+      
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.StickyNav.enable();
+        });
+    </script>
+     
+
+</body>
+
+</html>
