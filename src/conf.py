@@ -71,6 +71,9 @@ exclude_patterns = ['.DS_Store', ]
 pygments_style = 'sphinx'
 
 # -- Options for HTML output ----------------------------------------------
+html_theme = 'sphinx_italia_theme'
+
+html_theme_path = ["_themes", ]
 
 # -- ReadTheDoc requirements and local template generation---------------------
 
