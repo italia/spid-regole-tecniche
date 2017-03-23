@@ -38,14 +38,14 @@ Le caratteristiche del Service Provider devono essere definite attraverso metada
 
         * **entityID:** indicante l'identificativo univoco (un URI) dell'entità
         * **ID** univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità)
+        
 
+<KeyDescriptor>
+^^^^^^^^^^^^^^^
 
-deve l'elemento <KeyDescriptor> contenenete il certificato della corrispondente
-chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale
-entità nelle sue interazioni con le altre (cfr.[SAML-Metadata], sez. 2.4.1.1);
-· deve essere l'elemento <Signature> riportante la firma sui metadata . La firma deve essere
-prodotta secondo il profilo specificato per SAML (cfr. [SAML-Metadata] cap3) utilizzando
-chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
+.. Important::
+    l'elemento <KeyDescriptor> contenenete il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);
+        * deve essere l'elemento <Signature> riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
 
 deve essere presente l'elemento <SPSSODescriptor> riportante i seguenti attributi:
 - protocolSupportEnumeration: che enumera, separati da uno spazio, gli URI

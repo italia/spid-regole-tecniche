@@ -83,6 +83,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#entitydescriptor">&lt;EntityDescriptor&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keydescriptor">&lt;KeyDescriptor&gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#esempio-metadata-sp">Esempio: Metadata SP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#disponibilita-dei-metadata">Disponibilità dei Metadata</a></li>
 </ul>
@@ -95,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="log.html">Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elenco-attributi.html">Elenco attributi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="messaggi-errore.html">Messaggi di errore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interfacce.html">Regole tecniche Attribute Authority</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacce.html">Interfacce</a></li>
 </ul>
   
                 </div>
@@ -204,12 +205,19 @@
 </ul>
 </div></blockquote>
 </div>
-<p>deve l&#8217;elemento &lt;KeyDescriptor&gt; contenenete il certificato della corrispondente
-chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale
-entità nelle sue interazioni con le altre (cfr.[SAML-Metadata], sez. 2.4.1.1);
-· deve essere l&#8217;elemento &lt;Signature&gt; riportante la firma sui metadata . La firma deve essere
-prodotta secondo il profilo specificato per SAML (cfr. [SAML-Metadata] cap3) utilizzando
-chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;</p>
+</div>
+<div class="section" id="keydescriptor">
+<h3>&lt;KeyDescriptor&gt;<a class="headerlink" href="#keydescriptor" title="Link a questa intestazione">¶</a></h3>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<dl class="last docutils">
+<dt>l&#8217;elemento &lt;KeyDescriptor&gt; contenenete il certificato della corrispondente chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);</dt>
+<dd><ul class="first last simple">
+<li>deve essere l&#8217;elemento &lt;Signature&gt; riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;</li>
+</ul>
+</dd>
+</dl>
+</div>
 <p>deve essere presente l&#8217;elemento &lt;SPSSODescriptor&gt; riportante i seguenti attributi:
 - protocolSupportEnumeration: che enumera, separati da uno spazio, gli URI
 associati ai protocolli supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0,
@@ -370,7 +378,7 @@ L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versi
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 20/03/2017.
+      Ultimo aggiornamento 23/03/2017.
 
     </p>
   </div>

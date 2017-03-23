@@ -1,4 +1,2 @@
 Messaggi di errore
 ==================
-
-xxx
