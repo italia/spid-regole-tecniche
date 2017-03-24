@@ -146,58 +146,6 @@
                             
   <div class="section" id="log">
 <h1>Log<a class="headerlink" href="#log" title="Link a questa intestazione">¶</a></h1>
-<p><strong>Il fornitore di servizi (Service Provider o SP)</strong> <em>eroga i servizi agli utenti, richiede l&#8217;autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio</em></p>
-<p>4.1. TRACCIATURE IDENTITY PROVIDER
-Ai fini della tracciatura l&#8217;Identity Provider dovrà mantenere un Registro delle transazioni contenente i
-tracciati delle richieste di autenticazione servite negli ultimi 24 mesi. L&#8217;unità di
-memorizzazione di tale registro dovrà rendere persistente per ogni transazione la tripla
-composta dell&#8217;identificativo dell&#8217;identità digitale (spidCode) interessata dalla transazione, dalla
-&lt;AuthnRequest&gt; e della relativa &lt; Response&gt;. Al fine di consentire una facile ricerca e
-consultazione dei dati di tracciature potrebbe essere opportuno memorizzare in ogni record
-informazioni direttamente estratte dai suddetti messaggi in formato SAML. A titolo
-esemplificativo e non esaustivo le informazioni presenti in un record del registro potrebbero
-essere le seguenti:
-SpidCode
-&lt;AuthnRequest&gt;
-&lt;Response&gt;
-AuthnReq_ID
-AuthnReq_IssueInstant
-AuthnReq_Issuer
-Resp_ID
-Resp_IssueInstant
-Resp_Issuer
-Assertion_ID
-Assertion_subject
-Assertion_subject_NameQualifier</p>
-<p>4.2. TRACCIATURE SERVICE PROVIDER
-Il comma 2 dell&#8217;articolo 13 del DPCM obbliga i fornitori di servizi ( service provider ) alla
-conservazione per ventiquattro mesi delle informazioni necessarie a imputare alle singole
-identità digitali le operazioni effettuate sui propri sistemi. A tal fine un service provider dovrà
-mantenere un Registro delle transazioni contenente i tracciati delle richieste di autenticazione
-servite negli ultimi 24 mesi. L&#8217;unità di memorizzazione di tale registro dovrà rendere
-persistente per ogni transazione la coppia dalla &lt;AuthnRequest&gt; e della relativa &lt;
-Response&gt;. Al fine di consentire una facile ricerca e consultazione dei dati di tracciature
-potrebbe essere opportuno memorizzare in ogni record informazioni direttamente estratte dai
-suddetti messaggi in formato SAML. A titolo esemplificativo e non esaustivo le informazioni
-presenti in un record del registro potrebbero essere le seguenti:
-&lt;AuthnRequest&gt;
-&lt;Response&gt;
-AuthnReq_ID
-AuthnReq_IssueInstant
-Resp_ID
-Resp_IssueInstant
-Resp_Issuer
-Assertion_ID
-Assertion_subject
-Assertion_subject_NameQualifier</p>
-<p>4.3. MANTENIMENTO TRACCIATURE
-Le tracciature devono essere mantenute nel rispetto del codice della privacy sotto la
-responsabilità titolare del trattamento dell&#8217;Identity Provider. e l&#8217;accesso ai dati di tracciatura
-deve essere riservato a personale incaricato.
-Al fine di garantire la confidenzialità potrebbero essere adottai meccanismi di cifratura dei dati o
-impiegati sistemi di basi di dati (DBMS) che realizzano la persistenza cifrata delle informazioni.
-Per il mantenimento devono essere messi in atto meccanismi che garantiscono l&#8217;integrità e il
-non ripudio.</p>
 </div>
 
 
@@ -223,7 +171,7 @@ non ripudio.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 23/03/2017.
+      Ultimo aggiornamento 24/03/2017.
 
     </p>
   </div>

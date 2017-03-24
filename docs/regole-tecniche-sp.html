@@ -218,39 +218,6 @@
 </dd>
 </dl>
 </div>
-<p>deve essere presente l&#8217;elemento &lt;SPSSODescriptor&gt; riportante i seguenti attributi:
-- protocolSupportEnumeration: che enumera, separati da uno spazio, gli URI
-associati ai protocolli supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0,
-deve indicare almeno il valore del relativo protocollo:
-&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>&#8221;);
-- AuthnRequestSigned: valorizzato true attributo con valore booleano che esprime il
-requisito che le richieste di autenticazione inviate dal service provider siano
-firmate;
-· deve essere presente almeno un elemento &lt;AssertionConsumerService&gt; indicante
-il servizio (in termini di URL e relativo binding &#8220;HTTP POST&#8221;) a cui contattare il Service
-Provider per l&#8217;invio di risposte SAML, riportanti i seguenti attributi:
-- index che può assumere valori unsigned;
-- Binding posto al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8221;
-- Location url endpoint del servizio per la ricezione delle risposte;
-In particolare il primo di questi elementi (o l&#8217;unico elemento riportato) deve
-obbligatoriamente riportare:
-- l&#8217;attributo index posto al valore 0;
-- l&#8217;atrtibuto isDefault posto al valore true;
-· deve essere presente uno o più elementi &lt;AttributeConsumingService&gt; a
-descrizione dei set di attributi richiesti dal Service Provider , riportante:
-- l&#8217;attributo index, indice posizionale dell&#8217;elemento relativo all&#8217;i-esimo servizio
-richiamato dalla authReq mediante l&#8217;attributo
-AttributeConsumingServiceIndex dell&#8217;elemento &lt;AuthnRequest&gt;;
-- l&#8217;elemento &lt;ServiceName&gt;, riportante l&#8217;identificatore dell&#8217;i-esimo set minimo di
-attributi necessari1 per l&#8217;autorizzazione all&#8217;acceso;
-- uno o più elementi di tipo &lt;RequestedAttribute&gt;, ciascuno di essi
-costituente la lista degli attributi associati all&#8217;i-esimo servizio;
-· è consigliata la presenza di un elemento &lt;Organization&gt; a indicare l&#8217;organizzazione a
-cui afferisce l&#8217;entità specificata, riportante gli elementi:
-- &lt;OrganizationName&gt; indicante un identificatore language-qualified
-dell&#8217;organizzazione a cui l&#8217;entità afferisce;
-- &lt;OrganizationURL&gt; riportante in modalità language-qualified la url
-istituzionale dell&#8217;organizzazione.</p>
 <p><em>Per la massima tutela della privacy dell&#8217;utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati. In questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l&#8217;autorizzazione.</em></p>
 </div>
 <div class="section" id="esempio-metadata-sp">
@@ -378,7 +345,7 @@ L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versi
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 23/03/2017.
+      Ultimo aggiornamento 24/03/2017.
 
     </p>
   </div>
