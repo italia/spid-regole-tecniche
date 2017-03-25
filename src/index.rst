@@ -7,7 +7,7 @@ SPID - Regole tecniche
 **SPID**, il Sistema Pubblico di Identità Digitale, è la soluzione che ti permette di accedere a tutti i servizi online della Pubblica Amministrazione con un'unica Identità Digitale (username e password) utilizzabile da computer, tablet e smartphone.
 
 * **Semplice**: prenotazioni sanitarie, iscrizioni scolastiche, accesso alla rete wi-fi pubblica, pratiche d'impresa... con un'unica password
-* **Sicuro**: il sistema SPID assicura la piena protezione dei tuoi dati personali, non è consentito alcun tipo di profilazione; la tua privacy è garanti
+* **Sicuro**: il sistema SPID assicura la piena protezione dei tuoi dati personali, non è consentito alcun tipo di profilazione; la tua privacy è garantita
 * **Veloce**: con SPID puoi accedere velocemente ai servizi online della pubblica amministrazione ovunque ti trovi e da qualsiasi dispositivo
 
 Per maggiori informazioni su `www.spid.gov.it <https://www.spid.gov.it>`_
