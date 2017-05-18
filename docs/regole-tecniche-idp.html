@@ -23,6 +23,26 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
+<div id="slimheader">
+    <div class="sh__wrapper">
+    <div class="sh__institutional">
+        <a href="http://www.agid.gov.it/" title="Agid">AgID</a>
+        <span class="sh__plus">&nbsp;+&nbsp;</span>
+        <a href="https://teamdigitale.governo.it/" title="Team Digitale">Team Digitale</a>
+    </div><!--/sh__institutional-->
+    <div class="sh__tabs">
+    <ul class="sh__tabsul">      
+      <li class="delimiter"><a  href="https://trasformazionedigitale.italia.it">Trasformazione digitale</a></li>
+      <li class="delimiter"><a href="https://developers.italia.it/">Developers</a></li>   
+      <li class=""><a  href="http://design.italia.it">Designers</a></li>      
+      <li class=""><a href="https://forum.developers.italia.it/">Forum</a></li>
+      <li class="current"><a href="https://docs.developers.italia.it/">Docs</a></li>
+      <li class=""><a href="https://github.com/italia/">Github</a></li>
+    </ul>
+    </div><!--/.sh__tabs-->
+    </div><!--/.wrapper-->
+</div><!--/#slimheader-->
+
 
      
     <div class="wy-grid-for-nav">
@@ -45,8 +65,8 @@
                           </a>
                         </div>
                         <div class="branding--content">
+                        
                             <h2 class="branding--title">
-                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
                                 <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
                             </h2>
                         </div>
@@ -55,7 +75,7 @@
 
             
             
-            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            <h1 class="project-title"><a href="index.html" > SPID - Regole Tecniche </a></h1>
             
 
 
@@ -203,17 +223,17 @@
 <p><strong>Il Gestore delle identità (Identity Provider o IdP)</strong> <em>gestisce gli utenti e la procedura di autenticazione a seguito di una richiesta da parte di un Fornitore di Servizi (Service Provider o SP).</em></p>
 <div class="section" id="specifiche-delle-interfacce">
 <h2>Specifiche delle interfacce<a class="headerlink" href="#specifiche-delle-interfacce" title="Link a questa intestazione">¶</a></h2>
-<p>L&#8217;asserzione prodotta dall&#8217;Identity Provider deve essere conforme allo standard SAML v2.0 <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core)</a> e rispettare le seguenti condizioni:</p>
+<p>L’asserzione prodotta dall’Identity Provider deve essere conforme allo standard SAML v2.0 <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core)</a> e rispettare le seguenti condizioni:</p>
 <div class="section" id="assertion">
 <h3>&lt;Assertion&gt;<a class="headerlink" href="#assertion" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>nell&#8217;elemento <strong>&lt;Assertion&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<p>nell’elemento <strong>&lt;Assertion&gt;</strong> devono essere presenti i seguenti attributi:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>l&#8217;attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità);</li>
-<li>l&#8217;attributo <strong>Version</strong>, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la  versione della specifica SAML adottata;</li>
-<li>l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della richiesta, in formato UTC (esempio: &#8220;2017-03-01T15:05:10.531Z&#8221;);</li>
+<li>l’attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest’ultimo generato con una precisione di almeno un millesimo di secondo per garantire l’univocità);</li>
+<li>l’attributo <strong>Version</strong>, che deve valere sempre «2.0», coerentemente con la  versione della specifica SAML adottata;</li>
+<li>l’attributo <strong>IssueInstant</strong> a indicare l’istante di emissione della richiesta, in formato UTC (esempio: «2017-03-01T15:05:10.531Z»);</li>
 </ul>
 </div></blockquote>
 </div>
@@ -222,28 +242,28 @@
 <h3>&lt;Subject&gt;<a class="headerlink" href="#subject" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;Subject&gt;</strong> a referenziare il soggetto che si è autenticato in cui devono comparire gli elementi:</p>
+<p>deve essere presente l’elemento <strong>&lt;Subject&gt;</strong> a referenziare il soggetto che si è autenticato in cui devono comparire gli elementi:</p>
 <blockquote class="last">
 <div><ul>
-<li><p class="first"><strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto dell&#8217;asserzione, in cui sono presenti i seguenti attributi:</p>
+<li><p class="first"><strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto dell’asserzione, in cui sono presenti i seguenti attributi:</p>
 <ul class="simple">
-<li><strong>Format</strong> che deve assumere il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>&#8221; <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core, par8.3)</a></li>
-<li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI riconducibile all&#8217;Identity Provider stesso)</li>
+<li><strong>Format</strong> che deve assumere il valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>» <a class="reference external" href="https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf">(SAML Core, par8.3)</a></li>
+<li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI riconducibile all’Identity Provider stesso)</li>
 </ul>
 </li>
-<li><p class="first"><strong>&lt;SubjectConfirmation&gt;</strong> contenente l&#8217;attributo</p>
+<li><p class="first"><strong>&lt;SubjectConfirmation&gt;</strong> contenente l’attributo</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>Method</em> riportante il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:cm:bearer">urn:oasis:names:tc:SAML:2.0:cm:bearer</a>&#8220;</li>
+<li><em>Method</em> riportante il valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:cm:bearer">urn:oasis:names:tc:SAML:2.0:cm:bearer</a>»</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first"><strong>&lt;SubjectConfirmationData&gt;</strong> riportante gli attributi:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>Recipient</em> riportante l&#8217;AssertionConsumerServiceURL relativa al servizio per cui è stata emessa l&#8217;asserzione e l&#8217;attributo</li>
-<li><em>NotOnOrAfter</em> che limita la finestra di tempo durante la quale l&#8217;asserzione può essere propagata.</li>
-<li><em>InResponseTo</em>, il cui valore deve fare riferimento all&#8217;ID della richiesta.</li>
+<li><em>Recipient</em> riportante l’AssertionConsumerServiceURL relativa al servizio per cui è stata emessa l’asserzione e l’attributo</li>
+<li><em>NotOnOrAfter</em> che limita la finestra di tempo durante la quale l’asserzione può essere propagata.</li>
+<li><em>InResponseTo</em>, il cui valore deve fare riferimento all’ID della richiesta.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -255,15 +275,15 @@
 <h3>&lt;Issuer&gt;<a class="headerlink" href="#issuer" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> a indicare l&#8217;entityID dell&#8217;Identity Provider emittente (attualizzato come l&#8217;attributo entityID presente nei corrispondenti IdP metadata) con l&#8217;attributo Format riportante il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:entity">urn:oasis:names:tc:SAML:2.0:nameidformat:entity</a>&#8221;;</p>
+<p>deve essere presente l’elemento <strong>&lt;Issuer&gt;</strong> a indicare l’entityID dell’Identity Provider emittente (attualizzato come l’attributo entityID presente nei corrispondenti IdP metadata) con l’attributo Format riportante il valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:entity">urn:oasis:names:tc:SAML:2.0:nameidformat:entity</a>»;</p>
 <blockquote class="last">
 <div><ul>
-<li><p class="first">deve essere presente l&#8217;elemento <strong>&lt;Conditions&gt;</strong> in cui devono essere presenti gli attributi:</p>
+<li><p class="first">deve essere presente l’elemento <strong>&lt;Conditions&gt;</strong> in cui devono essere presenti gli attributi:</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>NotBefore</strong>,</li>
 <li><strong>NotOnOrAfter</strong>;</li>
-<li>l&#8217;elemento <strong>&lt;AudienceRestriction&gt;</strong> riportante a sua volta l&#8217;elemento <strong>&lt;Audience&gt;</strong> attualizzato con l&#8217;entityID del ServiceProvider per il quale l&#8217;asserzione è emessa;</li>
+<li>l’elemento <strong>&lt;AudienceRestriction&gt;</strong> riportante a sua volta l’elemento <strong>&lt;Audience&gt;</strong> attualizzato con l’entityID del ServiceProvider per il quale l’asserzione è emessa;</li>
 </ul>
 </div></blockquote>
 </li>
@@ -275,10 +295,10 @@
 <h3>&lt;AuthStatement&gt;<a class="headerlink" href="#authstatement" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;AuthStatement&gt;</strong> a sua volta contenente l&#8217;elemento:</p>
+<p>deve essere presente l’elemento <strong>&lt;AuthStatement&gt;</strong> a sua volta contenente l’elemento:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>&lt;AuthnContext&gt;</strong> riportante nel sotto elemento &lt;AuthnContextClassRef&gt; la classe relativa all&#8217;effettivo contesto di autenticazione (es. <a class="reference external" href="https://www.spid.gov.it/SpidL2">https://www.spid.gov.it/SpidL2</a>);</li>
+<li><strong>&lt;AuthnContext&gt;</strong> riportante nel sotto elemento &lt;AuthnContextClassRef&gt; la classe relativa all’effettivo contesto di autenticazione (es. <a class="reference external" href="https://www.spid.gov.it/SpidL2">https://www.spid.gov.it/SpidL2</a>);</li>
 </ul>
 </div></blockquote>
 </div>
@@ -287,19 +307,19 @@
 <h3>&lt;Signature&gt;<a class="headerlink" href="#signature" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">Deve essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong>
-riportante la firma sull&#8217;asserzione apposta dall&#8217;Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore</p>
+<p class="last">Deve essere presente l’elemento <strong>&lt;Signature&gt;</strong>
+riportante la firma sull’asserzione apposta dall’Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore</p>
 </div>
 </div>
 <div class="section" id="attributestatement">
 <h3>&lt;AttributeStatement&gt;<a class="headerlink" href="#attributestatement" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p>può essere presente l&#8217;elemento <strong>&lt;AttributeStatement&gt;</strong> riportante gli attributi identificativi certificati dall&#8217;Identity provider. Tale elemento se presente dovrà comprendere:</p>
+<p>può essere presente l’elemento <strong>&lt;AttributeStatement&gt;</strong> riportante gli attributi identificativi certificati dall’Identity provider. Tale elemento se presente dovrà comprendere:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>uno o più elementi di tipo <strong>&lt;Attribute&gt;</strong> relativi ad attributi che l&#8217;Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l&#8217;attributo AttributeConsumingServiceIndex quando presente nella authnrequest;</li>
-<li>per gli elementi &lt;AttributeValue&gt; si raccomanda l&#8217;uso dell&#8217;attributo xsi:type attualizzato come specificato nella Tabella attributi SPID;</li>
+<li>uno o più elementi di tipo <strong>&lt;Attribute&gt;</strong> relativi ad attributi che l’Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l’attributo AttributeConsumingServiceIndex quando presente nella authnrequest;</li>
+<li>per gli elementi &lt;AttributeValue&gt; si raccomanda l’uso dell’attributo xsi:type attualizzato come specificato nella Tabella attributi SPID;</li>
 </ul>
 </div></blockquote>
 </div>
@@ -310,8 +330,8 @@ riportante la firma sull&#8217;asserzione apposta dall&#8217;Identity Provider e
 <p class="first admonition-title">Nota</p>
 <p>può essere presente un elemento <strong>&lt;Advice&gt;</strong></p>
 <blockquote>
-<div><em>può contenere a sua volta altri elementi **&lt;Assertion&gt;*</em>. La possibile presenza dell&#8217;elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall&#8217;Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.</div></blockquote>
-<p class="last"><em>L&#8217;elemento</em> <strong>&lt;Advice&gt;</strong> <em>è previsto per futuri usi ed al momento non deve essere utilizzato.</em></p>
+<div><em>può contenere a sua volta altri elementi **&lt;Assertion&gt;*</em>. La possibile presenza dell’elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall’Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.</div></blockquote>
+<p class="last"><em>L’elemento</em> <strong>&lt;Advice&gt;</strong> <em>è previsto per futuri usi ed al momento non deve essere utilizzato.</em></p>
 </div>
 </div>
 <div class="section" id="esempio-asserzione-di-autenticazione">
@@ -387,28 +407,28 @@ riportante la firma sull&#8217;asserzione apposta dall&#8217;Identity Provider e
 </div>
 <div class="section" id="authnrequest">
 <h2>AuthnRequest<a class="headerlink" href="#authnrequest" title="Link a questa intestazione">¶</a></h2>
-<p>Il protocollo AuthnRequest previsto per l&#8217;Identity Provider deve essere conforme allo standard
+<p>Il protocollo AuthnRequest previsto per l’Identity Provider deve essere conforme allo standard
 SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <div class="section" id="id1">
 <h3>&lt;AuthnRequest&gt;<a class="headerlink" href="#id1" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>nell&#8217; elemento &lt;AuthnRequest&gt; devono essere presenti i seguenti attributi:</p>
+<p>nell” elemento &lt;AuthnRequest&gt; devono essere presenti i seguenti attributi:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>l&#8217;attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
-<li>l&#8217;attributo <strong>Version</strong>, che deve valere sempre &#8220;2.0&#8221;, coerentemente con la versione della specifica SAML adottata;</li>
-<li>l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della richiesta, in formato UTC (esempio: &#8220;2017-03-05T18:03:10.531Z&#8221;)</li>
-<li>l&#8217;attributo <strong>Destination</strong>, a indicare l&#8217;indirizzo (URI reference) dell&#8217;Identity provider a cui è inviata la richiesta, come risultante nell&#8217;attributo entityID presente nel metadata IdP dell&#8217;Identity Provider a cui viene inviata la richiesta</li>
-<li>l&#8217;attributo <strong>ForceAuthn</strong> nel caso in cui si richieda livelli di autenticazione superiori a SPIDL1 ( SPIDL2 o SPIDL3)</li>
+<li>l’attributo <strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp (quest’ultimo generato con una precisione di almeno un millesimo di secondo per garantire l’univocità)</li>
+<li>l’attributo <strong>Version</strong>, che deve valere sempre «2.0», coerentemente con la versione della specifica SAML adottata;</li>
+<li>l’attributo <strong>IssueInstant</strong> a indicare l’istante di emissione della richiesta, in formato UTC (esempio: «2017-03-05T18:03:10.531Z»)</li>
+<li>l’attributo <strong>Destination</strong>, a indicare l’indirizzo (URI reference) dell’Identity provider a cui è inviata la richiesta, come risultante nell’attributo entityID presente nel metadata IdP dell’Identity Provider a cui viene inviata la richiesta</li>
+<li>l’attributo <strong>ForceAuthn</strong> nel caso in cui si richieda livelli di autenticazione superiori a SPIDL1 ( SPIDL2 o SPIDL3)</li>
 <li><dl class="first docutils">
-<dt>l&#8217;attributo <strong>AssertionConsumerServiceIndex</strong>, riportante un indice posizionale facente riferimento ad uno degli elementi &lt;AttributeConsumerService &gt; presenti nei metadata del Service Provider, atto ad indicare, mediante l&#8217;attributo Location, l&#8217;URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l&#8217;attributo Binding, il binding da utilizzare, quest&#8217;ultimo valorizzato obbligatoriamente con &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</dt>
+<dt>l’attributo <strong>AssertionConsumerServiceIndex</strong>, riportante un indice posizionale facente riferimento ad uno degli elementi &lt;AttributeConsumerService &gt; presenti nei metadata del Service Provider, atto ad indicare, mediante l’attributo Location, l’URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l’attributo Binding, il binding da utilizzare, quest’ultimo valorizzato obbligatoriamente con «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>»</dt>
 <dd><ul class="first last">
 <li><dl class="first docutils">
 <dt>in alternativa, scelta sconsigliata, possono essere presenti</dt>
 <dd><ul class="first last">
-<li>l&#8217;attributo <strong>AssertionConsumerServiceURL</strong> ad indicare l&#8217;URL a cui inviare il messaggio di risposta alla richiesta di autenticazione (l&#8217;indirizzo deve coincidere con quello del servizio riportato dall&#8217;elemento &lt;AssertionConsumingService&gt; presente nei metadata del Service Provider);</li>
-<li>l&#8217;attributo <strong>ProtocolBinding</strong>, identificante il binding da utilizzare per inoltrare il messaggio di risposta, valorizzato con &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8221;;</li>
+<li>l’attributo <strong>AssertionConsumerServiceURL</strong> ad indicare l’URL a cui inviare il messaggio di risposta alla richiesta di autenticazione (l’indirizzo deve coincidere con quello del servizio riportato dall’elemento &lt;AssertionConsumingService&gt; presente nei metadata del Service Provider);</li>
+<li>l’attributo <strong>ProtocolBinding</strong>, identificante il binding da utilizzare per inoltrare il messaggio di risposta, valorizzato con «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>»;</li>
 </ul>
 </dd>
 </dl>
@@ -422,14 +442,14 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">nell&#8217; elemento <strong>&lt;AuthnRequest&gt;</strong> non deve essere presente l&#8217;attributo IsPassive (ad indicare &#8220;false&#8221; come valore di default)</p>
+<p class="last">nell” elemento <strong>&lt;AuthnRequest&gt;</strong> non deve essere presente l’attributo IsPassive (ad indicare «false» come valore di default)</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p>nell&#8217; elemento <strong>&lt;AuthnRequest&gt;</strong> si può utilizzare opzionalmente l&#8217;attributo:</p>
+<p>nell” elemento <strong>&lt;AuthnRequest&gt;</strong> si può utilizzare opzionalmente l’attributo:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>AttributeConsumingServiceIndex</strong> riportante un indice posizionale in riferimento alla struttura <strong>&lt;AttributeConsumingService&gt;</strong> presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell&#8217;asserzione prodotta. Nel caso l&#8217;attributo fosse assente l&#8217;asserzione prodotta non riporterà alcuna attestazione di attributo</li>
+<li><strong>AttributeConsumingServiceIndex</strong> riportante un indice posizionale in riferimento alla struttura <strong>&lt;AttributeConsumingService&gt;</strong> presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell’asserzione prodotta. Nel caso l’attributo fosse assente l’asserzione prodotta non riporterà alcuna attestazione di attributo</li>
 </ul>
 </div></blockquote>
 </div>
@@ -438,13 +458,13 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Subject&gt;<a class="headerlink" href="#id2" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p>può essere presente l&#8217;elemento <strong>&lt;Subject&gt;</strong> a indicare il soggetto per cui si chiede l&#8217;autenticazione in cui deve comparire:</p>
+<p>può essere presente l’elemento <strong>&lt;Subject&gt;</strong> a indicare il soggetto per cui si chiede l’autenticazione in cui deve comparire:</p>
 <blockquote class="last">
 <div><ul class="simple">
 <li><dl class="first docutils">
-<dt>l&#8217;elemento <strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto in cui sono presenti i seguenti attributi</dt>
+<dt>l’elemento <strong>&lt;NameID&gt;</strong> atto a qualificare il soggetto in cui sono presenti i seguenti attributi</dt>
 <dd><ul class="first last">
-<li><strong>Format</strong> che deve assumere il valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified">urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified</a>&#8221; (cfr. SAMLCore, sez. 8.3)</li>
+<li><strong>Format</strong> che deve assumere il valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified">urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified</a>» (cfr. SAMLCore, sez. 8.3)</li>
 <li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI)</li>
 </ul>
 </dd>
@@ -458,10 +478,10 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Issuer&gt;<a class="headerlink" href="#id3" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> attualizzato come l&#8217;attributo entityID riportato nel corrispondente SP metadata, a indicare l&#8217;identificatore univoco del Service Provider emittente. L&#8217;elemento deve riportare gli attributi:</p>
+<p>deve essere presente l’elemento <strong>&lt;Issuer&gt;</strong> attualizzato come l’attributo entityID riportato nel corrispondente SP metadata, a indicare l’identificatore univoco del Service Provider emittente. L’elemento deve riportare gli attributi:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>Format</strong> fissato al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8220;</li>
+<li><strong>Format</strong> fissato al valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>»</li>
 <li><strong>NameQualifier</strong> che qualifica il dominio a cui afferisce tale valore (URI riconducibile al Service Provider stesso)</li>
 </ul>
 </div></blockquote>
@@ -471,11 +491,11 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;NameIDPolicy&gt;<a class="headerlink" href="#nameidpolicy" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;NameIDPolicy&gt;</strong> avente gli attributi</p>
+<p>deve essere presente l’elemento <strong>&lt;NameIDPolicy&gt;</strong> avente gli attributi</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>AllowCreate</strong>, se presente, valorizzato a &#8220;true&#8221;</li>
-<li><strong>Format</strong> valorizzato come &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</a>&#8220;</li>
+<li><strong>AllowCreate</strong>, se presente, valorizzato a «true»</li>
+<li><strong>Format</strong> valorizzato come «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</a>»</li>
 </ul>
 </div></blockquote>
 </div>
@@ -484,20 +504,20 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Conditions&gt;<a class="headerlink" href="#conditions" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>l&#8217;elemento <strong>&lt;Conditions&gt;</strong>, se presente, deve indicare i limiti di validità attesi dell&#8217;asserzione ricevuta in risposta, per esempio specificando gli attributi</p>
+<p>l’elemento <strong>&lt;Conditions&gt;</strong>, se presente, deve indicare i limiti di validità attesi dell’asserzione ricevuta in risposta, per esempio specificando gli attributi</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>NotBefore</strong> e <strong>NotOnOrAfter</strong> opportunamente valorizzati in formato UTC</li>
 </ul>
 </div></blockquote>
-<p class="last"><em>N.B. L&#8217;Identity Provider non è obbligato a tener conto dell&#8217;indicazione nel caso che questa non sia confacente con i criteri di sicurezza da esso adottati.</em></p>
+<p class="last"><em>N.B. L’Identity Provider non è obbligato a tener conto dell’indicazione nel caso che questa non sia confacente con i criteri di sicurezza da esso adottati.</em></p>
 </div>
 </div>
 <div class="section" id="requestedauthncontext">
 <h3>&lt;RequestedAuthnContext&gt;<a class="headerlink" href="#requestedauthncontext" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong> (SAMLCore, sez. 3.3.2.2.1) ad indicare il contesto di autenticazione atteso, ossia la &#8220;robustezza&#8221; delle credenziali richieste. Allo scopo sono definite le seguenti &#8220;authentication context class&#8221; estese (SAMLAuthContext, sez. 3) in riferimento SPID:</p>
+<p>deve essere presente l’elemento <strong>&lt;RequestedAuthnContext&gt;</strong> (SAMLCore, sez. 3.3.2.2.1) ad indicare il contesto di autenticazione atteso, ossia la «robustezza» delle credenziali richieste. Allo scopo sono definite le seguenti «authentication context class» estese (SAMLAuthContext, sez. 3) in riferimento SPID:</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>https://www.spid.gov.it/SpidL1</strong></li>
@@ -506,7 +526,7 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 </ul>
 </div></blockquote>
 <p>referenziate dagli elementi <strong>&lt;AuthnContextClassRef&gt;</strong></p>
-<p>Ciascuna di queste classi, indica in ordine di preferenza il contesto di autenticazione (atteso o effettivo) secondo alcune dimensioni di riferimento, quali per esempio i meccanismi di autenticazione con cui l&#8217;Identity Provider può identificare l&#8217;utente. L&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong> prevede un attributo <strong>Comparison</strong> con il quale indicare il metodo per stabilire il rispetto del vincolo sul contesto di abilitazione: i valori ammessi per questo attributo sono:</p>
+<p>Ciascuna di queste classi, indica in ordine di preferenza il contesto di autenticazione (atteso o effettivo) secondo alcune dimensioni di riferimento, quali per esempio i meccanismi di autenticazione con cui l’Identity Provider può identificare l’utente. L’elemento <strong>&lt;RequestedAuthnContext&gt;</strong> prevede un attributo <strong>Comparison</strong> con il quale indicare il metodo per stabilire il rispetto del vincolo sul contesto di abilitazione: i valori ammessi per questo attributo sono:</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>exact</strong></li>
@@ -515,7 +535,7 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <li><strong>maximum</strong></li>
 </ul>
 </div></blockquote>
-<p>Nel caso dell&#8217;elemento <strong>&lt;RequestedAuthnContext&gt;</strong>, questa informazione si riflette sulle tipologie di meccanismi utilizzabili dall&#8217;Identity Provider ai fini dell&#8217;autenticazione dell&#8217;utente. L&#8217;esempio seguente di <strong>&lt;RequestedAuthnContext&gt;</strong> fa riferimento a una &#8220;authentication context class&#8221; di tipo &#8220;SpidL2&#8221; o superiore.</p>
+<p>Nel caso dell’elemento <strong>&lt;RequestedAuthnContext&gt;</strong>, questa informazione si riflette sulle tipologie di meccanismi utilizzabili dall’Identity Provider ai fini dell’autenticazione dell’utente. L’esempio seguente di <strong>&lt;RequestedAuthnContext&gt;</strong> fa riferimento a una «authentication context class» di tipo «SpidL2» o superiore.</p>
 <div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -527,29 +547,29 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <span class="nt">&lt;/samlp:RequestedAuthnContext&gt;</span>
 </pre></div>
 </td></tr></table></div>
-<p class="last"><em>N.B. L&#8217;Identity Provider ha facoltà di utilizzare per l&#8217;autenticazione un livello SPID più alto rispetto a quelli risultanti dall&#8217;indicazione del richiedente mediante l&#8217;attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.</em></p>
+<p class="last"><em>N.B. L’Identity Provider ha facoltà di utilizzare per l’autenticazione un livello SPID più alto rispetto a quelli risultanti dall’indicazione del richiedente mediante l’attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.</em></p>
 </div>
 </div>
 <div class="section" id="id4">
 <h3>&lt;Signature&gt;<a class="headerlink" href="#id4" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">nel caso del binding <strong>HTTP POST</strong> deve essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.</p>
+<p class="last">nel caso del binding <strong>HTTP POST</strong> deve essere presente l’elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.</p>
 </div>
 </div>
 <div class="section" id="scoping">
 <h3>&lt;Scoping&gt;<a class="headerlink" href="#scoping" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">se presente l&#8217;elemento <strong>&lt;Scoping&gt;</strong> il relativo attributo ProxyCount deve assumere valore <em>&#8220;0&#8221;</em> per indicare che l&#8217;Identity Provider invocato non può delegare il processo di autenticazione ad altra Asserting Party.</p>
+<p class="last">se presente l’elemento <strong>&lt;Scoping&gt;</strong> il relativo attributo ProxyCount deve assumere valore <em>«0»</em> per indicare che l’Identity Provider invocato non può delegare il processo di autenticazione ad altra Asserting Party.</p>
 </div>
 </div>
 <div class="section" id="requesterid">
 <h3>&lt;RequesterID&gt;<a class="headerlink" href="#requesterid" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p>eventuali elementi <strong>&lt;RequesterID&gt;</strong> contenuti devono indicare l&#8217;URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l&#8217;ordine che indichi la sequenza di propagazione (il primo elemento <em>&lt;RequesterID&gt;</em> dell&#8217;elemento <em>&lt;Scoping&gt;</em> è relativo all&#8217;ultima entità che ha propagato la richiesta).</p>
-<p class="last">Gli elementi <em>&lt;Scoping&gt; &lt;RequesterID&gt;</em> sono previsti per futuri usi ed al momento non devono essere utilizzati. Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell&#8217;Identity Provider.</p>
+<p>eventuali elementi <strong>&lt;RequesterID&gt;</strong> contenuti devono indicare l’URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l’ordine che indichi la sequenza di propagazione (il primo elemento <em>&lt;RequesterID&gt;</em> dell’elemento <em>&lt;Scoping&gt;</em> è relativo all’ultima entità che ha propagato la richiesta).</p>
+<p class="last">Gli elementi <em>&lt;Scoping&gt; &lt;RequesterID&gt;</em> sono previsti per futuri usi ed al momento non devono essere utilizzati. Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell’Identity Provider.</p>
 </div>
 </div>
 <div class="section" id="esempio-di-authnrequest">
@@ -607,18 +627,18 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Link a questa intestazione">¶</a></h2>
-<p>Le caratteristiche che deve avere la risposta inviata dall&#8217;Identity Provider al Service Provider a seguito di una richiesta di autenticazione sono le seguenti:</p>
+<p>Le caratteristiche che deve avere la risposta inviata dall’Identity Provider al Service Provider a seguito di una richiesta di autenticazione sono le seguenti:</p>
 <div class="section" id="id5">
 <h3>&lt;Response&gt;<a class="headerlink" href="#id5" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>nell&#8217; elemento &lt;Response&gt; devono essere presenti i seguenti attributi:</p>
+<p>nell” elemento &lt;Response&gt; devono essere presenti i seguenti attributi:</p>
 <ul class="last simple">
-<li>l&#8217;attributo <em>ID</em> univoco basato, per esempio, su un Universally Unique Identifier (UUID) (cfr. UUID) o su una combinazione origine + timestamp (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità);</li>
-<li>deve essere presente l&#8217;attributo <strong>Version</strong>, che deve valere sempre <em>&#8220;2.0&#8221;</em>, coerentemente con la versione della specifica SAML adottata;</li>
-<li>deve essere presente l&#8217;attributo <strong>IssueInstant</strong> a indicare l&#8217;istante di emissione della risposta, in formato UTC;</li>
-<li>deve essere presente l&#8217;attributo <strong>InResponseTo</strong>, il cui valore deve fare riferimento all&#8217;ID della richiesta a cui si risponde;</li>
-<li>deve essere presente l&#8217;attributo Destination, a indicare l&#8217;indirizzo (URI reference) del Service provider a cui è inviata la risposta;</li>
+<li>l’attributo <em>ID</em> univoco basato, per esempio, su un Universally Unique Identifier (UUID) (cfr. UUID) o su una combinazione origine + timestamp (quest’ultimo generato con una precisione di almeno un millesimo di secondo per garantire l’univocità);</li>
+<li>deve essere presente l’attributo <strong>Version</strong>, che deve valere sempre <em>«2.0»</em>, coerentemente con la versione della specifica SAML adottata;</li>
+<li>deve essere presente l’attributo <strong>IssueInstant</strong> a indicare l’istante di emissione della risposta, in formato UTC;</li>
+<li>deve essere presente l’attributo <strong>InResponseTo</strong>, il cui valore deve fare riferimento all’ID della richiesta a cui si risponde;</li>
+<li>deve essere presente l’attributo Destination, a indicare l’indirizzo (URI reference) del Service provider a cui è inviata la risposta;</li>
 </ul>
 </div>
 </div>
@@ -626,7 +646,7 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Status&gt;<a class="headerlink" href="#status" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento &lt;Status&gt; a indicare l&#8217;esito della AuthnRequest secondo quanto definito nelle specifiche SAML (SAML-Core, par. 3.2.2.1 e successivi) comprendente il sotto-elemento</p>
+<p>deve essere presente l’elemento &lt;Status&gt; a indicare l’esito della AuthnRequest secondo quanto definito nelle specifiche SAML (SAML-Core, par. 3.2.2.1 e successivi) comprendente il sotto-elemento</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>&lt;StatusCode&gt;</strong></li>
@@ -646,10 +666,10 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Issuer&gt;<a class="headerlink" href="#id6" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>deve essere presente l&#8217;elemento <strong>&lt;Issuer&gt;</strong> a indicare l&#8217;entityID dell&#8217;entità emittente, cioè l&#8217;Identity Provider stesso. L&#8217;elemento</p>
+<p>deve essere presente l’elemento <strong>&lt;Issuer&gt;</strong> a indicare l’entityID dell’entità emittente, cioè l’Identity Provider stesso. L’elemento</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>Format</strong> omesso o fissato al valore &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>&#8220;</li>
+<li><strong>Format</strong> omesso o fissato al valore «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:oasis:names:tc:SAML:2.0:nameid-format:entity</a>»</li>
 </ul>
 </div></blockquote>
 </div>
@@ -658,15 +678,15 @@ SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.</p>
 <h3>&lt;Assertion&gt;<a class="headerlink" href="#id7" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">deve essere presente un elemento <strong>&lt;Assertion&gt;</strong> ad attestare l&#8217;avvenuta autenticazione, contenente almeno un elemento <strong>&lt;AuthnStatement&gt;</strong>.
-Nel caso l&#8217;Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l&#8217;elemento
+<p class="last">deve essere presente un elemento <strong>&lt;Assertion&gt;</strong> ad attestare l’avvenuta autenticazione, contenente almeno un elemento <strong>&lt;AuthnStatement&gt;</strong>.
+Nel caso l’Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l’elemento
 <strong>&lt;Assertion&gt;</strong> non deve essere presente.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">può essere presente l&#8217;elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla risposta apposta dall&#8217;Identity Provider.
+<p class="last">può essere presente l’elemento <strong>&lt;Signature&gt;</strong> contenente la firma sulla risposta apposta dall’Identity Provider.
 La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
-Per l&#8217;asserzione veicolata resta valido quanto già specificato nei dettagli delle <a class="reference external" href="regole-tecniche-idp.html#assertion">&lt;Assertion&gt;</a></p>
+Per l’asserzione veicolata resta valido quanto già specificato nei dettagli delle <a class="reference external" href="regole-tecniche-idp.html#assertion">&lt;Assertion&gt;</a></p>
 </div>
 <div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -748,16 +768,16 @@ Per l&#8217;asserzione veicolata resta valido quanto già specificato nei dettag
 <p>Nel caso del binding HTTP Redirect la richiesta viene veicolata con le seguenti modalità:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>come risposta alla richiesta di accesso</strong> dell&#8217;end user ad un servizio o risorsa, il Service Provider invia allo User Agent un messaggio HTTP di redirezione, cioè avente uno status code con valore 302 (&#8220;Found&#8221;) o 303 (&#8220;See Other&#8221;)</li>
-<li><strong>il Location Header del messaggio HTTP contiene</strong> l&#8217;URI di destinazione del servizio di Single Sign-On esposto dall&#8217; Identity Provider. L&#8217;interfaccia è sempre la <strong>IAuthnRequest</strong></li>
+<li><strong>come risposta alla richiesta di accesso</strong> dell’end user ad un servizio o risorsa, il Service Provider invia allo User Agent un messaggio HTTP di redirezione, cioè avente uno status code con valore 302 («Found») o 303 («See Other»)</li>
+<li><strong>il Location Header del messaggio HTTP contiene</strong> l’URI di destinazione del servizio di Single Sign-On esposto dall” Identity Provider. L’interfaccia è sempre la <strong>IAuthnRequest</strong></li>
 <li><dl class="first docutils">
 <dt><strong>il messaggio HTTP trasporta i seguenti parametri</strong> (tutti URL-encoded):</dt>
 <dd><ol class="first last arabic">
-<li><strong>&#8220;SAMLRequest&#8221;</strong>: un costrutto SAML &lt;AuthnRequest&gt; codificato in formato Base64 e compresso con algoritmo DEFLATE. Come da specifica, il messaggio SAML non contiene la firma in formato XML Digital Signature esteso (come avviene in generale nel caso di binding HTTP POST). Ciò a causa delle dimensioni eccessive che esso raggiungerebbe per essere veicolato in una query string. La specifica indica come modalità alternativa quella di specificare con parametri aggiuntivi l&#8217;algoritmo utilizzato per firmare e la stringa con la codifica Base64 URL-encoded dei byte del messaggio SAML</li>
-<li><strong>&#8220;RelayState&#8221;</strong>: identifica la risorsa (servizio) originariamente richiesta dall&#8217;utente e a cui trasferire il controllo alla fine del processo di autenticazione. Il Service Provider a tutela della privacy dell&#8217;utente nell&#8217;utilizzare questo parametro deve mettere in atto accorgimenti tali da rendere minima l&#8217;evidenza possibile sulla natura o tipologia della risorsa (servizio) richiesta</li>
-<li><strong>&#8220;SigAlg&#8221;</strong>: identifica l&#8217;algoritmo usato per la firma prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore; il valore esteso di questo parametro è contestualizzato da un namespace appartenente allo standard XML Digital Signature. Come indicato al punto 1, tuttavia, la firma prodotta non fa uso della struttura XML definita in tale standard</li>
-<li><strong>&#8220;Signature&#8221;</strong>: contiene la firma digitale della query string, così come prodotta prima di aggiungere questo parametro, utilizzando l&#8217;algoritmo indicato al parametro precedente;</li>
-<li><strong>Il browser dell&#8217;utente elabora quindi tale messaggio HTTP Redirect</strong> indirizzando una richiesta HTTP con metodo GET al servizio di Single Sign-On dell&#8217; Identity Provider (interfaccia IAuthnRequest) sotto forma di URL con tutti i sopraindicati parametri contenuti nella query string. Un esempio di tale URL è il seguente, nel quale sono evidenziati in grassetto i parametri citati (i valori di alcuni parametri sono stati ridotti per brevità, inoltre il valore del parametro &#8220;RelayState&#8221; è stato reso non immediatamente intellegibile, come suggerito dalla specifica, sostituendo la stringa in chiaro con l&#8217;Id della richiesta: il Service Provider tiene traccia della corrispondenza)</li>
+<li><strong>«SAMLRequest»</strong>: un costrutto SAML &lt;AuthnRequest&gt; codificato in formato Base64 e compresso con algoritmo DEFLATE. Come da specifica, il messaggio SAML non contiene la firma in formato XML Digital Signature esteso (come avviene in generale nel caso di binding HTTP POST). Ciò a causa delle dimensioni eccessive che esso raggiungerebbe per essere veicolato in una query string. La specifica indica come modalità alternativa quella di specificare con parametri aggiuntivi l’algoritmo utilizzato per firmare e la stringa con la codifica Base64 URL-encoded dei byte del messaggio SAML</li>
+<li><strong>«RelayState»</strong>: identifica la risorsa (servizio) originariamente richiesta dall’utente e a cui trasferire il controllo alla fine del processo di autenticazione. Il Service Provider a tutela della privacy dell’utente nell’utilizzare questo parametro deve mettere in atto accorgimenti tali da rendere minima l’evidenza possibile sulla natura o tipologia della risorsa (servizio) richiesta</li>
+<li><strong>«SigAlg»</strong>: identifica l’algoritmo usato per la firma prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore; il valore esteso di questo parametro è contestualizzato da un namespace appartenente allo standard XML Digital Signature. Come indicato al punto 1, tuttavia, la firma prodotta non fa uso della struttura XML definita in tale standard</li>
+<li><strong>«Signature»</strong>: contiene la firma digitale della query string, così come prodotta prima di aggiungere questo parametro, utilizzando l’algoritmo indicato al parametro precedente;</li>
+<li><strong>Il browser dell’utente elabora quindi tale messaggio HTTP Redirect</strong> indirizzando una richiesta HTTP con metodo GET al servizio di Single Sign-On dell” Identity Provider (interfaccia IAuthnRequest) sotto forma di URL con tutti i sopraindicati parametri contenuti nella query string. Un esempio di tale URL è il seguente, nel quale sono evidenziati in grassetto i parametri citati (i valori di alcuni parametri sono stati ridotti per brevità, inoltre il valore del parametro «RelayState» è stato reso non immediatamente intellegibile, come suggerito dalla specifica, sostituendo la stringa in chiaro con l’Id della richiesta: il Service Provider tiene traccia della corrispondenza)</li>
 </ol>
 </dd>
 </dl>
@@ -782,18 +802,18 @@ Per l&#8217;asserzione veicolata resta valido quanto già specificato nei dettag
 </div>
 <div class="section" id="binding-http-post">
 <h3>Binding HTTP POST<a class="headerlink" href="#binding-http-post" title="Link a questa intestazione">¶</a></h3>
-<p>Nel caso del binding HTTP POST, come risposta alla richiesta di accesso dell&#8217;utente ad un
-servizio o risorsa, il SP invia allo User Agent (il browser dell&#8217;utente) un messaggio HTTP con
-status code avente valore 200 (&#8220;OK&#8221;):</p>
+<p>Nel caso del binding HTTP POST, come risposta alla richiesta di accesso dell’utente ad un
+servizio o risorsa, il SP invia allo User Agent (il browser dell’utente) un messaggio HTTP con
+status code avente valore 200 («OK»):</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>il messaggio HTTP contiene una form HTML</strong> all&#8217;interno della quale è trasportato un costrutto SAML &lt;AuthnRequest&gt; codificato come valore di un hidden form control di nome &#8220;SAMLRequest&#8221;. Rispetto al binding HTTP Redirect, l&#8217;utilizzo di una form HTML permette di superare i limiti di dimensione della query string. Pertanto, l&#8217;intero messaggio SAML in formato XML può essere firmato in accordo alla specifica XML Digital Signature. Il risultato a valle della firma è quindi codificato in formato Base64</li>
-<li>la form HTML contiene un secondo hidden form control di nome <strong>&#8220;RelayState&#8221;</strong> che contiene il corrispondente valore del Relay State, cioè della risorsa originariamente richiesta dall&#8217;utente e alla quale dovrà essere trasferito il controllo al termine della fase di autenticazione</li>
-<li><strong>la form HTML è corredata da uno script che la rende auto-postante</strong> all&#8217;indirizzo indicato nell&#8217;attributo &#8220;action&#8221;</li>
-<li><strong>Il browser</strong> dell&#8217;utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST verso il componente Single Sign-On dell&#8217;Identity Provider (interfaccia IAuthnRequest).</li>
+<li><strong>il messaggio HTTP contiene una form HTML</strong> all’interno della quale è trasportato un costrutto SAML &lt;AuthnRequest&gt; codificato come valore di un hidden form control di nome «SAMLRequest». Rispetto al binding HTTP Redirect, l’utilizzo di una form HTML permette di superare i limiti di dimensione della query string. Pertanto, l’intero messaggio SAML in formato XML può essere firmato in accordo alla specifica XML Digital Signature. Il risultato a valle della firma è quindi codificato in formato Base64</li>
+<li>la form HTML contiene un secondo hidden form control di nome <strong>«RelayState»</strong> che contiene il corrispondente valore del Relay State, cioè della risorsa originariamente richiesta dall’utente e alla quale dovrà essere trasferito il controllo al termine della fase di autenticazione</li>
+<li><strong>la form HTML è corredata da uno script che la rende auto-postante</strong> all’indirizzo indicato nell’attributo «action»</li>
+<li><strong>Il browser</strong> dell’utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST verso il componente Single Sign-On dell’Identity Provider (interfaccia IAuthnRequest).</li>
 </ul>
 </div></blockquote>
-<p>Un esempio di form HTML per trasferire in HTTP POST la richiesta di autenticazione è descritto nell&#8217;esempio successivo. Osservando attentamente il codice riportato in figura si può notare il valore del parametro &#8220;SAMLRequest&#8221; (ridotto per brevità); il valore del parametro RelayState reso non immediatamente intellegibile (cfr. sez. precedente); l&#8217;elemento <em>&lt;input type=&#8221;submit&#8221; value=&#8221;Invia&#8221;/&gt;</em>, che ha lo scopo di visualizzare all&#8217;interno del web browser il pulsante di invio della form utilizzabile dall&#8217;utente, non strettamente necessario in quanto la form è resa autopostante.</p>
+<p>Un esempio di form HTML per trasferire in HTTP POST la richiesta di autenticazione è descritto nell’esempio successivo. Osservando attentamente il codice riportato in figura si può notare il valore del parametro «SAMLRequest» (ridotto per brevità); il valore del parametro RelayState reso non immediatamente intellegibile (cfr. sez. precedente); l’elemento <em>&lt;input type=»submit» value=»Invia»/&gt;</em>, che ha lo scopo di visualizzare all’interno del web browser il pulsante di invio della form utilizzabile dall’utente, non strettamente necessario in quanto la form è resa autopostante.</p>
 <div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -831,8 +851,8 @@ status code avente valore 200 (&#8220;OK&#8221;):</p>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Conclusa la fase di autenticazione, l&#8217;Identity Provider costruisce una <strong>&lt;Response&gt;</strong> firmata diretta al Service Provider, e in particolare al relativo servizio <strong>AssertionConsumerService</strong>. La <strong>&lt;Response&gt;</strong> viene inserita in una form HTML come campo nascosto di nome <strong>&#8220;SAMLResponse&#8221;</strong>. L&#8217;Identity Provider invia la form HTML al browser dell&#8217;utente in una risposta HTTP.</p>
-<p>Il browser dell&#8217;utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST contenente la <strong>&lt;Response&gt;</strong> firmata verso il Service Provider. Un esempio di tale form è riportato di seguito, anche in questo caso, il valore del parametro &#8220;SAMLResponse&#8221; è stato ridotto per brevità</p>
+<p>Conclusa la fase di autenticazione, l’Identity Provider costruisce una <strong>&lt;Response&gt;</strong> firmata diretta al Service Provider, e in particolare al relativo servizio <strong>AssertionConsumerService</strong>. La <strong>&lt;Response&gt;</strong> viene inserita in una form HTML come campo nascosto di nome <strong>«SAMLResponse»</strong>. L’Identity Provider invia la form HTML al browser dell’utente in una risposta HTTP.</p>
+<p>Il browser dell’utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST contenente la <strong>&lt;Response&gt;</strong> firmata verso il Service Provider. Un esempio di tale form è riportato di seguito, anche in questo caso, il valore del parametro «SAMLResponse» è stato ridotto per brevità</p>
 <div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -882,23 +902,23 @@ status code avente valore 200 (&#8220;OK&#8221;):</p>
 <h2>Gestione della sicurezza sul canale di trasmissione<a class="headerlink" href="#gestione-della-sicurezza-sul-canale-di-trasmissione" title="Link a questa intestazione">¶</a></h2>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">Il profilo SAML SSO raccomanda l&#8217;uso di <strong>TLS 1.2</strong> nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
-In ambito  SPID si rende obbligatorio l&#8217;impiego di TLS 1.2.
+<p class="last">Il profilo SAML SSO raccomanda l’uso di <strong>TLS 1.2</strong> nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
+In ambito  SPID si rende obbligatorio l’impiego di TLS 1.2.
 In casi particolari e temporanei,  può  essere  adottata  la  versione  1.1,  fermo  restando  che  la  versione  1.2 deve  essere  adottata  lato server.
 Conseguentemente, le versioni più obsolete dei browser, che non supportano le versioni del protocollo indicate, non devono essere utilizzate e, i livelli minimi accettati per l’accesso ai servizi SPID, devono essere documentati nei confronti degli utenti.</p>
 </div>
 </div>
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Link a questa intestazione">¶</a></h2>
-<p>Le caratteristiche dell&#8217;Identity provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata), e rispettare le condizioni di seguito indicate:</p>
+<p>Le caratteristiche dell’Identity provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata), e rispettare le condizioni di seguito indicate:</p>
 <div class="section" id="entitydescriptor">
 <h3>&lt;EntityDescriptor&gt;<a class="headerlink" href="#entitydescriptor" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>nell&#8217;elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<p>nell’elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
 <ul class="last simple">
-<li><strong>entityID</strong> indicante l&#8217;identificativo (URI) dell&#8217;entità univoco in ambito SPID</li>
-<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
+<li><strong>entityID</strong> indicante l’identificativo (URI) dell’entità univoco in ambito SPID</li>
+<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest’ultimo generato con una precisione di almeno un millesimo di secondo per garantire l’univocità)</li>
 </ul>
 </div>
 </div>
@@ -908,10 +928,10 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li><dl class="first docutils">
-<dt>l&#8217;elemento <strong>&lt;IDPSSODescriptor&gt;</strong> specifico che contraddistingue l&#8217;entità di tipo Identity provider deve riportare i seguenti attributi:</dt>
+<dt>l’elemento <strong>&lt;IDPSSODescriptor&gt;</strong> specifico che contraddistingue l’entità di tipo Identity provider deve riportare i seguenti attributi:</dt>
 <dd><ul class="first last">
-<li><strong>protocolSupportEnumeration</strong>: che enumera gli URI indicanti i protocolli supportati dall&#8217;entità (poiché si tratta di un&#8217;entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>&#8221;)</li>
-<li><strong>WantAuthnRequestSigned</strong>: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l&#8217;obbligo della firma delle richieste di autenticazione;</li>
+<li><strong>protocolSupportEnumeration</strong>: che enumera gli URI indicanti i protocolli supportati dall’entità (poiché si tratta di un’entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:protocol">urn:oasis:names:tc:SAML:2.0:protocol</a>»)</li>
+<li><strong>WantAuthnRequestSigned</strong>: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l’obbligo della firma delle richieste di autenticazione;</li>
 </ul>
 </dd>
 </dl>
@@ -923,11 +943,11 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <h3>&lt;KeyDescriptor&gt;<a class="headerlink" href="#keydescriptor" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>all&#8217;interno di IDPSSODescriptor devono essere presenti:</p>
+<p>all’interno di IDPSSODescriptor devono essere presenti:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>l&#8217;elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene l&#8217;elenco dei certificati e delle corrispondenti chiavi pubbliche dell&#8217;entità, utili per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAMLMetadata, par. 2.4.1.1)</li>
-<li>l&#8217;elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene il certificato della corrispondente chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1)</li>
+<li>l’elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene l’elenco dei certificati e delle corrispondenti chiavi pubbliche dell’entità, utili per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAMLMetadata, par. 2.4.1.1)</li>
+<li>l’elemento <strong>&lt;KeyDescriptor&gt;</strong> che contiene il certificato della corrispondente chiave pubblica dell’entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -938,9 +958,9 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li><dl class="first docutils">
-<dt>l&#8217;elemento <strong>&lt;NameIDFormat&gt;</strong> riportante l&#8217;attributo:</dt>
+<dt>l’elemento <strong>&lt;NameIDFormat&gt;</strong> riportante l’attributo:</dt>
 <dd><ul class="first last">
-<li><strong>format</strong>, indicante il formato &#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>&#8221; come quello supportato per l&#8217;elemento di <strong>&lt;NameID&gt;</strong> utilizzato nelle richieste e risposte SAML per identificare il subject cui si riferisce un&#8217;asserzione</li>
+<li><strong>format</strong>, indicante il formato «<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:nameidformat:transient">urn:oasis:names:tc:SAML:2.0:nameidformat:transient</a>» come quello supportato per l’elemento di <strong>&lt;NameID&gt;</strong> utilizzato nelle richieste e risposte SAML per identificare il subject cui si riferisce un’asserzione</li>
 </ul>
 </dd>
 </dl>
@@ -954,13 +974,13 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li><dl class="first docutils">
-<dt>uno o più elementi <strong>&lt;SingleLogoutService&gt;</strong> che specificano l&#8217;indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
+<dt>uno o più elementi <strong>&lt;SingleLogoutService&gt;</strong> che specificano l’indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
 <dd><ul class="first last">
 <li><dl class="first docutils">
 <dt><strong>Location</strong> url endpoint del servizio per la ricezione delle richieste Binding che può assumere uno dei valori</dt>
 <dd><ul class="first last">
-<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>&#8220;</li>
-<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</li>
+<li>«<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>»</li>
+<li>«<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>»</li>
 </ul>
 </dd>
 </dl>
@@ -979,13 +999,13 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li><dl class="first docutils">
-<dt>uno o più elementi <strong>&lt;SingleSignOnService&gt;</strong> che specificano l&#8217;indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
+<dt>uno o più elementi <strong>&lt;SingleSignOnService&gt;</strong> che specificano l’indirizzo del Single Sign-On Service riportanti i seguenti attributi:</dt>
 <dd><ul class="first last">
 <li><dl class="first docutils">
 <dt><strong>Location</strong> url endpoint del servizio per la ricezione delle richieste Binding che può assumere uno dei valori</dt>
 <dd><ul class="first last">
-<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>&#8220;</li>
-<li>&#8220;<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>&#8220;</li>
+<li>«<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect</a>»</li>
+<li>«<a class="reference external" href="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST">urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST</a>»</li>
 </ul>
 </dd>
 </dl>
@@ -1002,11 +1022,11 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p>opzionalmente possono essere presenti:
-* uno o più elementi <strong>&lt;Attribute&gt;</strong> ad indicare nome e formato degli attributi certificabili dell&#8217;Identity provider (Tabella attributi SPID),riportanti gli attributi:</p>
+* uno o più elementi <strong>&lt;Attribute&gt;</strong> ad indicare nome e formato degli attributi certificabili dell’Identity provider (Tabella attributi SPID),riportanti gli attributi:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>Name</strong> nome dell&#8217;attributo (colonna identificatore della Tabella attributi SPID)</li>
-<li><strong>xsi:type</strong> tipo dell&#8217;attributo (colonna tipo della Tabella attributi SPID)</li>
+<li><strong>Name</strong> nome dell’attributo (colonna identificatore della Tabella attributi SPID)</li>
+<li><strong>xsi:type</strong> tipo dell’attributo (colonna tipo della Tabella attributi SPID)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1015,7 +1035,7 @@ Conseguentemente, le versioni più obsolete dei browser, che non supportano le v
 <h3>&lt;Signature&gt;<a class="headerlink" href="#id9" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">deve essere l&#8217;elemento <strong>&lt;Signature&gt;</strong> riportante la firma sui metadata.
+<p class="last">deve essere l’elemento <strong>&lt;Signature&gt;</strong> riportante la firma sui metadata.
 La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore;</p>
 </div>
 </div>
@@ -1024,10 +1044,10 @@ La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Meta
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <dl class="last docutils">
-<dt>è consigliata la presenza di un elemento <strong>&lt;Organization&gt;</strong> a indicare l&#8217;organizzazione a cui afferisce l&#8217;entità specificata, riportante gli elementi:</dt>
+<dt>è consigliata la presenza di un elemento <strong>&lt;Organization&gt;</strong> a indicare l’organizzazione a cui afferisce l’entità specificata, riportante gli elementi:</dt>
 <dd><ul class="first last simple">
-<li><strong>&lt;OrganizationName&gt;</strong> indicante un identificatore language-qualified dell&#8217;organizzazione a cui l&#8217;entità afferisce</li>
-<li><strong>&lt;OrganizationURL&gt;</strong> riportante in modalità language-qualified la url istituzionale dell&#8217;organizzazione</li>
+<li><strong>&lt;OrganizationName&gt;</strong> indicante un identificatore language-qualified dell’organizzazione a cui l’entità afferisce</li>
+<li><strong>&lt;OrganizationURL&gt;</strong> riportante in modalità language-qualified la url istituzionale dell’organizzazione</li>
 </ul>
 </dd>
 </dl>
@@ -1123,8 +1143,8 @@ La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Meta
 </div>
 <div class="section" id="disponibilita-dei-metadata">
 <h3>Disponibilità dei Metadata<a class="headerlink" href="#disponibilita-dei-metadata" title="Link a questa intestazione">¶</a></h3>
-<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l&#8217;interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall&#8217;Agenzia per l&#8217;Italia Digitale.
-L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
+<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l’interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall’Agenzia per l’Italia Digitale.
+L’accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
 </div>
 </div>
 </div>
@@ -1152,7 +1172,7 @@ L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versi
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 23/03/2017.
+      Ultimo aggiornamento 18/05/2017.
 
     </p>
   </div>

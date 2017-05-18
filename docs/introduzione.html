@@ -23,6 +23,26 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
+<div id="slimheader">
+    <div class="sh__wrapper">
+    <div class="sh__institutional">
+        <a href="http://www.agid.gov.it/" title="Agid">AgID</a>
+        <span class="sh__plus">&nbsp;+&nbsp;</span>
+        <a href="https://teamdigitale.governo.it/" title="Team Digitale">Team Digitale</a>
+    </div><!--/sh__institutional-->
+    <div class="sh__tabs">
+    <ul class="sh__tabsul">      
+      <li class="delimiter"><a  href="https://trasformazionedigitale.italia.it">Trasformazione digitale</a></li>
+      <li class="delimiter"><a href="https://developers.italia.it/">Developers</a></li>   
+      <li class=""><a  href="http://design.italia.it">Designers</a></li>      
+      <li class=""><a href="https://forum.developers.italia.it/">Forum</a></li>
+      <li class="current"><a href="https://docs.developers.italia.it/">Docs</a></li>
+      <li class=""><a href="https://github.com/italia/">Github</a></li>
+    </ul>
+    </div><!--/.sh__tabs-->
+    </div><!--/.wrapper-->
+</div><!--/#slimheader-->
+
 
      
     <div class="wy-grid-for-nav">
@@ -45,8 +65,8 @@
                           </a>
                         </div>
                         <div class="branding--content">
+                        
                             <h2 class="branding--title">
-                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
                                 <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
                             </h2>
                         </div>
@@ -55,7 +75,7 @@
 
             
             
-            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            <h1 class="project-title"><a href="index.html" > SPID - Regole Tecniche </a></h1>
             
 
 
@@ -158,33 +178,33 @@
 <p>Il sistema è composto da 3 entità:</p>
 <ul class="simple">
 <li><strong>Gestore delle identità (Identity Provider o IdP)</strong> che gestisce gli utenti e la procedura di autenticazione;</li>
-<li><strong>Fornitore di servizi (Service Provider o SP)</strong> che, dopo aver richiesto l&#8217;autenticazione dell&#8217;utente all&#8217;Identity Provider, gestisce l&#8217;autorizzazione, sulla base degli attributi restituiti dall&#8217;IdP, erogando il servizio richiesto;</li>
-<li><strong>Gestore di attributi qualificati (Attribute Authority o AA)</strong> che fornisce attributi certificati sulla base dell&#8217;utente autenticato.</li>
+<li><strong>Fornitore di servizi (Service Provider o SP)</strong> che, dopo aver richiesto l’autenticazione dell’utente all’Identity Provider, gestisce l’autorizzazione, sulla base degli attributi restituiti dall’IdP, erogando il servizio richiesto;</li>
+<li><strong>Gestore di attributi qualificati (Attribute Authority o AA)</strong> che fornisce attributi certificati sulla base dell’utente autenticato.</li>
 </ul>
-<p>Le modalità di funzionamento del Sistema Pubblico di Identità Digitale sono quelle previste da SAML v2 per il profilo &#8220;Web
-Browser SSO&#8221; - <a class="reference external" href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html">SAML V2.0 Technical Overview - Oasis par4.3</a>.</p>
-<p>Devono essere previste le due versioni &#8220;<strong>SP-Initiated</strong>&#8221;:</p>
+<p>Le modalità di funzionamento del Sistema Pubblico di Identità Digitale sono quelle previste da SAML v2 per il profilo «Web
+Browser SSO» - <a class="reference external" href="http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html">SAML V2.0 Technical Overview - Oasis par4.3</a>.</p>
+<p>Devono essere previste le due versioni «<strong>SP-Initiated</strong>»:</p>
 <ul class="simple">
 <li><em>Redirect/POST binding</em></li>
 <li><em>POST/POST binding</em></li>
 </ul>
-<p>Il meccanismo di autenticazione è innescato dalla richiesta inoltrata dall&#8217;utente tramite browser ad un Fornitore di Servizi (Service Provider o SP) che si rivolge al Gestore delle Identità (Identity provider o IdP) selezionato dall&#8217;utente in modalità &#8220;pull&#8221;.</p>
-<p>La richiesta di autenticazione SAML, basata sul costrutto &lt;AuthnRequest&gt;, può essere inoltrata da un Service Provider all&#8217;Identity Provider usando il binding:</p>
+<p>Il meccanismo di autenticazione è innescato dalla richiesta inoltrata dall’utente tramite browser ad un Fornitore di Servizi (Service Provider o SP) che si rivolge al Gestore delle Identità (Identity provider o IdP) selezionato dall’utente in modalità «pull».</p>
+<p>La richiesta di autenticazione SAML, basata sul costrutto &lt;AuthnRequest&gt;, può essere inoltrata da un Service Provider all’Identity Provider usando il binding:</p>
 <ul class="simple">
 <li><em>HTTP Redirect</em></li>
 <li><em>HTTP POST</em></li>
 </ul>
-<p>La relativa risposta SAML, basata sul costrutto &lt;Response&gt;, può essere, invece, inviata dall&#8217;Identity Provider al Service Provider solo tramite il binding HTTP POST.</p>
+<p>La relativa risposta SAML, basata sul costrutto &lt;Response&gt;, può essere, invece, inviata dall’Identity Provider al Service Provider solo tramite il binding HTTP POST.</p>
 <div class="section" id="interfacce-logiche">
 <h2>Interfacce logiche<a class="headerlink" href="#interfacce-logiche" title="Link a questa intestazione">¶</a></h2>
 <div class="section" id="identity-provider">
 <h3>Identity Provider<a class="headerlink" href="#identity-provider" title="Link a questa intestazione">¶</a></h3>
-<p>Le interfacce logiche dell&#8217;<strong>Identity Provider</strong> coinvolte sono:</p>
+<p>Le interfacce logiche dell”<strong>Identity Provider</strong> coinvolte sono:</p>
 <ul class="simple">
-<li><em>IIDPUserInterface</em>: permette agli utenti l&#8217;interazione via web con il componente tramite</li>
+<li><em>IIDPUserInterface</em>: permette agli utenti l’interazione via web con il componente tramite</li>
 <li><em>User Agent (browser)</em>: in fase di challenge di autenticazione;</li>
 <li><em>IAuthnRequest (singleSignOnService)</em>: ricezione di richieste di autenticazione SAML;</li>
-<li><em>IMetadataRetrieve</em>: permette il reperimento dei SAML metadata dell&#8217;Identity Provider.</li>
+<li><em>IMetadataRetrieve</em>: permette il reperimento dei SAML metadata dell’Identity Provider.</li>
 </ul>
 </div>
 <div class="section" id="service-provider">
@@ -199,10 +219,10 @@ Browser SSO&#8221; - <a class="reference external" href="http://docs.oasis-open.
 </div>
 <div class="section" id="scenario-di-interazione-in-modalita-single-sign-on-sso">
 <h2>Scenario di Interazione in modalità Single Sign On (SSO)<a class="headerlink" href="#scenario-di-interazione-in-modalita-single-sign-on-sso" title="Link a questa intestazione">¶</a></h2>
-<p><strong>L&#8217;immagine successiva mostra il funzionamento di un&#8217;autenticazione SPID (SAML v2.0)</strong></p>
+<p><strong>L’immagine successiva mostra il funzionamento di un’autenticazione SPID (SAML v2.0)</strong></p>
 <div class="figure" id="id1">
 <img alt="funzionamento di un'autenticazione SPID (SAML v2.0)" src="_images/spid-saml2.png" />
-<p class="caption"><span class="caption-text">Funzionamento di un&#8217;autenticazione SPID (SAML v2.0)</span></p>
+<p class="caption"><span class="caption-text">Funzionamento di un’autenticazione SPID (SAML v2.0)</span></p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -222,43 +242,43 @@ Browser SSO&#8221; - <a class="reference external" href="http://docs.oasis-open.
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>A</td>
-<td>L&#8217;utente richiede l&#8217;accesso ad un servizio</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>L’utente richiede l’accesso ad un servizio</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>B1</td>
-<td>Il Service Provider (SP) invia allo User Agent (UA) una richiesta di autenticazione da far pervenire all&#8217;Identity Provider (IdP)</td>
+<td>Il Service Provider (SP) invia allo User Agent (UA) una richiesta di autenticazione da far pervenire all’Identity Provider (IdP)</td>
 <td>IAuthnRequest</td>
 <td>AuthnRequest</td>
 <td>HTTP POST/REDIRECT</td>
 </tr>
 <tr class="row-even"><td>B2</td>
-<td>Lo User Agent inoltra la richiesta di autenticazione contattando L&#8217;Identity Provider</td>
-<td>&nbsp;</td>
+<td>Lo User Agent inoltra la richiesta di autenticazione contattando L’Identity Provider</td>
+<td>&#160;</td>
 <td>AuthnRequest</td>
 <td>HTTP POST/REDIRECT</td>
 </tr>
 <tr class="row-odd"><td>C1</td>
-<td>L&#8217;Identity Provider esamina la richiesta ricevuta e, se necessario, esegue una challenge di autenticazione con l&#8217;utente</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>L’Identity Provider esamina la richiesta ricevuta e, se necessario, esegue una challenge di autenticazione con l’utente</td>
+<td>&#160;</td>
+<td>&#160;</td>
 <td>HTTP</td>
 </tr>
 <tr class="row-even"><td>C2</td>
-<td>L&#8217;Identity Provider, portata a buon fine l&#8217;autenticazione, effettua lo user login e prepara l&#8217;asserzione contenente lo statement di autenticazione dell&#8217;utente destinato al Service Provider (più eventuali statement di attributo emessi dall&#8217;Identity Provider stesso)</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td>L’Identity Provider, portata a buon fine l’autenticazione, effettua lo user login e prepara l’asserzione contenente lo statement di autenticazione dell’utente destinato al Service Provider (più eventuali statement di attributo emessi dall’Identity Provider stesso)</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>D</td>
-<td>L&#8217;Identity Provider restituisce allo User Agent la &lt;Response&gt; SAML contenente l&#8217;asserzione preparata al punto precedente</td>
-<td>&nbsp;</td>
+<td>L’Identity Provider restituisce allo User Agent la &lt;Response&gt; SAML contenente l’asserzione preparata al punto precedente</td>
+<td>&#160;</td>
 <td>Response</td>
 <td>HTTP POST</td>
 </tr>
 <tr class="row-even"><td>E</td>
-<td>Lo User Agent inoltra al Service Provider (SP) la &lt;Response&gt; SAML emessa dall&#8217;Identity Provider</td>
+<td>Lo User Agent inoltra al Service Provider (SP) la &lt;Response&gt; SAML emessa dall’Identity Provider</td>
 <td>IAuthnResponse</td>
 <td>Response</td>
 <td>HTTP POST</td>
@@ -291,7 +311,7 @@ Browser SSO&#8221; - <a class="reference external" href="http://docs.oasis-open.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 23/03/2017.
+      Ultimo aggiornamento 18/05/2017.
 
     </p>
   </div>

@@ -23,6 +23,26 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
+<div id="slimheader">
+    <div class="sh__wrapper">
+    <div class="sh__institutional">
+        <a href="http://www.agid.gov.it/" title="Agid">AgID</a>
+        <span class="sh__plus">&nbsp;+&nbsp;</span>
+        <a href="https://teamdigitale.governo.it/" title="Team Digitale">Team Digitale</a>
+    </div><!--/sh__institutional-->
+    <div class="sh__tabs">
+    <ul class="sh__tabsul">      
+      <li class="delimiter"><a  href="https://trasformazionedigitale.italia.it">Trasformazione digitale</a></li>
+      <li class="delimiter"><a href="https://developers.italia.it/">Developers</a></li>   
+      <li class=""><a  href="http://design.italia.it">Designers</a></li>      
+      <li class=""><a href="https://forum.developers.italia.it/">Forum</a></li>
+      <li class="current"><a href="https://docs.developers.italia.it/">Docs</a></li>
+      <li class=""><a href="https://github.com/italia/">Github</a></li>
+    </ul>
+    </div><!--/.sh__tabs-->
+    </div><!--/.wrapper-->
+</div><!--/#slimheader-->
+
 
      
     <div class="wy-grid-for-nav">
@@ -45,8 +65,8 @@
                           </a>
                         </div>
                         <div class="branding--content">
+                        
                             <h2 class="branding--title">
-                                <span class="branding--title--root">/ <a href="https://developers.italia.it">developers</a></span>
                                 <span class="branding--title--branch">/ <a href="https://docs.developers.italia.it">docs</a></span>
                             </h2>
                         </div>
@@ -55,7 +75,7 @@
 
             
             
-            <h1 class="project-title"><a href="index.html" class="icon icon-home"> SPID - Regole Tecniche </a></h1>
+            <h1 class="project-title"><a href="index.html" > SPID - Regole Tecniche </a></h1>
             
 
 
@@ -159,16 +179,16 @@
                             
   <div class="section" id="regole-tecniche-service-provider">
 <h1>Regole tecniche Service Provider<a class="headerlink" href="#regole-tecniche-service-provider" title="Link a questa intestazione">¶</a></h1>
-<p><strong>Il fornitore di servizi (Service Provider o SP)</strong> eroga i servizi agli utenti, richiede l&#8217;autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio per la realizzazione dei profili SSO previsti, SP-Initiated Redirect/POST binding e POST/POST binding, deve mettere a disposizione le seguenti interfacce:</p>
+<p><strong>Il fornitore di servizi (Service Provider o SP)</strong> eroga i servizi agli utenti, richiede l’autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio per la realizzazione dei profili SSO previsti, SP-Initiated Redirect/POST binding e POST/POST binding, deve mettere a disposizione le seguenti interfacce:</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>IAuthnResponse:</strong> ricezione delle risposte di autenticazione SAML</li>
-<li><strong>IMetadataRetrieve:</strong> permette il reperimento dei SAML metadata del Service Provider da parte dell&#8217;Identity Provider.</li>
+<li><strong>IMetadataRetrieve:</strong> permette il reperimento dei SAML metadata del Service Provider da parte dell’Identity Provider.</li>
 </ul>
 </div></blockquote>
 <div class="section" id="processamento-della-response">
 <h2>Processamento della &lt;Response&gt;<a class="headerlink" href="#processamento-della-response" title="Link a questa intestazione">¶</a></h2>
-<p>Alla ricezione &lt;Response&gt; qualunque sia il binding utilizzato il Service Provider prima di utilizzare l&#8217;asserzione deve operare almeno le seguenti verifiche:</p>
+<p>Alla ricezione &lt;Response&gt; qualunque sia il binding utilizzato il Service Provider prima di utilizzare l’asserzione deve operare almeno le seguenti verifiche:</p>
 <div class="section" id="verifiche-della-response">
 <h3>Verifiche della response<a class="headerlink" href="#verifiche-della-response" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
@@ -176,18 +196,18 @@
 <ul class="last simple">
 <li>controllo delle firme presenti nella <strong>&lt;Assertion&gt;</strong> e nella <strong>&lt;response&gt;</strong>;</li>
 <li><dl class="first docutils">
-<dt>nell&#8217;elemento <strong>&lt;SubjectConfirmationData&gt;</strong> verificare che:</dt>
+<dt>nell’elemento <strong>&lt;SubjectConfirmationData&gt;</strong> verificare che:</dt>
 <dd><ul class="first last">
-<li>l&#8217;attributo <strong>Recipient</strong> coincida con la assertion consuming service URL a cui la <strong>&lt;Response&gt;</strong> è pervenuta</li>
-<li>l&#8217;attributo <strong>NotOnOrAfter</strong> non sia scaduto;</li>
-<li>l&#8217;attributo <strong>InResponseTo</strong> riferisca correttamente all&#8217;ID della &lt;AuthnRequest&gt; di richiesta</li>
+<li>l’attributo <strong>Recipient</strong> coincida con la assertion consuming service URL a cui la <strong>&lt;Response&gt;</strong> è pervenuta</li>
+<li>l’attributo <strong>NotOnOrAfter</strong> non sia scaduto;</li>
+<li>l’attributo <strong>InResponseTo</strong> riferisca correttamente all’ID della &lt;AuthnRequest&gt; di richiesta</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
-<p>Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (<strong>ID</strong>) usati come per le <strong>&lt;AuthnRequest&gt;</strong> per tutta la durata di tempo per cui l&#8217;asserzione risulta essere valida in base dell&#8217;attributo <strong>NotOnOrAfter</strong> dell&#8217;elemento <strong>&lt;SubjectConfirmationData&gt;</strong> presente nell&#8217;asserzione stessa.</p>
+<p>Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (<strong>ID</strong>) usati come per le <strong>&lt;AuthnRequest&gt;</strong> per tutta la durata di tempo per cui l’asserzione risulta essere valida in base dell’attributo <strong>NotOnOrAfter</strong> dell’elemento <strong>&lt;SubjectConfirmationData&gt;</strong> presente nell’asserzione stessa.</p>
 </div>
 </div>
 <div class="section" id="metadata">
@@ -197,11 +217,11 @@
 <h3>&lt;EntityDescriptor&gt;<a class="headerlink" href="#entitydescriptor" title="Link a questa intestazione">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p>nell&#8217;elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
+<p>nell’elemento <strong>&lt;EntityDescriptor&gt;</strong> devono essere presenti i seguenti attributi:</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li><strong>entityID:</strong> indicante l&#8217;identificativo univoco (un URI) dell&#8217;entità</li>
-<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest&#8217;ultimo generato con una precisione di almeno un millesimo di secondo per garantire l&#8217;univocità)</li>
+<li><strong>entityID:</strong> indicante l’identificativo univoco (un URI) dell’entità</li>
+<li><strong>ID</strong> univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest’ultimo generato con una precisione di almeno un millesimo di secondo per garantire l’univocità)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -211,14 +231,14 @@
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
 <dl class="last docutils">
-<dt>l&#8217;elemento &lt;KeyDescriptor&gt; contenenete il certificato della corrispondente chiave pubblica dell&#8217;entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);</dt>
+<dt>l’elemento &lt;KeyDescriptor&gt; contenenete il certificato della corrispondente chiave pubblica dell’entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);</dt>
 <dd><ul class="first last simple">
-<li>deve essere l&#8217;elemento &lt;Signature&gt; riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;</li>
+<li>deve essere l’elemento &lt;Signature&gt; riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;</li>
 </ul>
 </dd>
 </dl>
 </div>
-<p><em>Per la massima tutela della privacy dell&#8217;utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati. In questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l&#8217;autorizzazione.</em></p>
+<p><em>Per la massima tutela della privacy dell’utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati. In questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l’autorizzazione.</em></p>
 </div>
 <div class="section" id="esempio-metadata-sp">
 <h3>Esempio: Metadata SP<a class="headerlink" href="#esempio-metadata-sp" title="Link a questa intestazione">¶</a></h3>
@@ -316,8 +336,8 @@
 </div>
 <div class="section" id="disponibilita-dei-metadata">
 <h3>Disponibilità dei Metadata<a class="headerlink" href="#disponibilita-dei-metadata" title="Link a questa intestazione">¶</a></h3>
-<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l&#8217;interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall&#8217;Agenzia per l&#8217;Italia Digitale.
-L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
+<p>I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso l’interfaccia IMetadataRetrive alla URL <strong>https://&lt;dominioGestoreIdentita&gt;/metadata</strong>, ove non diversamente specificato nel <strong>Registro SPID</strong>, e saranno firmate in modalita detached dall’Agenzia per l’Italia Digitale.
+L’accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.</p>
 </div>
 </div>
 </div>
@@ -345,7 +365,7 @@ L&#8217;accesso deve essere effettuato utilizzando il protocollo TLS nella versi
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, AgID - Agenzia per l&#39;Italia Digitale.
-      Ultimo aggiornamento 24/03/2017.
+      Ultimo aggiornamento 18/05/2017.
 
     </p>
   </div>
