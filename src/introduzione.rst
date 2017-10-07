@@ -33,8 +33,7 @@ Identity Provider
 ^^^^^^^^^^^^^^^^^
 Le interfacce logiche dell'**Identity Provider** coinvolte sono:
 
-- *IIDPUserInterface*: permette agli utenti l'interazione via web con il componente tramite
-- *User Agent (browser)*: in fase di challenge di autenticazione;
+- *IIDPUserInterface*: permette agli utenti l'interazione via web con il componente tramite *User Agent (browser)* in fase di challenge di autenticazione;
 - *IAuthnRequest (singleSignOnService)*: ricezione di richieste di autenticazione SAML;
 - *IMetadataRetrieve*: permette il reperimento dei SAML metadata dell'Identity Provider.
 
