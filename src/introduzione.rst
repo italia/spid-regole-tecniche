@@ -1,7 +1,7 @@
 Introduzione
 ============
 
-SPID è basato sul framework SAML (Security Assertion Markup Language), sviluppato e manutenuto dal Security Services Technical Committee di OASIS, che permette la realizzazione di un sistema sicuro di Single Sign On (SSO) federato, ovvero, che permette ad un utente di accedere ad una moltitudine di servizi, anche su domini differenti, effettuando un solo accesso.
+SPID è basato sul framework SAML (Security Assertion Markup Language), sviluppato e manutenuto dal `Security Services Technical Committee di OASIS <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security>`_, che permette la realizzazione di un sistema sicuro di Single Sign On (SSO) federato, ovvero, che permette ad un utente di accedere ad una moltitudine di servizi, anche su domini differenti, effettuando un solo accesso.
 
 Il sistema è composto da 3 entità:
 
