@@ -10,7 +10,7 @@
     <saml:Issuer
         NameQualifier="http://spid.serviceprovider.it"
         Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">
-        spid-sp
+        http://spid.serviceprovider.it
     </saml:Issuer>
     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
         [...]
