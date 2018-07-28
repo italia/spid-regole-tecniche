@@ -1,18 +1,12 @@
-SPID - Regole tecniche
+SPID - Regole Tecniche
 ======================
 
-.. WARNING::
-   Il documento è da ritenersi in versione beta.
+**SPID**, il Sistema Pubblico di Identità Digitale, è la soluzione che permette di accedere a tutti i servizi online della Pubblica Amministrazione con un'unica Identità Digitale (username e password) utilizzabile da computer, tablet e smartphone.
+Maggiori informazioni sono riportate nel sito `www.spid.gov.it <https://www.spid.gov.it>`_
 
-**SPID**, il Sistema Pubblico di Identità Digitale, è la soluzione che ti permette di accedere a tutti i servizi online della Pubblica Amministrazione con un'unica Identità Digitale (username e password) utilizzabile da computer, tablet e smartphone.
+Le Regole Tecniche definiscono le specifiche per l'integrazione di Identity Provider, Service Provider ed Attribute Authority mediante il protocollo SAML.
 
-* **Semplice**: prenotazioni sanitarie, iscrizioni scolastiche, accesso alla rete wi-fi pubblica, pratiche d'impresa... con un'unica password
-* **Sicuro**: il sistema SPID assicura la piena protezione dei tuoi dati personali, non è consentito alcun tipo di profilazione; la tua privacy è garantita
-* **Veloce**: con SPID puoi accedere velocemente ai servizi online della pubblica amministrazione ovunque ti trovi e da qualsiasi dispositivo
-
-Per maggiori informazioni su `www.spid.gov.it <https://www.spid.gov.it>`_
-
-Le regole tecniche sono organizzate in modo da fornire precise indicazioni alle tre entità SPID (Identity provider, Service provider e Attribute Authority).
+Questo documento è la versione consolidata delle Regole Tecniche emanate dall'Agenzia per l'Italia Digitale, con applicati i successivi Avvisi che le emendano, per una facile consultazione da parte degli sviluppatori. I contenuti sono aderenti ai documenti originali, disponibili nel sito AgID, ma sono arricchiti da informazioni utili indicate con la dicitura "Questo paragrafo ha scopo informativo e non normativo".
 
 Le parole chiave **"DEVE", "NON DEVE", "RICHIESTO", "DOVREBBE", "NON DOVREBBE", "RACCOMANDATO", e "OPZIONALE"** in questo documento devono essere interpretate come descritto nella `RFC 2119 <https://www.ietf.org/rfc/rfc2119.txt>`_.
 
