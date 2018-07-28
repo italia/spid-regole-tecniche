@@ -1,28 +1,7 @@
-Regole tecniche Service Provider
-================================
+Fornitore di servizi (Service Provider)
+=======================================
 
-**Il fornitore di servizi (Service Provider o SP)** eroga i servizi agli utenti, richiede l'autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio per la realizzazione dei profili SSO previsti, SP-Initiated Redirect/POST binding e POST/POST binding, deve mettere a disposizione le seguenti interfacce:
-
-    * **IAuthnResponse:** ricezione delle risposte di autenticazione SAML
-    * **IMetadataRetrieve:** permette il reperimento dei SAML metadata del Service Provider da parte dell'Identity Provider.
-
-Processamento della <Response>
-------------------------------
-
-Alla ricezione <Response> qualunque sia il binding utilizzato il Service Provider prima di utilizzare l'asserzione deve operare almeno le seguenti verifiche:
-
-Verifiche della response
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. Important::
-    * controllo delle firme presenti nella **<Assertion>** e nella **<response>**;
-    * nell'elemento **<SubjectConfirmationData>** verificare che:
-        * l'attributo **Recipient** coincida con la assertion consuming service URL a cui la **<Response>** è pervenuta
-        * l'attributo **NotOnOrAfter** non sia scaduto;
-        * l'attributo **InResponseTo** riferisca correttamente all'ID della <AuthnRequest> di richiesta
-
-Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (**ID**) usati come per le **<AuthnRequest>** per tutta la durata di tempo per cui l'asserzione risulta essere valida in base dell'attributo **NotOnOrAfter** dell'elemento **<SubjectConfirmationData>** presente nell'asserzione stessa.
-
+**Il Fornitore di Servizi (Service Provider o SP)** eroga i servizi agli utenti, richiede l'autenticazione agli Identity Provider e gestisce la procedura di autorizzazione al servizio.
 
 Metadata
 --------
@@ -60,5 +39,26 @@ Esempio: Metadata SP
 Disponibilità dei metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I metadata dei Service Provider saranno disponibili per tutte le entità SPID federate attraverso l'interfaccia IMetadataRetrive alla URL **https://<dominioServiceProvider>/metadata** e saranno firmate dall'Agenzia per l'Italia Digitale.
+I metadata dei Service Provider saranno disponibili per tutte le entità SPID federate attraverso la URL **https://<dominioServiceProvider>/metadata** e saranno firmate dall'Agenzia per l'Italia Digitale.
 L'accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.
+
+.. Note::
+    Nonostante sia richiesta la pubblicazione dei metadata nel dominio del Service Provider, la distribuzione dei metadati agli Identity Provider è operata centralmente dall'Agenzia per l'Italia Digitale. Gli Identity Provider di conseguenza non ottengono i metadati direttamente dai Service Provider.
+
+
+Processamento della <Response>
+------------------------------
+
+Alla ricezione <Response> qualunque sia il binding utilizzato il Service Provider prima di utilizzare l'asserzione deve operare almeno le seguenti verifiche:
+
+Verifiche della response
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. Important::
+    * controllo delle firme presenti nella **<Assertion>** e nella **<response>**;
+    * nell'elemento **<SubjectConfirmationData>** verificare che:
+        * l'attributo **Recipient** coincida con la assertion consuming service URL a cui la **<Response>** è pervenuta
+        * l'attributo **NotOnOrAfter** non sia scaduto;
+        * l'attributo **InResponseTo** riferisca correttamente all'ID della <AuthnRequest> di richiesta
+
+Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (**ID**) usati come per le **<AuthnRequest>** per tutta la durata di tempo per cui l'asserzione risulta essere valida in base dell'attributo **NotOnOrAfter** dell'elemento **<SubjectConfirmationData>** presente nell'asserzione stessa.

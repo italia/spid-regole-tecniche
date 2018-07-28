@@ -18,6 +18,11 @@ Browser SSO" - `SAML V2.0 Technical Overview - Oasis par4.3 <http://docs.oasis-o
 * *Redirect/POST binding*
 * *POST/POST binding*
 
+Metadata
+--------
+
+Ciascuna entità presente nella federazione SPID è descritta da un file di metadati, che ne riporta il certificato X509, gli endpoint e le altre informazioni necessarie alla comunicazione con le altre entità. La distribuzione dei metadati a tutti i soggetti è operata dall'Agenzia per l'Italia Digitale attraverso il `Registro <https://registry.spid.gov.it/>`_.
+
 Single Sign-On
 --------------
 
