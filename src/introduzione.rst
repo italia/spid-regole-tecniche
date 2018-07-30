@@ -1,9 +1,6 @@
 Introduzione
 ============
 
-.. Note::
-    Questo paragrafo ha scopo informativo e non normativo.
-
 SPID è basato sul framework SAML (Security Assertion Markup Language), sviluppato e manutenuto dal `Security Services Technical Committee di OASIS <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security>`_, che permette la realizzazione di un sistema sicuro di Single Sign-On (SSO) federato. Grazie a SAML, un utente può accedere ad una moltitudine di servizi appartenenti a domini differenti effettuando un solo accesso.
 
 Il sistema è composto da 3 entità:
@@ -13,15 +10,16 @@ Il sistema è composto da 3 entità:
 * **Gestore di attributi qualificati (Attribute Authority o AA)** che fornisce attributi qualificati sulla base dell'utente autenticato.
 
 Le modalità di funzionamento di SPID sono quelle previste da SAML v2 per il profilo "Web
-Browser SSO" - `SAML V2.0 Technical Overview - Oasis par4.3 <http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html>`_, e in particolare per le due versioni "**SP-Initiated**":
-
-* *Redirect/POST binding*
-* *POST/POST binding*
+Browser SSO" - `SAML V2.0 Technical Overview - Oasis par4.3 <http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html>`_.
 
 Metadata
 --------
 
+.. Note::
+    Questo paragrafo ha scopo informativo e non normativo.
+
 Ciascuna entità presente nella federazione SPID è descritta da un file di metadati, che ne riporta il certificato X509, gli endpoint e le altre informazioni necessarie alla comunicazione con le altre entità. La distribuzione dei metadati a tutti i soggetti è operata dall'Agenzia per l'Italia Digitale attraverso il `Registro <https://registry.spid.gov.it/>`_.
+
 
 Single Sign-On
 --------------

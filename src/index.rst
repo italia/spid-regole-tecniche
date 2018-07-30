@@ -22,6 +22,7 @@ Indice dei contenuti
    :maxdepth: 5
 
    introduzione.rst
+   trasmissione.rst
    regole-tecniche-idp.rst
    regole-tecniche-sp.rst
    regole-tecniche-aa.rst
