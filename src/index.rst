@@ -24,9 +24,8 @@ Indice dei contenuti
    introduzione.rst
    metadata.rst
    trasmissione.rst
-   regole-tecniche-idp.rst
-   regole-tecniche-sp.rst
-   regole-tecniche-aa.rst
+   single-sign-on.rst
+   attribute-authority.rst
    sessioni.rst
    registro.rst
    log.rst

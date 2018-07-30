@@ -1,14 +1,34 @@
-Gestore delle Identità (Identity Provider)
-==========================================
+Single Sign-On
+==============
 
-Il Gestore delle identità (Identity Provider o IdP) gestisce gli utenti e la procedura di autenticazione a seguito di una richiesta da parte di un Fornitore di Servizi (Service Provider o SP).
+Il meccanismo di autenticazione è innescato dalla selezione, da parte dell'utente, del Gestore delle Identità con cui intende effettuare l'accesso; tale selezione avviene all'interno del sito del Fornitore di Servizi mediante un bottone ufficiale "Entra con SPID" da integrarsi nel servizio. Il Fornitore di Servizi prepara di conseguenza una ``<AuthnRequest>`` da inoltrarsi al Gestore delle Identità, dove l'utente viene reindirizzato per effettuare l'autenticazione. Eseguita l'autenticazione, l'utente torna presso il sito del Fornitore di Servizi con un'asserzione firmata dal Gestore delle Identity contenente gli attributi richiesti (ad es. nome, cognome, codice fiscale) che il Fornitore di Servizi può usare per autorizzare l'utente in base alle proprie policy ed erogare il servizio richiesto.
+
+.. figure:: _images/spid-saml2.png
+   :alt: Flusso di autenticazione con SPID/SAML2
+
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+|    |Descrizione                                                                                                                                                                                                                                                             |SAML            |Binding           |
++====+========================================================================================================================================================================================================================================================================+================+==================+
+| A  |L'utente richiede l'accesso ad un servizio                                                                                                                                                                                                                              |                |                  |
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| B1 |Il Service Provider (SP) invia allo User Agent (UA) una richiesta di autenticazione da far pervenire all'Identity Provider (IdP)                                                                                                                                        |``AuthnRequest``|HTTP POST/REDIRECT|
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| B2 |Lo User Agent inoltra la richiesta di autenticazione contattando L'Identity Provider                                                                                                                                                                                    |``AuthnRequest``|HTTP POST/REDIRECT|
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| C1 |L'Identity Provider esamina la richiesta ricevuta e, se necessario, esegue una challenge di autenticazione con l'utente                                                                                                                                                 |                |                  |
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| C2 |L'Identity Provider, portata a buon fine l'autenticazione, effettua lo user login e prepara l'asserzione contenente lo statement di autenticazione dell'utente destinato al Service Provider (più eventuali statement di attributo emessi dall'Identity Provider stesso)|                |                  |
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| D  |L'Identity Provider restituisce allo User Agent la <Response> SAML contenente l'asserzione preparata al punto precedente                                                                                                                                                |``Response``    |HTTP POST         |
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| E  |Lo User Agent inoltra al Service Provider (SP) la <Response> SAML emessa dall'Identity Provider                                                                                                                                                                         |``Response``    |HTTP POST         |
++----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
 
 
 AuthnRequest
 ------------
 Il messaggio ``AuthnRequest`` è inviato dal Service Provider, per tramite dello User Agent, al SingleSignOnService dell'Identity Provider ed ha la funzione di avviare il flusso di autenticazione. 
-Può essere inoltrato da un Service Provider all’Identity Provider usando il binding HTTP Redirect o il binding HTTP POST. Il messaggio deve essere conforme allo standard
-SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
+Può essere inoltrato da un Service Provider all’Identity Provider usando il binding HTTP-Redirect o il binding HTTP-POST. Il messaggio deve essere conforme allo standard SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
 
 <AuthnRequest>
 ^^^^^^^^^^^^^^
@@ -263,3 +283,15 @@ Esempio: asserzione di autenticazione
    :language: xml
    :linenos:
 
+Processamento della ``<Response>``
+----------------------------------
+
+Alla ricezione della ``<Response>`` qualunque sia il binding utilizzato il Service Provider prima di utilizzare l'asserzione deve operare almeno le seguenti verifiche:
+
+* controllo delle firme presenti nella ``<Assertion>`` e nella ``<Response>``;
+* nell'elemento ``<SubjectConfirmationData>`` verificare che:
+    * l'attributo ``Recipient`` coincida con la AssertionConsumerServiceURL a cui la ``<Response>`` è pervenuta
+    * l'attributo ``NotOnOrAfter`` non sia scaduto;
+    * l'attributo ``InResponseTo`` si riferisca correttamente all'ID della ``<AuthnRequest>`` di richiesta
+
+Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (``ID``) usati come per le ``<AuthnRequest>`` per tutta la durata di tempo per cui l'asserzione risulta essere valida in base dell'attributo ``NotOnOrAfter`` dell'elemento ``<SubjectConfirmationData>`` presente nell'asserzione stessa.
