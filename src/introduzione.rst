@@ -12,14 +12,6 @@ Il sistema è composto da 3 entità:
 Le modalità di funzionamento di SPID sono quelle previste da SAML v2 per il profilo "Web
 Browser SSO" - `SAML V2.0 Technical Overview - Oasis par4.3 <http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html>`_.
 
-Metadata
---------
-
-.. Note::
-    Questo paragrafo ha scopo informativo e non normativo.
-
-Ciascuna entità presente nella federazione SPID è descritta da un file di metadati, che ne riporta il certificato X509, gli endpoint e le altre informazioni necessarie alla comunicazione con le altre entità. La distribuzione dei metadati a tutti i soggetti è operata dall'Agenzia per l'Italia Digitale attraverso il `Registro <https://registry.spid.gov.it/>`_.
-
 
 Single Sign-On
 --------------
