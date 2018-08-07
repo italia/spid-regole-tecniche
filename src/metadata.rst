@@ -113,6 +113,19 @@ Le caratteristiche del Service Provider devono essere definite attraverso metada
         * l’attributo ``index`` posto al valore ``0``;
         * l’attributo ``isDefault`` posto al valore ``true``;
 
+    * Deve essere presente almeno un elemento ``<SingleLogoutService>`` indicante l'indirizzo del SingleLogoutService e riportante i seguenti attributi:
+
+        * ``Location`` URL endpoint del servizio per la ricezione delle richieste di Single Logout;
+        * ``Binding`` che può assumere uno dei valori
+    
+            * ``urn:oasis:names:tc:SAML:2.0:bindings:SOAP``
+            * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect``
+            * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
+        
+        ed opzionalmente l'attributo:
+        
+            * ``ResponseLocation``, URL endpoint del servizio per la ricezione delle risposte alle richieste di Single Logout.
+    
     * Deve essere presente uno o più elementi ``<AttributeConsumingService>`` a descrizione dei set di attributi richiesti dal Service Provider, riportante:
 
         * l’attributo ``index``, indice posizionale dell’elemento relativo all'i-esimo servizio richiamato dalla AuthnRequest mediante l’attributo ``AttributeConsumingServiceIndex``;

@@ -189,7 +189,9 @@ Assertion
     * Deve essere presente l'elemento ``<AuthStatement>`` a sua volta contenente l'elemento:
 
         * ``<AuthnContext>`` riportante nel sotto elemento ``<AuthnContextClassRef>`` la classe relativa all'effettivo contesto di autenticazione (es. ``https://www.spid.gov.it/SpidL2``);
-
+        
+        Nel caso di asserzioni emesse a seguito di richieste di autenticazione per il livello SPID 1 l’elemento ``<AuthStatement>`` deve avere l'attributo ``SessionIndex`` specificante l'indice della sessione di autenticazione instaurata per l’utente presso il gestore dell’identità; tale elemento non dovrà essere presente nel caso di asserzioni emesse a seguito di richieste di autenticazione per i livelli SPID 2 e SPID 3.
+    
     * Deve essere presente l'elemento ``<Signature>`` riportante la firma sull'asserzione apposta dall'Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
 
 .. admonition:: SI PUÒ

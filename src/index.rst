@@ -25,6 +25,7 @@ Indice dei contenuti
    metadata.rst
    trasmissione.rst
    single-sign-on.rst
+   single-logout.rst
    attribute-authority.rst
    sessioni.rst
    registro.rst
