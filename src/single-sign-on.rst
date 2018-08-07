@@ -19,9 +19,9 @@ Il meccanismo di autenticazione è innescato dalla selezione, da parte dell'uten
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
 | C2 |L'Identity Provider, portata a buon fine l'autenticazione, effettua lo user login e prepara l'asserzione contenente lo statement di autenticazione dell'utente destinato al Service Provider (più eventuali statement di attributo emessi dall'Identity Provider stesso)|                |                  |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
-| D  |L'Identity Provider restituisce allo User Agent la <Response> SAML contenente l'asserzione preparata al punto precedente                                                                                                                                                |``Response``    |HTTP POST         |
+| D  |L'Identity Provider restituisce allo User Agent la ``<Response>`` SAML contenente l'asserzione preparata al punto precedente                                                                                                                                                |``Response``    |HTTP POST         |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
-| E  |Lo User Agent inoltra al Service Provider (SP) la <Response> SAML emessa dall'Identity Provider                                                                                                                                                                         |``Response``    |HTTP POST         |
+| E  |Lo User Agent inoltra al Service Provider (SP) la ``<Response>`` SAML emessa dall'Identity Provider                                                                                                                                                                         |``Response``    |HTTP POST         |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
 
 
@@ -30,118 +30,82 @@ AuthnRequest
 Il messaggio ``AuthnRequest`` è inviato dal Service Provider, per tramite dello User Agent, al SingleSignOnService dell'Identity Provider ed ha la funzione di avviare il flusso di autenticazione. 
 Può essere inoltrato da un Service Provider all’Identity Provider usando il binding HTTP-Redirect o il binding HTTP-POST. Il messaggio deve essere conforme allo standard SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
 
-<AuthnRequest>
-^^^^^^^^^^^^^^
-.. Important::
-    nell' elemento ``<AuthnRequest>`` devono essere presenti i seguenti attributi:
+.. admonition:: DEVI
+
+    * nell'elemento ``<AuthnRequest>`` devono essere presenti i seguenti attributi:
 
         * l'attributo ``ID`` univoco, per esempio basato su un *Universally Unique Identifier* (UUID) o su una combinazione *origine + timestamp* (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità)
         * l'attributo ``Version``, che deve valere sempre ``2.0``, coerentemente con la versione della specifica SAML adottata;
         * l'attributo ``IssueInstant`` a indicare l'istante di emissione della richiesta, in formato UTC (esempio: ``2017-03-05T18:03:10.531Z``)
         * l'attributo ``Destination``, a indicare l'indirizzo (URI reference) dell'Identity Provider a cui è inviata la richiesta, come risultante nell'attributo entityID presente nel metadata IdP dell'Identity Provider a cui viene inviata la richiesta
         * l'attributo ``ForceAuthn`` nel caso in cui si richieda livelli di autenticazione superiori a SpidL1 (SpidL2 o SpidL3)
-        * l'attributo ``AssertionConsumerServiceIndex``, riportante un indice posizionale facente riferimento ad uno degli elementi ``<AssertionConsumerService>`` presenti nei metadata del Service Provider, atto ad indicare, mediante l'attributo ``Location``, l'URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l'attributo ``Binding``, il binding da utilizzare, quest'ultimo valorizzato obbligatoriamente con ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
-            * in alternativa al precedente attributo (scelta sconsigliata) possono essere presenti
-                * l'attributo ``AssertionConsumerServiceURL`` ad indicare l'URL a cui inviare il messaggio di risposta alla richiesta di autenticazione (l'indirizzo deve coincidere con quello del servizio riportato dall'elemento ``<AssertionConsumingService>`` presente nei metadata del Service Provider);
-                * l'attributo ``ProtocolBinding``, identificante il binding da utilizzare per inoltrare il messaggio di risposta, valorizzato con ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``;
+        * l'attributo ``AssertionConsumerServiceIndex``, riportante un indice posizionale facente riferimento ad uno degli elementi ``<AssertionConsumerService>`` presenti nei metadata del Service Provider, atto ad indicare, mediante l'attributo ``Location``, l'URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l'attributo ``Binding``, il binding da utilizzare, quest'ultimo valorizzato obbligatoriamente con ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``. In alternativa all'attributo ``AssertionConsumerServiceIndex`` (scelta sconsigliata) possono essere presenti:
 
-.. Important::
-    nell' elemento ``<AuthnRequest>`` non deve essere presente l'attributo ``IsPassive`` (ad indicare ``false`` come valore di default)
+            * l'attributo ``AssertionConsumerServiceURL`` ad indicare l'URL a cui inviare il messaggio di risposta alla richiesta di autenticazione (l'indirizzo deve coincidere con quello del servizio riportato dall'elemento ``<AssertionConsumingService>`` presente nei metadata del Service Provider);
+            * l'attributo ``ProtocolBinding``, identificante il binding da utilizzare per inoltrare il messaggio di risposta, valorizzato con ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``;
 
-.. Note::
-    nell' elemento ``<AuthnRequest>`` può essere opzionalmente presente l'attributo:
+    * nell'elemento ``<AuthnRequest>`` non deve essere presente l'attributo ``IsPassive`` (ad indicare ``false`` come valore di default)
 
-        * ``AttributeConsumingServiceIndex`` riportante un indice posizionale in riferimento alla struttura ``<AttributeConsumingService>`` presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell'asserzione prodotta. Nel caso l'attributo fosse assente l'asserzione prodotta non riporterà alcuna attestazione di attributo
-
-
-<Subject>
-^^^^^^^^^
-
-.. Note::
-    può essere presente l'elemento ``<Subject>`` a indicare il soggetto per cui si chiede l'autenticazione in cui deve comparire:
-
-        * l'elemento ``<NameID>`` atto a qualificare il soggetto in cui sono presenti i seguenti attributi:
-            * ``Format`` che deve assumere il valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified`` (cfr. SAMLCore, sez. 8.3)
-            * ``NameQualifier`` che qualifica il dominio a cui afferisce tale valore (URI)
-
-
-<Issuer>
-^^^^^^^^
-
-.. Important::
-    deve essere presente l'elemento ``<Issuer>`` attualizzato come l'attributo ``entityID`` riportato nel corrispondente SP metadata, a indicare l'identificatore univoco del Service Provider emittente. L'elemento deve riportare gli attributi:
+    * deve essere presente l'elemento ``<Issuer>`` attualizzato come l'attributo ``entityID`` riportato nel corrispondente SP metadata, a indicare l'identificatore univoco del Service Provider emittente. L'elemento deve riportare gli attributi:
 
         * ``Format`` fissato al valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:entity``
         * ``NameQualifier`` che qualifica il dominio a cui afferisce tale valore (URI riconducibile al Service Provider stesso)
 
+    * deve essere presente l'elemento ``<NameIDPolicy>`` avente l'attributo:
 
-<NameIDPolicy>
-^^^^^^^^^^^^^^
+            * ``Format`` valorizzato come ``urn:oasis:names:tc:SAML:2.0:nameid-format:transient``
 
-.. Important::
-    deve essere presente l'elemento ``<NameIDPolicy>`` avente l'attributo:
+    * deve essere presente l'elemento ``<RequestedAuthnContext>`` (SAMLCore, sez. 3.3.2.2.1) ad indicare il contesto di autenticazione atteso, ossia la "robustezza" delle credenziali richieste. Allo scopo sono definite le seguenti *"authentication context class"* estese (SAMLAuthContext, sez. 3) in riferimento SPID:
 
-        * ``Format`` valorizzato come ``urn:oasis:names:tc:SAML:2.0:nameid-format:transient``
+            * ``https://www.spid.gov.it/SpidL1``
+            * ``https://www.spid.gov.it/SpidL2``
+            * ``https://www.spid.gov.it/SpidL3``
 
+        referenziate dagli elementi ``<AuthnContextClassRef>``
 
-<Conditions>
-^^^^^^^^^^^^
+        Ciascuna di queste classi indica in ordine di preferenza il contesto di autenticazione (atteso o effettivo) secondo alcune dimensioni di riferimento, quali per esempio i meccanismi di autenticazione con cui l'Identity Provider può identificare l'utente. L'elemento ``<RequestedAuthnContext>`` prevede un attributo ``Comparison`` con il quale indicare il metodo per stabilire il rispetto del vincolo sul contesto di abilitazione: i valori ammessi per questo attributo sono:
 
-.. Important::
-    l'elemento ``<Conditions>``, se presente, deve indicare i limiti di validità attesi dell'asserzione ricevuta in risposta, per esempio specificando gli attributi ``NotBefore`` e ``NotOnOrAfter`` opportunamente valorizzati in formato UTC.
+            * ``exact``
+            * ``minimum``
+            * ``better``
+            * ``maximum``
 
-    *N.B. L'Identity Provider non è obbligato a tener conto dell'indicazione nel caso che questa non sia confacente con i criteri di sicurezza da esso adottati.*
+        Nel caso dell'elemento ``<RequestedAuthnContext>``, questa informazione si riflette sulle tipologie di meccanismi utilizzabili dall'Identity Provider ai fini dell'autenticazione dell'utente. L'esempio seguente di ``<RequestedAuthnContext>`` fa riferimento a una *"authentication context class"* di tipo *SpidL2* o superiore.
 
+        .. literalinclude:: code-samples/requested-authn-context.xml
+           :language: xml
+           :linenos:
 
-<RequestedAuthnContext>
-^^^^^^^^^^^^^^^^^^^^^^^
+        *N.B. L'Identity Provider ha facoltà di utilizzare per l'autenticazione un livello SPID più alto rispetto a quelli risultanti dall'indicazione del richiedente mediante l'attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.*
 
-.. Important::
-    deve essere presente l'elemento ``<RequestedAuthnContext>`` (SAMLCore, sez. 3.3.2.2.1) ad indicare il contesto di autenticazione atteso, ossia la "robustezza" delle credenziali richieste. Allo scopo sono definite le seguenti *"authentication context class"* estese (SAMLAuthContext, sez. 3) in riferimento SPID:
-
-        * ``https://www.spid.gov.it/SpidL1``
-        * ``https://www.spid.gov.it/SpidL2``
-        * ``https://www.spid.gov.it/SpidL3``
-
-    referenziate dagli elementi ``<AuthnContextClassRef>``
-
-    Ciascuna di queste classi, indica in ordine di preferenza il contesto di autenticazione (atteso o effettivo) secondo alcune dimensioni di riferimento, quali per esempio i meccanismi di autenticazione con cui l'Identity Provider può identificare l'utente. L'elemento ``<RequestedAuthnContext>`` prevede un attributo ``Comparison`` con il quale indicare il metodo per stabilire il rispetto del vincolo sul contesto di abilitazione: i valori ammessi per questo attributo sono:
-
-        * ``exact``
-        * ``minimum``
-        * ``better``
-        * ``maximum``
-
-    Nel caso dell'elemento ``<RequestedAuthnContext>``, questa informazione si riflette sulle tipologie di meccanismi utilizzabili dall'Identity Provider ai fini dell'autenticazione dell'utente. L'esempio seguente di ``<RequestedAuthnContext>`` fa riferimento a una *"authentication context class"* di tipo *SpidL2* o superiore.
-
-    .. literalinclude:: code-samples/requested-authn-context.xml
-       :language: xml
-       :linenos:
-
-    *N.B. L'Identity Provider ha facoltà di utilizzare per l'autenticazione un livello SPID più alto rispetto a quelli risultanti dall'indicazione del richiedente mediante l'attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.*
+    * nel caso del binding **HTTP POST** deve essere presente l'elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
 
 
-<Signature>
-^^^^^^^^^^^
+.. admonition:: POTRESTI
 
-.. Important::
-    nel caso del binding **HTTP POST** deve essere presente l'elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
+    * nell'elemento ``<AuthnRequest>`` può essere opzionalmente presente l'attributo:
 
+        * ``AttributeConsumingServiceIndex`` riportante un indice posizionale in riferimento alla struttura ``<AttributeConsumingService>`` presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell'asserzione prodotta. Nel caso l'attributo fosse assente l'asserzione prodotta non riporterà alcuna attestazione di attributo
 
-<Scoping>
-^^^^^^^^^
+    * può essere presente l'elemento ``<Subject>`` a indicare il soggetto per cui si chiede l'autenticazione in cui deve comparire:
 
-.. Important::
-    se presente l'elemento ``<Scoping>`` il relativo attributo ``ProxyCount`` deve assumere valore ``0`` per indicare che l'Identity Provider invocato non può delegare il processo di autenticazione ad altra *Asserting Party*.
+        * l'elemento ``<NameID>`` atto a qualificare il soggetto in cui sono presenti i seguenti attributi:
 
+            * ``Format`` che deve assumere il valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:unspecified`` (cfr. SAMLCore, sez. 8.3)
+            * ``NameQualifier`` che qualifica il dominio a cui afferisce tale valore (URI)
 
-<RequesterID>
-^^^^^^^^^^^^^
+            .. WARNING::
+              L'obbligatorietà dell'attributo ``NameQualifier`` differisce da quanto previsto dalle specifiche SAML.
 
-.. Note::
-    eventuali elementi ``<RequesterID>`` contenuti devono indicare l'URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l'ordine che indichi la sequenza di propagazione (il primo elemento ``<RequesterID>`` dell'elemento ``<Scoping>`` è relativo all'ultima entità che ha propagato la richiesta).
+    * l'elemento ``<Conditions>``, se presente, deve indicare i limiti di validità attesi dell'asserzione ricevuta in risposta, per esempio specificando gli attributi ``NotBefore`` e ``NotOnOrAfter`` opportunamente valorizzati in formato UTC.
 
-    Gli elementi ``<Scoping>`` ``<RequesterID>`` sono previsti per futuri usi ed al momento non devono essere utilizzati. Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell'Identity Provider.
+        *N.B. L'Identity Provider non è obbligato a tener conto dell'indicazione nel caso che questa non sia confacente con i criteri di sicurezza da esso adottati.*
+
+    * se presente l'elemento ``<Scoping>`` il relativo attributo ``ProxyCount`` deve assumere valore ``0`` per indicare che l'Identity Provider invocato non può delegare il processo di autenticazione ad altra *Asserting Party*.
+
+    * eventuali elementi ``<RequesterID>`` contenuti devono indicare l'URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l'ordine che indichi la sequenza di propagazione (il primo elemento ``<RequesterID>`` dell'elemento ``<Scoping>`` è relativo all'ultima entità che ha propagato la richiesta).
+
+        Gli elementi ``<Scoping>`` ``<RequesterID>`` sono previsti per futuri usi ed **al momento non devono essere utilizzati.** Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell'Identity Provider.
 
 
 Esempio di AuthnRequest
@@ -283,8 +247,8 @@ Esempio: asserzione di autenticazione
    :language: xml
    :linenos:
 
-Processamento della ``<Response>``
-----------------------------------
+Processamento della <Response>
+------------------------------
 
 Alla ricezione della ``<Response>`` qualunque sia il binding utilizzato il Service Provider prima di utilizzare l'asserzione deve operare almeno le seguenti verifiche:
 
