@@ -27,7 +27,6 @@ Indice dei contenuti
    single-sign-on.rst
    single-logout.rst
    attribute-authority.rst
-   sessioni.rst
    registro.rst
    log.rst
    elenco-attributi.rst
