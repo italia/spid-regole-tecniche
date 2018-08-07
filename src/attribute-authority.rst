@@ -1,4 +1,4 @@
-Gestore di attributi qualificati (Attribute Authority)
+Gestori di attributi qualificati (Attribute Authority)
 ======================================================
 
 .. WARNING::
