@@ -19,9 +19,9 @@ Il meccanismo di autenticazione è innescato dalla selezione, da parte dell'uten
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
 | C2 |L'Identity Provider, portata a buon fine l'autenticazione, effettua lo user login e prepara l'asserzione contenente lo statement di autenticazione dell'utente destinato al Service Provider (più eventuali statement di attributo emessi dall'Identity Provider stesso)|                |                  |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
-| D  |L'Identity Provider restituisce allo User Agent la ``<Response>`` SAML contenente l'asserzione preparata al punto precedente                                                                                                                                                |``Response``    |HTTP POST         |
+| D  |L'Identity Provider restituisce allo User Agent la ``<Response>`` SAML contenente l'asserzione preparata al punto precedente                                                                                                                                            |``Response``    |HTTP POST         |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
-| E  |Lo User Agent inoltra al Service Provider (SP) la ``<Response>`` SAML emessa dall'Identity Provider                                                                                                                                                                         |``Response``    |HTTP POST         |
+| E  |Lo User Agent inoltra al Service Provider (SP) la ``<Response>`` SAML emessa dall'Identity Provider                                                                                                                                                                     |``Response``    |HTTP POST         |
 +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
 
 
@@ -30,7 +30,7 @@ AuthnRequest
 Il messaggio ``AuthnRequest`` è inviato dal Service Provider, per tramite dello User Agent, al SingleSignOnService dell'Identity Provider ed ha la funzione di avviare il flusso di autenticazione. 
 Può essere inoltrato da un Service Provider all’Identity Provider usando il binding HTTP-Redirect o il binding HTTP-POST. Il messaggio deve essere conforme allo standard SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
 
-.. admonition:: DEVI
+.. admonition:: SI DEVE
 
     * nell'elemento ``<AuthnRequest>`` devono essere presenti i seguenti attributi:
 
@@ -81,7 +81,7 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
     * nel caso del binding **HTTP POST** deve essere presente l'elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
 
 
-.. admonition:: POTRESTI
+.. admonition:: SI PUÒ
 
     * nell'elemento ``<AuthnRequest>`` può essere opzionalmente presente l'attributo:
 
@@ -119,75 +119,55 @@ Esempio di AuthnRequest
 Response
 --------
 
-La risposta inviata dall'Identity Provider al Service Provider può essere inviata dall’Identity Provider al Service Provider solo tramite il binding HTTP POST e deve avere le seguenti caratteristiche:
+La risposta inviata dall'Identity Provider al Service Provider può essere trasmessa solo tramite il binding HTTP-POST e deve avere le seguenti caratteristiche:
+
+.. admonition:: SI DEVE
+
+    * Nell'elemento ``<Response>`` devono essere presenti i seguenti attributi:
+
+        * l'attributo ``ID`` univoco basato, per esempio, su un Universally Unique Identifier (UUID) (cfr. UUID) o su una combinazione *origine + timestamp* (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità);
+        * deve essere presente l'attributo ``Version``, che deve valere sempre ``2.0``, coerentemente con la versione della specifica SAML adottata;
+        * deve essere presente l'attributo ``IssueInstant`` a indicare l'istante di emissione della risposta, in formato UTC;
+        * deve essere presente l'attributo ``InResponseTo``, il cui valore deve fare riferimento all'ID della richiesta a cui si risponde;
+        * deve essere presente l'attributo ``Destination``, a indicare l'indirizzo (``URI`` reference) del Service Provider a cui è inviata la risposta;
+
+    * Deve essere presente l'elemento ``<Status>`` a indicare l'esito della AuthnRequest secondo quanto definito nelle specifiche SAML (SAML-Core, par. 3.2.2.1 e successivi) comprendente il sotto-elemento
+
+            * ``<StatusCode>``
+
+        ed opzionalmente i sotto-elementi
+
+            * ``<StatusMessage>``
+            * ``<StatusDetail>``
+
+        (Messaggi di errore SPID)
+
+    * Deve essere presente l'elemento ``<Issuer>`` a indicare l'entityID dell'entità emittente, cioè l'Identity Provider stesso. L'attributo ``Format`` deve essere omesso o fissato al valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:entity``.
+    
+    * Deve essere presente un elemento ``<Assertion>`` ad attestare l’avvenuta autenticazione, contenente almeno un elemento ``<AuthnStatement>``; nel caso l’Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l’elemento ``<Assertion>`` non deve essere presente.
+
+.. admonition:: SI PUÒ
+
+    * Può essere presente l'elemento ``<Signature>`` contenente la firma sulla risposta apposta dall'Identity Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
 
 
-<Response>
-^^^^^^^^^^
+Assertion
+^^^^^^^^^
 
-.. Important::
-    nell' elemento ``<Response>`` devono essere presenti i seguenti attributi:
+.. admonition:: SI DEVE
 
-    * l'attributo ``ID`` univoco basato, per esempio, su un Universally Unique Identifier (UUID) (cfr. UUID) o su una combinazione *origine + timestamp* (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità);
-    * deve essere presente l'attributo ``Version``, che deve valere sempre ``2.0``, coerentemente con la versione della specifica SAML adottata;
-    * deve essere presente l'attributo ``IssueInstant`` a indicare l'istante di emissione della risposta, in formato UTC;
-    * deve essere presente l'attributo ``InResponseTo``, il cui valore deve fare riferimento all'ID della richiesta a cui si risponde;
-    * deve essere presente l'attributo ``Destination``, a indicare l'indirizzo (``URI`` reference) del Service Provider a cui è inviata la risposta;
-
-
-<Status>
-^^^^^^^^
-
-.. Important::
-    deve essere presente l'elemento ``<Status>`` a indicare l'esito della AuthnRequest secondo quanto definito nelle specifiche SAML (SAML-Core, par. 3.2.2.1 e successivi) comprendente il sotto-elemento
-
-        * ``<StatusCode>``
-
-    ed opzionalmente i sotto-elementi
-
-        * ``<StatusMessage>``
-        * ``<StatusDetail>``
-
-    (Messaggi di errore SPID)
-
-<Issuer>
-^^^^^^^^
-
-.. Important::
-    deve essere presente l'elemento ``<Issuer>`` a indicare l'entityID dell'entità emittente, cioè l'Identity Provider stesso. L'elemento
-
-        * ``Format`` omesso o fissato al valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:entity``
-
-
-.. Note::
-    può essere presente l'elemento ``<Signature>`` contenente la firma sulla risposta apposta dall'Identity Provider.
-    La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
-    Per l'asserzione veicolata resta valido quanto già specificato nei dettagli delle `<Assertion> <regole-tecniche-idp.html#assertion>`_
-
-
-<Assertion>
-^^^^^^^^^^^
-
-.. Important::
-    deve essere presente un elemento ``<Assertion>`` ad attestare l'avvenuta autenticazione, contenente almeno un elemento ``<AuthnStatement>``.
-    Nel caso l'Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l'elemento ``<Assertion>`` non deve essere presente.
-
-.. Important::
-    nell'elemento ``<Assertion>`` devono essere presenti i seguenti attributi:
+    * Nell'elemento ``<Assertion>`` devono essere presenti i seguenti attributi:
 
         * l'attributo ``ID`` univoco, per esempio basato su un Universally Unique Identifier (UUID) o su una combinazione origine + timestamp  (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità);
         * l'attributo ``Version``, che deve valere sempre ``2.0``, coerentemente con la  versione della specifica SAML adottata;
         * l'attributo ``IssueInstant`` a indicare l'istante di emissione della richiesta, in formato UTC (esempio: ``2017-03-01T15:05:10.531Z``);
 
-<Subject>
-^^^^^^^^^
-.. Important::
-    deve essere presente l'elemento ``<Subject>`` a referenziare il soggetto che si è autenticato in cui devono comparire gli elementi:
+    * Deve essere presente l'elemento ``<Subject>`` a referenziare il soggetto che si è autenticato in cui devono comparire gli elementi:
 
         * ``<NameID>`` atto a qualificare il soggetto dell'asserzione, in cui sono presenti i seguenti attributi:
 
-          * ``Format`` che deve assumere il valore ``urn:oasis:names:tc:SAML:2.0:nameidformat:transient`` `(SAML Core, par8.3) <https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf>`_
-          * ``NameQualifier`` che qualifica il dominio a cui afferisce tale valore (URI riconducibile all'Identity Provider stesso)
+        * ``Format`` che deve assumere il valore ``urn:oasis:names:tc:SAML:2.0:nameidformat:transient`` `(SAML Core, par8.3) <https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf>`_
+        * ``NameQualifier`` che qualifica il dominio a cui afferisce tale valore (URI riconducibile all'Identity Provider stesso)
 
         * ``<SubjectConfirmation>`` contenente l'attributo
 
@@ -199,61 +179,45 @@ La risposta inviata dall'Identity Provider al Service Provider può essere invi
             * ``NotOnOrAfter`` che limita la finestra di tempo durante la quale l'asserzione può essere propagata.
             * ``InResponseTo``, il cui valore deve fare riferimento all'ID della richiesta.
 
-<Issuer>
-^^^^^^^^
-.. Important::
-    deve essere presente l'elemento ``<Issuer>`` a indicare l'entityID dell'Identity Provider emittente (attualizzato come l'attributo ``entityID`` presente nei corrispondenti IdP metadata) con l'attributo ``Format`` riportante il valore ``urn:oasis:names:tc:SAML:2.0:nameidformat:entity``;
+    * Deve essere presente l'elemento ``<Issuer>`` a indicare l'entityID dell'Identity Provider emittente (attualizzato come l'attributo ``entityID`` presente nei corrispondenti IdP metadata) con l'attributo ``Format`` riportante il valore ``urn:oasis:names:tc:SAML:2.0:nameidformat:entity``;
 
-        * deve essere presente l'elemento ``<Conditions>`` in cui devono essere presenti:
+    * Deve essere presente l'elemento ``<Conditions>`` in cui devono essere presenti:
 
-            * gli attributi ``NotBefore`` ``NotOnOrAfter``;
-            * l'elemento ``<AudienceRestriction>`` riportante a sua volta l'elemento ``<Audience>`` attualizzato con l'entityID del Service Provider per il quale l'asserzione è emessa;
+        * gli attributi ``NotBefore`` ``NotOnOrAfter``;
+        * l'elemento ``<AudienceRestriction>`` riportante a sua volta l'elemento ``<Audience>`` attualizzato con l'entityID del Service Provider per il quale l'asserzione è emessa.
 
-<AuthStatement>
-^^^^^^^^^^^^^^^
-.. Important::
-    deve essere presente l'elemento ``<AuthStatement>`` a sua volta contenente l'elemento:
+    * Deve essere presente l'elemento ``<AuthStatement>`` a sua volta contenente l'elemento:
 
         * ``<AuthnContext>`` riportante nel sotto elemento ``<AuthnContextClassRef>`` la classe relativa all'effettivo contesto di autenticazione (es. ``https://www.spid.gov.it/SpidL2``);
 
-<AttributeStatement>
-^^^^^^^^^^^^^^^^^^^^
-.. Note::
-    può essere presente l'elemento ``<AttributeStatement>`` riportante gli attributi identificativi certificati dall'Identity Provider. Tale elemento se presente dovrà comprendere:
+    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sull'asserzione apposta dall'Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
+
+.. admonition:: SI PUÒ
+
+    * Può essere presente l'elemento ``<AttributeStatement>`` riportante gli attributi identificativi certificati dall'Identity Provider. Tale elemento se presente dovrà comprendere:
 
         * uno o più elementi di tipo ``<Attribute>`` relativi ad attributi che l'Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l'attributo ``AttributeConsumingServiceIndex`` quando presente nella AuthnRequest;
         * per gli elementi ``<AttributeValue>`` si raccomanda l'uso dell'attributo ``xsi:type`` attualizzato come specificato nella Tabella attributi SPID;
 
-<Signature>
-^^^^^^^^^^^
-.. Important::
-    Deve essere presente l'elemento ``<Signature>``
-    riportante la firma sull'asserzione apposta dall'Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore
-
-<Advice>
-^^^^^^^^
-.. Note::
-    può essere presente un elemento ``<Advice>``, contenente a sua volta altri elementi ``<Assertion>``. La possibile presenza dell'elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall'Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.
+    * Può essere presente un elemento ``<Advice>``, contenente a sua volta altri elementi ``<Assertion>``. La possibile presenza dell'elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall'Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.
 
     *L'elemento* ``<Advice>`` *è previsto per futuri usi ed al momento non deve essere utilizzato.*
+
+Esempio di Response con Assertion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: code-samples/response.xml
    :language: xml
    :linenos:
 
-Esempio: asserzione di autenticazione
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. literalinclude:: code-samples/authentication-assertion.xml
-   :language: xml
-   :linenos:
-
-Processamento della <Response>
-------------------------------
+Processamento della Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Alla ricezione della ``<Response>`` qualunque sia il binding utilizzato il Service Provider prima di utilizzare l'asserzione deve operare almeno le seguenti verifiche:
 
 * controllo delle firme presenti nella ``<Assertion>`` e nella ``<Response>``;
 * nell'elemento ``<SubjectConfirmationData>`` verificare che:
+
     * l'attributo ``Recipient`` coincida con la AssertionConsumerServiceURL a cui la ``<Response>`` è pervenuta
     * l'attributo ``NotOnOrAfter`` non sia scaduto;
     * l'attributo ``InResponseTo`` si riferisca correttamente all'ID della ``<AuthnRequest>`` di richiesta
