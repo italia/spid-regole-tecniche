@@ -12,60 +12,64 @@ Identity Provider
 
 Le caratteristiche dell'Identity provider sono definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata) e rispettano le condizioni di seguito indicate:
 
-* nell'elemento ``<EntityDescriptor>`` deve essere presente il seguente attributo:
+.. admonition:: SI DEVE
 
-    * ``entityID`` indicante l'identificativo (URI) dell'entità univoco in ambito SPID
+    * Nell'elemento ``<EntityDescriptor>`` deve essere presente il seguente attributo:
 
-* l'elemento ``<IDPSSODescriptor>`` specifico che contraddistingue l'entità di tipo Identity Provider deve riportare i seguenti attributi:
+        * ``entityID`` indicante l'identificativo (URI) dell'entità univoco in ambito SPID
 
-    * ``protocolSupportEnumeration``: che enumera gli URI indicanti i protocolli supportati dall'entità (poiché si tratta di un'entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: ``urn:oasis:names:tc:SAML:2.0:protocol``)
-    * ``WantAuthnRequestSigned``: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l'obbligo della firma delle richieste di autenticazione;
+    * L'elemento ``<IDPSSODescriptor>`` specifico che contraddistingue l'entità di tipo Identity Provider deve riportare i seguenti attributi:
 
-    all'interno di ``<IDPSSODescriptor>`` devono essere presenti:
+        * ``protocolSupportEnumeration``: che enumera gli URI indicanti i protocolli supportati dall'entità (poiché si tratta di un'entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: ``urn:oasis:names:tc:SAML:2.0:protocol``)
+        * ``WantAuthnRequestSigned``: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l'obbligo della firma delle richieste di autenticazione;
 
-        * l'elemento ``<KeyDescriptor>`` che contiene l'elenco dei certificati e delle corrispondenti chiavi pubbliche dell'entità, utili per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAMLMetadata, par. 2.4.1.1)
-        * l'elemento ``<KeyDescriptor>`` che contiene il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1)
-        * l'elemento ``<NameIDFormat>`` riportante l'attributo:
+        all'interno di ``<IDPSSODescriptor>`` devono essere presenti:
+
+            * l'elemento ``<KeyDescriptor>`` che contiene l'elenco dei certificati e delle corrispondenti chiavi pubbliche dell'entità, utili per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAMLMetadata, par. 2.4.1.1)
+            * l'elemento ``<KeyDescriptor>`` che contiene il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1)
+            * l'elemento ``<NameIDFormat>`` riportante l'attributo:
         
-            * ``format``, indicante il formato ``urn:oasis:names:tc:SAML:2.0:nameidformat:transient`` come quello supportato per l'elemento di ``<NameID>`` utilizzato nelle richieste e risposte SAML per identificare il *subject* cui si riferisce un'asserzione
+                * ``format``, indicante il formato ``urn:oasis:names:tc:SAML:2.0:nameidformat:transient`` come quello supportato per l'elemento di ``<NameID>`` utilizzato nelle richieste e risposte SAML per identificare il *subject* cui si riferisce un'asserzione
 
-        * uno o più elementi ``<SingleSignOnService>`` che specificano l'indirizzo del Single Sign-On Service riportanti i seguenti attributi:
+            * uno o più elementi ``<SingleSignOnService>`` che specificano l'indirizzo del Single Sign-On Service riportanti i seguenti attributi:
         
-            * ``Location`` URL endpoint del servizio per la ricezione delle richieste
-            * ``Binding`` che può assumere uno dei valori
+                * ``Location`` URL endpoint del servizio per la ricezione delle richieste
+                * ``Binding`` che può assumere uno dei valori
             
-                * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect``
-                * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
+                    * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect``
+                    * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
 
-        * uno o più elementi ``<SingleLogoutService>`` che specificano l'indirizzo del Single Logout Service riportanti i seguenti attributi:
+            * uno o più elementi ``<SingleLogoutService>`` che specificano l'indirizzo del Single Logout Service riportanti i seguenti attributi:
         
-            * ``Location`` URL endpoint del servizio per la ricezione delle richieste di Single Logout;
-            * ``Binding`` che può assumere uno dei valori
+                * ``Location`` URL endpoint del servizio per la ricezione delle richieste di Single Logout;
+                * ``Binding`` che può assumere uno dei valori
             
-                * ``urn:oasis:names:tc:SAML:2.0:bindings:SOAP``
-                * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect``
-                * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
+                    * ``urn:oasis:names:tc:SAML:2.0:bindings:SOAP``
+                    * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect``
+                    * ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``
 
-                .. Note::
-                    Ad oggi, nessun Identity Provider espone un SingleLogoutService basato su SOAP.
+                    .. Note::
+                        Ad oggi, nessun Identity Provider espone un SingleLogoutService basato su SOAP.
                 
-            * ``ResponseLocation`` (opzionale): URL endpoint del servizio per la ricezione delle risposte alle richieste di Single Logout.
+                * ``ResponseLocation`` (opzionale): URL endpoint del servizio per la ricezione delle risposte alle richieste di Single Logout.
 
-    opzionalmente possono essere presenti:
+        opzionalmente possono essere presenti:
     
-        * uno o più elementi ``<Attribute>`` ad indicare nome e formato degli attributi SPID certificabili dell'Identity Provider (cfr. Tabella attributi SPID), riportanti gli attributi:
+            * uno o più elementi ``<Attribute>`` ad indicare nome e formato degli attributi SPID certificabili dell'Identity Provider (cfr. Tabella attributi SPID), riportanti gli attributi:
 
-            * ``Name``: nome dell'attributo SPID (colonna *identificatore* della Tabella attributi SPID)
-            * ``xsi:type``: tipo dell'attributo (colonna *tipo* della Tabella attributi SPID)
+                * ``Name``: nome dell'attributo SPID (colonna *identificatore* della Tabella attributi SPID)
+                * ``xsi:type``: tipo dell'attributo (colonna *tipo* della Tabella attributi SPID)
 
-* deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
+    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
 
-* è consigliata la presenza di un elemento ``<Organization>`` a indicare l'organizzazione a cui afferisce l'entità specificata, riportante gli elementi:
+.. admonition:: SI PUÒ
 
-    * ``<OrganizationName>`` indicante un identificatore language-qualified dell'organizzazione a cui l'entità afferisce
-    * ``<OrganizationURL>`` riportante in modalità language-qualified la URL istituzionale dell'organizzazione.
+    * È consigliata la presenza di un elemento ``<Organization>`` a indicare l'organizzazione a cui afferisce l'entità specificata, riportante gli elementi:
 
-Esempio: Metadata IdP
+        * ``<OrganizationName>`` indicante un identificatore language-qualified dell'organizzazione a cui l'entità afferisce
+        * ``<OrganizationURL>`` riportante in modalità language-qualified la URL istituzionale dell'organizzazione.
+
+Esempio: metadata IdP
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: code-samples/idp-metadata.xml
@@ -85,39 +89,43 @@ Service Provider
 
 Le caratteristiche del Service Provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata) e rispettare le condizioni di seguito indicate:
 
-* nell'elemento ``<EntityDescriptor>`` deve essere presente il seguente attributo:
+.. admonition:: SI DEVE
 
-    * ``entityID``: indicante l'identificativo univoco (un URI) dell'entità;
+    * Nell'elemento ``<EntityDescriptor>`` deve essere presente il seguente attributo:
 
-* deve essere presente l'elemento ``<KeyDescriptor>`` contenenete il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);
-* deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
-* deve essere presente l’elemento ``<SPSSODescriptor>`` riportante i seguenti attributi:
+        * ``entityID``: indicante l'identificativo univoco (un URI) dell'entità;
 
-    * ``protocolSupportEnumeration``: che enumera, separati da uno spazio, gli URI associati ai protocolli supportati dall’entità (poiché si tratta di un’entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: ``urn:oasis:names:tc:SAML:2.0:protocol``);
-    * ``AuthnRequestSigned``: valorizzato ``true`` attributo con valore booleano che esprime il requisito che le richieste di autenticazione inviate dal Service Provider siano firmate;
+    * Deve essere presente l'elemento ``<KeyDescriptor>`` contenenete il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);
+    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
+    * Deve essere presente l’elemento ``<SPSSODescriptor>`` riportante i seguenti attributi:
 
-* deve essere presente almeno un elemento ``<AssertionConsumerService>`` indicante il servizio (in termini di URL e relativo binding HTTP-POST) a cui contattare il Service Provider per l’invio di risposte SAML, riportante i seguenti attributi:
+        * ``protocolSupportEnumeration``: che enumera, separati da uno spazio, gli URI associati ai protocolli supportati dall’entità (poiché si tratta di un’entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: ``urn:oasis:names:tc:SAML:2.0:protocol``);
+        * ``AuthnRequestSigned``: valorizzato ``true`` attributo con valore booleano che esprime il requisito che le richieste di autenticazione inviate dal Service Provider siano firmate;
 
-    * ``index`` che può assumere valori unsigned;
-    * ``Binding`` posto al valore ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``;
-    * ``Location`` URL endpoint del servizio per la ricezione delle risposte;
+    * Deve essere presente almeno un elemento ``<AssertionConsumerService>`` indicante il servizio (in termini di URL e relativo binding HTTP-POST) a cui contattare il Service Provider per l’invio di risposte SAML, riportante i seguenti attributi:
 
-    In particolare il primo di questi elementi (o l’unico elemento riportato) deve obbligatoriamente riportare:
+        * ``index`` che può assumere valori unsigned;
+        * ``Binding`` posto al valore ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``;
+        * ``Location`` URL endpoint del servizio per la ricezione delle risposte;
 
-    * l’attributo ``index`` posto al valore ``0``;
-    * l’attributo ``isDefault`` posto al valore ``true``;
+        In particolare il primo di questi elementi (o l’unico elemento riportato) deve obbligatoriamente riportare:
 
-* deve essere presente uno o più elementi ``<AttributeConsumingService>`` a descrizione dei set di attributi richiesti dal Service Provider, riportante:
+        * l’attributo ``index`` posto al valore ``0``;
+        * l’attributo ``isDefault`` posto al valore ``true``;
 
-    * l’attributo ``index``, indice posizionale dell’elemento relativo all'i-esimo servizio richiamato dalla AuthnRequest mediante l’attributo ``AttributeConsumingServiceIndex``;
-    * l’elemento ``<ServiceName>``, riportante l’identificatore dell'i-esimo set minimo di attributi necessari per l’autorizzazione all’accesso (per la massima tutela della privacy dell'utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati; in questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l'autorizzazione);
+    * Deve essere presente uno o più elementi ``<AttributeConsumingService>`` a descrizione dei set di attributi richiesti dal Service Provider, riportante:
 
-* è consigliata la presenza di un elemento ``<Organization>`` a indicare l’organizzazione a cui afferisce l’entità specificata, riportante gli elementi:
+        * l’attributo ``index``, indice posizionale dell’elemento relativo all'i-esimo servizio richiamato dalla AuthnRequest mediante l’attributo ``AttributeConsumingServiceIndex``;
+        * l’elemento ``<ServiceName>``, riportante l’identificatore dell'i-esimo set minimo di attributi necessari per l’autorizzazione all’accesso (per la massima tutela della privacy dell'utente il Service Provider deve rendere minima la visibilità dei servizi effettivamente invocati; in questa logica occorre rendere ove possibile indifferenziate le richieste relative a servizi che condividono lo stesso set minimo di attributi necessari per l'autorizzazione);
 
-    * ``<OrganizationName>`` indicante un identificatore language-qualified dell’organizzazione a cui l’entità afferisce;
-    * ``<OrganizationURL>`` riportante in modalità language-qualified la URL istituzionale dell’organizzazione.
+.. admonition:: SI PUÒ
 
-Esempio: Metadata SP
+    * È consigliata la presenza di un elemento ``<Organization>`` a indicare l’organizzazione a cui afferisce l’entità specificata, riportante gli elementi:
+
+        * ``<OrganizationName>`` indicante un identificatore language-qualified dell’organizzazione a cui l’entità afferisce;
+        * ``<OrganizationURL>`` riportante in modalità language-qualified la URL istituzionale dell’organizzazione.
+
+Esempio: metadata SP
 ^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: code-samples/sp-metadata.xml
