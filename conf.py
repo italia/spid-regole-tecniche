@@ -7,8 +7,8 @@ settings_copyright_copyleft = 'AgID - Agenzia per l\'Italia Digitale'
 settings_editor_name = 'AgID - Agenzia per l\'Italia Digitale'
 settings_doc_version = 'version: latest'
 settings_doc_release = 'version: latest'
-settings_basename = 'SPIDRegoleTecniche'
-settings_file_name = 'SPIDRegoleTecniche'
+settings_basename = 'spid-regole-tecniche'
+settings_file_name = 'spid-regole-tecniche'
 
 # -- No need to change below here
 
@@ -123,6 +123,7 @@ html_theme_options = {
     # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
     # 'False': default (alabaster) badge | 'True': custom (italia) badge
     'custom_versions_badge': 'True',
+    'collapse_navigation': 'True',
 }
 # -- ReadTheDoc requirements and local template generation---------------------
 
