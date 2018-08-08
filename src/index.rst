@@ -31,4 +31,3 @@ Indice dei contenuti
    log.rst
    attributi.rst
    messaggi-errore.rst
-   interfacce.rst
