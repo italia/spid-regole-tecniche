@@ -29,6 +29,6 @@ Indice dei contenuti
    attribute-authority.rst
    registro.rst
    log.rst
-   elenco-attributi.rst
+   attributi.rst
    messaggi-errore.rst
    interfacce.rst
