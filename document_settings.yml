@@ -7,4 +7,4 @@ document:
     Amministrazione con un’unica Identità Digitale (username e password)
     utilizzabile da computer, tablet e smartphone.
   tags:
-    "spid"
+    - "spid"
