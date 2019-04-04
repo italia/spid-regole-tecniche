@@ -6,7 +6,7 @@
 
 # Regole Tecniche
 
-> Documento consultabile: https://spid-regole-tecniche2.readthedocs.io/
+> Documento consultabile: https://docs.italia.it/italia/spid/spid-regole-tecniche/it/stabile/
 
 **SPID**, il Sistema Pubblico di Identità Digitale, è la soluzione che permette di accedere a tutti i servizi online della Pubblica Amministrazione con un'unica Identità Digitale (username e password) utilizzabile da computer, tablet e smartphone.
 Maggiori informazioni sono riportate nel sito `www.spid.gov.it <https://www.spid.gov.it>`_
