@@ -7,7 +7,7 @@ Il sistema è composto da 3 entità:
 
 * **Gestore delle identità (Identity Provider o IdP)** che gestisce gli utenti e la procedura di autenticazione;
 * **Fornitore di servizi (Service Provider o SP)** che, dopo aver richiesto l'autenticazione dell'utente all'Identity Provider, ne gestisce l'autorizzazione sulla base degli attributi restituiti dal Gestore dell'identità, ed eroga il servizio richiesto;
-* **Gestore di attributi qualificati (Attribute Authority o AA)** che fornisce attributi qualificati sulla base dell'utente autenticato.
+* **Gestore di attributi qualificati (Attribute Authority o AA)** che fornisce attributi qualificati (ad esempio titoli di studio, iscrizione ad albi, ecc.) sulla base dell'utente autenticato.
 
 Le modalità di funzionamento di SPID sono quelle previste da SAML v2 per il profilo "Web
 Browser SSO" - `SAML V2.0 Technical Overview - Oasis par4.3 <http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html>`_.
