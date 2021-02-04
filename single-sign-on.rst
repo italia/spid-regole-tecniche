@@ -39,8 +39,8 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
         * l'attributo ``IssueInstant`` a indicare l'istante di emissione della richiesta, in formato UTC (esempio: ``2017-03-05T18:03:10.531Z``)
         * l'attributo ``Destination``, a indicare l'indirizzo (URI reference) dell'Identity Provider a cui è inviata la richiesta, come risultante nell'attributo entityID presente nel metadata IdP dell'Identity Provider a cui viene inviata la richiesta
         
-             .. WARNING::
-             Il valore richiesto per l'attributo ``Destination`` differisce da quanto previsto dalle specifiche SAML.
+            .. WARNING::
+                Il valore richiesto per l'attributo ``Destination`` differisce da quanto previsto dalle specifiche SAML.
 
         
         * l'attributo ``ForceAuthn`` nel caso in cui si richieda livelli di autenticazione superiori a SpidL1 (SpidL2 o SpidL3)

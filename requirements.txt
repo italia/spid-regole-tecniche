@@ -1,1 +1,3 @@
 git+https://github.com/italia/docs-italia-theme.git
+sphinx
+recommonmark
