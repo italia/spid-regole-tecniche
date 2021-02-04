@@ -6,6 +6,12 @@ Ciascuna entità presente nella federazione SPID è descritta da un file di meta
 .. Note::
     La distribuzione dei metadati a tutti i soggetti è operata dall'Agenzia per l'Italia Digitale attraverso il `Registro <https://registry.spid.gov.it/>`_.
 
+.. Warning::
+    I fornitori di servizi pubblici - come identificati nell’Avviso AgID numero 28/2020 - possono continuare ad utilizzare certificati self-signed.
+    Per la richiesta di emissione dei certificati digitali ai fini del Sistema Pubblico delle Identità Digitali (SPID) si rimanda ai seguenti Avvisi:
+    - `Avviso AgID n23 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-certificati-agid-per-soggetti-spid_v.2_0.pdf>`_ 
+    - `Avviso AgID n23 - modulo di richiesta <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-mod.-richiesta-registrazione.pdf>`_
+
 
 Identity Provider
 -----------------
@@ -60,8 +66,11 @@ Le caratteristiche dell'Identity provider sono definite attraverso metadata conf
                 * ``Name``: nome dell'attributo SPID (colonna *identificatore* della Tabella attributi SPID)
                 * ``xsi:type``: tipo dell'attributo (colonna *tipo* della Tabella attributi SPID)
 
-    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore;
-
+    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) 
+      utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore. Gli SP pubblici possono creare autonomamente i certificati elettronici necessari e questi possono essere anche
+      di tipo self-signed. I Fornitori Privati dovranno fare invece richiesta presso AgID. 
+    
+    
 .. admonition:: SI PUÒ
 
     * È consigliata la presenza di un elemento ``<Organization>`` a indicare l'organizzazione a cui afferisce l'entità specificata, riportante gli elementi:
@@ -80,12 +89,18 @@ Esempio: metadata IdP
 Disponibilità dei metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso la URL *https://<dominioGestoreIdentita>/metadata*, ove non diversamente specificato nel **Registro SPID**, e saranno firmate in modalita detached dall'Agenzia per l'Italia Digitale.
+I metadata Identity Provider saranno disponibili per tutte le entità SPID federate attraverso 
+la URL *https://<dominioGestoreIdentita>/metadata*, ove non diversamente specificato 
+nel **Registro SPID**, e saranno firmate in modalita detached dall'Agenzia per l'Italia Digitale. 
 L'accesso deve essere effettuato utilizzando il protocollo TLS nella versione più recente disponibile.
 
 
 Service Provider
 ----------------
+
+.. warning::
+    Per la struttura dei certificati elettronici e dei Metadata dei Service Provider si rimanda alle specifiche contenute in 
+    `Avviso AgID n29 v3 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n29v3-specifiche_sp_pubblici_e_privati_0.pdf>`_.
 
 Le caratteristiche del Service Provider devono essere definite attraverso metadata conformi allo standard SAML v2.0 (SAML-Metadata) e rispettare le condizioni di seguito indicate:
 

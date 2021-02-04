@@ -39,8 +39,9 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
         * l'attributo ``IssueInstant`` a indicare l'istante di emissione della richiesta, in formato UTC (esempio: ``2017-03-05T18:03:10.531Z``)
         * l'attributo ``Destination``, a indicare l'indirizzo (URI reference) dell'Identity Provider a cui è inviata la richiesta, come risultante nell'attributo entityID presente nel metadata IdP dell'Identity Provider a cui viene inviata la richiesta
         
-             .. WARNING::
-             Il valore richiesto per l'attributo ``Destination`` differisce da quanto previsto dalle specifiche SAML.
+            .. note::
+                Il valore richiesto per l'attributo ``Destination`` differisce da quanto previsto dalle specifiche `SAML Core 2.0 <https://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf>`_ pagina 36.
+                Come reso esplicito da `Avviso AgID numero 11 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n11-regolamento_recante_le_regole_tecniche-_specifica_saml-attributo_destination.pdf>`_
 
         
         * l'attributo ``ForceAuthn`` nel caso in cui si richieda livelli di autenticazione superiori a SpidL1 (SpidL2 o SpidL3)
@@ -83,7 +84,7 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
 
         *N.B. L'Identity Provider ha facoltà di utilizzare per l'autenticazione un livello SPID più alto rispetto a quelli risultanti dall'indicazione del richiedente mediante l'attributo Comparison. Tale scelta non deve comportare un esito negativo della richiesta.*
 
-    * nel caso del binding **HTTP POST** deve essere presente l'elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
+    * nel caso del binding **HTTP POST** deve essere presente l'elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
 
 
 .. admonition:: SI PUÒ
@@ -111,6 +112,22 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
     * eventuali elementi ``<RequesterID>`` contenuti devono indicare l'URL del servizio di reperimento metadati di ciascuna delle entità che hanno emesso originariamente la richiesta di autenticazione e di quelle che in seguito la hanno propagata, mantenendo l'ordine che indichi la sequenza di propagazione (il primo elemento ``<RequesterID>`` dell'elemento ``<Scoping>`` è relativo all'ultima entità che ha propagato la richiesta).
 
         Gli elementi ``<Scoping>`` ``<RequesterID>`` sono previsti per futuri usi ed **al momento non devono essere utilizzati.** Nel caso di presenza di tali parametri nella richiesta questi dovranno essere al momento ignorati all’atto dell’elaborazione della risposta da parte dell'Identity Provider.
+
+
+Autenticazione con identità digitale uso professionale o per la persona giuridica
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Per i casi in cui il fornitore di servizi richieda una Autenticazione per i seguenti profili:
+
+- Identità digitale della persona giuridica 
+- Identità digitale ad uso professionale della persona fisica
+- Identità digitale ad uso professionale per la persona giuridica
+
+Si consideri le seguenti specifiche tecniche:
+
+- `Avviso AgID numero 15 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n15-_rilascio_identita_uso_professionale.pdf>`_ 
+- `Avviso AgID numero 18 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>`_
+- `Avviso AgID numero 18 v2 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18_v.2-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>`_
 
 
 Esempio di AuthnRequest
@@ -216,6 +233,7 @@ Esempio di Response con Assertion
 .. literalinclude:: code-samples/response.xml
    :language: xml
    :linenos:
+
 
 Processamento della Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
