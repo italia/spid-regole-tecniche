@@ -20,7 +20,7 @@ Identity Provider, Service Provider ed Attribute Authority mediante il protocoll
     arricchiti da informazioni utili indicate con le diciture 
     "Nota" e "Questo paragrafo ha scopo informativo e non normativo".
     
-    Questo Documento comprende le specifiche contenuto nell **Avviso SPID n34**
+    Questo documento è aggiornato all'**Avviso SPID n. 34**.
     e precedenti.    
     
 Indice dei contenuti
