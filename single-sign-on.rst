@@ -123,7 +123,7 @@ Per i casi in cui il fornitore di servizi richieda una Autenticazione per i segu
 - Identità digitale ad uso professionale della persona fisica
 - Identità digitale ad uso professionale per la persona giuridica
 
-Si consideri le seguenti specifiche tecniche:
+si applicano le seguenti specifiche tecniche:
 
 - `Avviso AgID numero 15 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n15-_rilascio_identita_uso_professionale.pdf>`_ 
 - `Avviso AgID numero 18 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>`_
