@@ -132,6 +132,22 @@ Il tipo sotto indicato è il valore dell’attributo ``xsi:type`` dell’element
       - ``email``
       - xs:string
       - Formato standard indirizzo di posta elettronica
+    * - Domicilio 
+      - ``domicileStreetAddress``
+      - xs:string
+      - via, viale, piazza
+    * - Codice Postale
+      - ``domicilePostalCode``
+      - xs:string
+      - CAP
+    * - Comune
+      - ``domicileMunicipality``
+      - xs:string
+      - Comune
+    * - Provincia
+      - ``domicileProvince``
+      - xs:string
+      - 
     * - Domicilio fisico
       - ``address``
       - xs:string
@@ -143,6 +159,10 @@ Il tipo sotto indicato è il valore dell’attributo ``xsi:type`` dell’element
         * CAP;
         * Luogo;
         * Provincia.
+    * - Nazione
+      - ``domicileNation``
+      - xs_string
+      -
     * - Data di scadenza identità
       - ``expirationDate``
       - xs:date
@@ -152,3 +172,6 @@ Il tipo sotto indicato è il valore dell’attributo ``xsi:type`` dell’element
       - xs:string
       - Indirizzo casella PEC
 
+
+.. warning::
+    L'attributo `address` è stato sostituito dall `Avviso AgID n25 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n25-nuova-codifica-domicilio_fisico.pdf>`_
