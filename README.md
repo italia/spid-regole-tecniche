@@ -27,3 +27,20 @@ Per prendere visione delle regole ufficiali vigenti si rimanda ai documenti orig
 * [Sito ufficiale SPID](https://www.spid.gov.it/)
 * [Sezione SPID su Developers Italia](https://developers.italia.it/it/spid/)
 * [Sezione SPID su AgID](https://www.agid.gov.it/it/piattaforme/spid)
+
+## Ambiente di Sviluppo
+
+Setup dell'ambiente di sviluppo
+````
+git clone https://github.com/italia/spid-regole-tecniche.git
+cd spid-regole-tecniche
+
+virtualenv -ppython3 env
+source env/bin/activate
+pip install -r requirements.txt 
+````
+
+Costruzione delle pagine
+````
+sphinx-build -b html -d html/doctrees .  html
+````

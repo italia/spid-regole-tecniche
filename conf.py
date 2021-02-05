@@ -13,7 +13,7 @@ settings_file_name = 'spid-regole-tecniche'
 # -- No need to change below here
 
 import sys, os
-docs_italia_theme = __import__("docs-italia-theme")
+docs_italia_theme = __import__("docs_italia_theme")
 from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
 
@@ -24,6 +24,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # This is used for linking and such so we link to the thing we're building
 rtd_version = os.environ.get('READTHEDOCS_VERSION', 'latest')
+
 if rtd_version not in ['stable', 'latest']:
     rtd_version = 'stable'
 
@@ -48,7 +49,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
-    'docs-italia-theme',
+    'docs_italia_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -96,7 +97,7 @@ language = 'it'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['.DS_Store', 'README', 'README.md', '.venv*']
+exclude_patterns = ['.DS_Store', 'README', 'README.md', '.venv*', '.env*']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -106,14 +107,15 @@ def setup(app):
     app.add_config_value('recommonmark_config', {
         'auto_toc_tree_section': 'Contents',
         'enable_eval_rst': True,
-        'enable_auto_doc_ref': True
+        
+        # Deprecated
+        # 'enable_auto_doc_ref': True
     }, True)
     app.add_transform(AutoStructify)
 
 
 # -- Options for HTML output ----------------------------------------------
 html_theme = 'docs-italia-theme'
-
 html_theme_path = [docs_italia_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -126,13 +128,10 @@ html_theme_options = {
     'collapse_navigation': 'True',
 }
 # -- ReadTheDoc requirements and local template generation---------------------
-
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-
 if not on_rtd:  # only import and set the theme if we're building docs locally
-    html_theme = 'docs-italia-theme'
-    #html_theme_path = ["themes", ]
+    # html_theme_path = ["themes", ]
+    html_theme_path = [docs_italia_theme.get_html_theme_path()]
+    html_theme = 'docs_italia_theme'
 else:
     # Override default css to get a larger width for ReadTheDoc build
     html_context = {
