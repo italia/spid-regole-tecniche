@@ -7,7 +7,7 @@ Ciascuna entità presente nella federazione SPID è descritta da un file di meta
     La distribuzione dei metadati a tutti i soggetti è operata dall'Agenzia per l'Italia Digitale attraverso il `Registro <https://registry.spid.gov.it/>`_.
 
 .. Warning::
-    I fornitori di servizi pubblici - come identificati nell’Avviso AgID numero 28/2020 - possono continuare ad utilizzare certificati self-signed.
+    I fornitori di servizi pubblici - come identificati nell’`Avviso AgID numero 28/2020 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n28-le_pa_nella_federazione_spid.pdf>`_ - possono continuare ad utilizzare certificati self-signed.
     Per la richiesta di emissione dei certificati digitali ai fini del Sistema Pubblico delle Identità Digitali (SPID) si rimanda ai seguenti Avvisi:
     - `Avviso AgID n23 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-certificati-agid-per-soggetti-spid_v.2_0.pdf>`_ 
     - `Avviso AgID n23 - modulo di richiesta <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-mod.-richiesta-registrazione.pdf>`_
