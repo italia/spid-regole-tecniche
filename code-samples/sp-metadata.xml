@@ -1,4 +1,6 @@
 <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:spid="https://spid.gov.it/saml-extensions"
+    xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
     entityID="https://spid.serviceprovider.it"
     ID="_0j40cj0848d8e3jncjdjss...">
     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -42,4 +44,13 @@
         <OrganizationDisplayName xml:lang="it">Nome service provider</OrganizationDisplayName>
         <OrganizationURL xml:lang="it">http://spid.serviceprovider.it</OrganizationURL>
     </md:Organization>
+    <md:ContactPerson contactType="other">
+        <md:Extensions>
+            <spid:VATNumber>IT12345678901</spid:VATNumber>
+            <spid:FiscalCode>XYZABCAAMGGJ000W</spid:FiscalCode>
+            <spid:Private/>
+        </md:Extensions>
+        <md:EmailAddress>tech-info@example.org</md:EmailAddress>
+        <md:TelephoneNumber>+39 8472345634785</md:TelephoneNumber>
+    </md:ContactPerson>
 </md:EntityDescriptor>

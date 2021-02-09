@@ -1,6 +1,8 @@
 <md:EntityDescriptor xmlns:md = "urn:oasis:names:tc:SAML:2.0:metadata"
     xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
     xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance"
+    xmlns:fpa="https://spid.gov.it/invoicing-extensions"
+    xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
     entityID="http://spid.identityprovider.it"
     ID="_2ini49248n98dn984n...">
     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -39,4 +41,35 @@
         <saml:Attribute xsi:type="xsi:string" Name="address"/>
         <saml:Attribute xsi:type="xsi:string" Name="digitalAddress"/>
     </md:IDPSSODescriptor>
+    <md:Organization>
+        <md:OrganizationName xml:lang="it">SPID Identity Provider</md:OrganizationName>
+        <md:OrganizationDisplayName xml:lang="it">SPID Identity Provider</md:OrganizationDisplayName>
+        <md:OrganizationURL xml:lang="it">https://spid.identityprovider.it</md:OrganizationURL>
+    </md:Organization>
+    <md:ContactPerson contactType="billing">
+        <md:Extensions>
+            <fpa:CessionarioCommittente>
+            <fpa:DatiAnagrafici>
+            <fpa:IdFiscaleIVA>
+                <fpa:IdPaese>IT</fpa:IdPaese>
+                <fpa:IdCodice>983745349857</fpa:IdCodice>
+            </fpa:IdFiscaleIVA>
+            <fpa:Anagrafica>
+                <fpa:Denominazione>Destinatario Fatturazione</fpa:Denominazione>
+            </fpa:Anagrafica>
+            </fpa:DatiAnagrafici>
+            <fpa:Sede>
+                <fpa:Indirizzo>via tante cose</fpa:Indirizzo>
+                <fpa:NumeroCivico>12</fpa:NumeroCivico>
+                <fpa:CAP>87100</fpa:CAP>
+                <fpa:Comune>Cosenza</fpa:Comune>
+                <fpa:Provincia>CS</fpa:Provincia>
+                <fpa:Nazione>IT</fpa:Nazione>
+            </fpa:Sede>
+            </fpa:CessionarioCommittente>
+        </md:Extensions>
+        <md:Company>example s.p.a.</md:Company>
+        <md:EmailAddress>info@example.org</md:EmailAddress>
+        <md:TelephoneNumber>+39 84756344785</md:TelephoneNumber>
+    </md:ContactPerson>
 </md:EntityDescriptor>
