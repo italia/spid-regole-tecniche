@@ -1,0 +1,55 @@
+<md:EntityDescriptor
+       entityID="https://entityID.unico/dell/SP"
+       ID="_uniqueID"
+       xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+       xmlns:spid="https://spid.gov.it/saml-extensions">
+    <md:Organization>
+        <md:OrganizationName xml:lang="it">
+            Denominazione Completa dell'Organizzazione s.r.l.
+        </md:OrganizationName>
+        <md:OrganizationDisplayName xml:lang="it">
+            Organizzazione
+        </md:OrganizationDisplayName>
+        <md:OrganizationURL xml:lang="it">
+            https://organizzazione.com/it
+        </md:OrganizationURL>
+    </md:Organization>
+    <md:ContactPerson contactType="other">
+        <md:Extensions>
+            <spid:VATNumber>IT12345678901</spid:VATNumber>
+            <spid:FiscalCode>XYZABCAAMGGJ000W</spid:FiscalCode>
+            <spid:Private/>
+        </md:Extensions>
+        <md:EmailAddress>spid@organizzazione.com</md:EmailAddress>
+        <md:TelephoneNumber>+390123456789</md:TelephoneNumber>
+    </md:ContactPerson>
+    <md:ContactPerson contactType="billing">
+        <md:Extensions 
+               xmlns:fpa="https://spid.gov.it/invoicing-extensions">
+            <fpa:CessionarioCommittente>
+                <fpa:DatiAnagrafici>
+                    <fpa:IdFiscaleIVA>
+                        <fpa:IdPaese>IT</fpa:IdPaese>
+                        <fpa:IdCodice>02468135791</fpa:IdCodice>
+                    </fpa:IdFiscaleIVA>
+                    <fpa:Anagrafica>
+			           <fpa:Denominazione>
+                            Destinatario_Fatturazione
+			           </fpa:Denominazione> 
+                    </fpa:Anagrafica>
+                </fpa:DatiAnagrafici>
+                <fpa:Sede>
+		             <fpa:Indirizzo>via [...]</fpa:Indirizzo>
+		             <fpa:NumeroCivico>99</fpa:NumeroCivico>
+		             <fpa:CAP>12345</ fpa:CAP>
+		             <fpa:Comune>nome_citta</fpa:Comune>
+		             <fpa:Provincia>XY</fpa:Provincia>
+                    <fpa:Nazione>IT</fpa:Nazione>
+                </fpa:Sede>
+            </fpa:CessionarioCommittente>
+        </md:Extensions>
+        <md:Company>Destinatario_Fatturazione</md:Company>
+        <md:EmailAddress>email@fatturazione.it</md:EmailAddress>
+        <md:TelephoneNumber>telefono_fatture</md:TelephoneNumber>
+    </md:ContactPerson>
+ </md:EntityDescriptor>
