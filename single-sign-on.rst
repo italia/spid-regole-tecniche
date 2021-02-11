@@ -214,7 +214,7 @@ Assertion
         
         Nel caso di asserzioni emesse a seguito di richieste di autenticazione per il livello SPID 1 l’elemento ``<AuthStatement>`` deve avere l'attributo ``SessionIndex`` specificante l'indice della sessione di autenticazione instaurata per l’utente presso il gestore dell’identità; tale elemento non dovrà essere presente nel caso di asserzioni emesse a seguito di richieste di autenticazione per i livelli SPID 2 e SPID 3.
     
-    * Deve essere presente l'elemento ``<Signature>`` riportante la firma sull'asserzione apposta dall'Identity Provider emittente. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
+    * Deve essere presente l'elemento ``<Signature>`` riportante la firma che l'entità emittente (SP) appone sull'envelope XML da inoltrare. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
 
 .. admonition:: SI PUÒ
 
@@ -247,4 +247,4 @@ Alla ricezione della ``<Response>`` qualunque sia il binding utilizzato il Servi
     * l'attributo ``NotOnOrAfter`` non sia scaduto;
     * l'attributo ``InResponseTo`` si riferisca correttamente all'ID della ``<AuthnRequest>`` di richiesta
 
-Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (``ID``) usati come per le ``<AuthnRequest>`` per tutta la durata di tempo per cui l'asserzione risulta essere valida in base dell'attributo ``NotOnOrAfter`` dell'elemento ``<SubjectConfirmationData>`` presente nell'asserzione stessa.
+Il fornitore di servizi deve garantire che le asserzioni non vengano ripresentate, mantenendo il set di identificatori di richiesta (``ID``) usati come per le ``<AuthnRequest>`` per tutta la durata di tempo per cui l'asserzione risulta essere valida, secondo l'attributo ``NotOnOrAfter`` dell'elemento ``<SubjectConfirmationData>`` presente nell'asserzione stessa. Più semplicemente un SP deve esclusivamente accettare Response riconducibili a Richieste di Autenticazione già inoltrate e non scadute, Response non sollecitate da precedenti AuthnRequest devono essere pertanto scartate.
