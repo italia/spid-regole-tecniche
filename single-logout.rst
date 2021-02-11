@@ -165,7 +165,7 @@ Il messaggio di LogoutRequest deve seguire le specifiche SAML (cfr.[SAML-Core] s
         
         * l’elemento ``<SessionIndex>`` atto ad identificare la sessione a cui la richiesta di chiusura si riferisce;
 
-    * Nel caso del binding SOAP e HTTP POST deve essere presente l’elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 1024 bit e algoritmo di digest SHA-256 o superiore.
+    * Deve essere presente l’elemento ``<Signature>`` contenente la firma sulla richiesta apposta dal Service Provider. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
     
 
 LogoutResponse
@@ -203,5 +203,5 @@ Per il trasporto dei messaggi di LogoutRequest e del relativo LogoutResponse. po
 Impiego del binding SOAP
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Per conferire maggior robustezza al processo di Single Logout, si raccomanda ai fornitori di servizi la messa a disposizione del binding SOAP attraverso apposite interfacce, e ai gestori dell’identità di privilegiarne l’impiego quando disponibile presso gli stessi fornitori di servizi, dando priorità, nel processo di Single Logout, ai fornitori di servizi in grado di supportarlo. La richiesta di Single Logout, quando operata dall’utente presso un fornitore di servizi, deve comunque essere iniziata utilizzando uno dei binding asincroni resi disponibili dai gestori dell’identità, per dar modo ai gestori dell’identità di completare il processo anche presso i fornitori di servizi sprovvisti di interfacce SOAP. Per rafforzare tale prescrizione i gestori dell’identità, pur dovendo essere in grado di supportare il binding SOAP, non dovranno pubblicare interfacce richiesta di Single Logout secondo tale modalità.
+Nel caso in cui i fornitori di servizi dispongano del binding SOAP i gestori dell’identità potranno utilizzarlo, preferendolo questo agli altri Binding. La richiesta di Single Logout, quando operata dall’utente presso un fornitore di servizi, sarà iniziata utilizzando uno dei binding asincroni resi disponibili dai gestori dell’identità, per dar modo ai gestori dell’identità di completare il processo anche presso i fornitori di servizi sprovvisti di interfacce SOAP.
 
