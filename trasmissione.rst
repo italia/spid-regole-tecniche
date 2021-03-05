@@ -71,8 +71,8 @@ Un esempio di form HTML per trasferire in HTTP-POST la risposta ad una richiesta
    :language: html
    :linenos:
 
-Gestione della sicurezza sul canale di trasmissione
----------------------------------------------------
+Sicurezza
+---------
 
 Il profilo SAML SSO raccomanda l'uso di *TLS 1.2* nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
 In ambito  SPID si rende obbligatorio l'impiego di TLS 1.2.

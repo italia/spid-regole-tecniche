@@ -32,7 +32,7 @@ Certificati
 ^^^^^^^^^^^
 
 .. Note::
-    `spid-compliant-certificates https://github.com/italia/spid-compliant-certificates`_ è un tool che automatizza la creazione dei certificati per Privati ed Enti Pubblici.
+    `spid-compliant-certificates <https://github.com/italia/spid-compliant-certificates>`_ è un tool che automatizza la creazione dei certificati per Privati ed Enti Pubblici.
 
 I certificati di sigillo elettronico utilizzati dai SP
 pubblici e privati sono conformi a `RFC-5280 <https://tools.ietf.org/html/rfc5280>`_
