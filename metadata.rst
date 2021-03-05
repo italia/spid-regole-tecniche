@@ -28,6 +28,115 @@ L'accesso deve essere effettuato utilizzando il protocollo TLS nella versione pi
     Nonostante sia richiesta la pubblicazione dei metadata nel dominio del Service Provider, la distribuzione dei metadati agli Identity Provider è operata centralmente dall'Agenzia per l'Italia Digitale. Gli Identity Provider di conseguenza non ottengono i metadati direttamente dai Service Provider.
 
 
+Certificati 
+^^^^^^^^^^^
+
+.. Note::
+    `spid-compliant-certificates https://github.com/italia/spid-compliant-certificates`__ è un tool che automatizza la creazione dei certificati per Privati ed Enti Pubblici.
+
+I certificati di sigillo elettronico utilizzati dai SP
+pubblici e privati sono conformi a `RFC-5280 <https://tools.ietf.org/html/rfc5280>`_
+e devono contenere le seguenti estensioni, valorizzate con il corretto uso di minuscole, maiuscole, lettere
+accentate e altri segni diacritici:
+
+1. Nel campo **SubjectDN**:
+
+   a. **commonName** (oid `2.5.4.3 <http://oid-info.com/get/2.5.4.3>`__) —
+      Entity id del SP, così come riportato nell’attributo entityID del
+      tag xml <EntityDescriptor> del metadata del SP.
+
+   b. **organizationName** (oid `2.5.4.10 <http://oid-info.com/get/2.5.4.10>`__) — Denominazione
+      *completa e per esteso* del SP, così indicata nei pubblici
+      registri e come riportata nel tag xml <OrganizatioName> del
+      metadata del SP (esempio: “Comune di Forlì” e *non* “COMUNE DI FORLI'”);
+
+   c. **uri** (oid `2.5.4.83 <http://oid-info.com/get/2.5.4.83>`__)  — EntityID del SP, così come riportato nell’attributo entityID del tag XML
+      <EntityDescriptor> del metadata del SP.
+
+   d. **organizationIdentifier** (oid `2.5.4.97 <http://oid-info.com/get/2.5.4.97>`__) 
+         Codice identificativo unico del SP all’interno della federazione SPID,
+         conforme alla sintassi prevista dalla norma ETSI `en 319-412-1 <http://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.01.01_60/en_31941201v010101p.pdf>`__,
+         5.1.4:
+
+      **SP pubblici**
+      valorizzato con il prefisso ‘PA:IT-’ seguito dal
+      codice ipa dell’Ente — esempio, per il Comune di Roma
+      (codice ipa ‘c_h501’) tale estensione è valorizzata come
+      “PA:IT-c_h501”;
+
+      **SP privati** — la seguente alternativa di codici
+      utilizzando, in ordine di preferenza:
+
+            il numero di partita iva, preceduto dal prefisso ‘VAT,’ seguito dal
+            codice ISO 3166-1 α-2 del Paese, seguito dal carattere ‘-’
+            (esempio, “VAT IT-12345678901”);
+
+            per i soggetti *non* provvisti di partita iva, il codice
+            fiscale, preceduto dal prefisso ‘CF:IT-’ (esempio: “CF: IT-XYZABCAAMGGJ000W”);
+
+      Altro codice alternativo fornito da AgID in casi particolari.
+
+   e. **countryName** (oid `2.5.4.6 <http://oid-info.com/get/2.5.4.6>`__) —
+      il codice ISO 3166-1  del Paese ove è situata la sede legale
+      del SP (esempio: “IT”);
+
+   f. **localityName** (oid `2.5.4.7 <http://oid-info.com/get/2.5.4.7>`__) —
+      il nome completo della città ove è situata la sede legale del SP
+      (esempio: *Forlì* e **non** *Forli'*).
+
+
+2. Nel campo **CertificatePolicies**:
+
+   **policyIdentifier** — contenente almeno uno dei seguenti
+   identificatori:
+
+    - **SP pubblici** — spid-publicsector-SP (oid
+      `1.3.76.16 <http://oid-info.com/get/1.3.76.16>`__.\ **4.2.1**);
+
+    - **SP privati** — spid-privatesector-SP (oid
+      `1.3.76.16 <http://oid-info.com/get/1.3.76.16>`__.\ **4.3.1**).
+
+Trattandosi di certificati di *sigillo elettronico* e non di certificati
+di firma elettronica, gli attributi name (oid `2.5.4.41 <http://oid-info.com/get/2.5.4.41>`__), 
+surname (oid `2.5.4.4 <http://oid-info.com/get/2.5.4.4>`__), 
+givenName (oid `2.5.4.42 <http://oid-info.com/get/2.5.4.42>`__), 
+initials (oid `2.5.4.43 <http://oid-info.com/get/2.5.4.43>`__) e 
+pseudonym (oid `2.5.4.65 <http://oid-info.com/get/2.5.4.65>`__) non devono essere
+utilizzati. 
+Altre estensioni, come ad esempio emailAddress (oid `1.2.840.113549.1.9.1 <http://oid-info.com/get/1.2.840.113549.1.9.1>`__),
+se presenti, non sono valorizzate con dati personali afferenti a persone fisiche.
+
+Gli SP pubblici possono creare autonomamente i certificati elettronici
+necessari. I certificati possono anche essere di tipo *self-signed*.
+Qualora il SP pubblico utilizzi un certificato dedicato all’apposizione
+del sigillo elettronico sul proprio metadata e un altro certificato
+dedicato all’apposizione di sigilli elettronici sulle proprie *request*,
+il presente Avviso si applica ad entrambi.
+
+A seguito dell’accreditamento presso AgID, i SP privati ricevono un
+**certificato di federazione** emesso dall’infrastruttura a
+chiave pubblica (**pki**) che AgID ha istituito appositamente per la
+gestione dell’intera federazione SPID. Al fine di ottenere detto
+certificato si deve far riferimento all’Avviso SPID n23/2016 e s.m.i. e
+compilare il previsto
+`modulo <http://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-allegato-mod-richiesta-registrazione.pdf>`__
+di richiesta. La chiave privata cui tale certificato afferisce è
+utilizzata dal SP privato per apporre sigilli elettronici avanzati sia
+sul proprio metadata che sulle proprie *request*.
+
+Ulteriori estensioni stabilite dagli standard e dalle normative sono
+liberamente utilizzabili.
+
+
+Algoritmi crittografici, di *hash* e tipologia delle chiavi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Per la generazione delle chiavi crittografiche i SP utilizzano l’algoritmo **rsa** (Rivest-Shamir-Adleman) con
+lunghezza delle chiavi non inferiore a 2048 bit. L’algoritmo impiegato
+per le impronte crittografiche è il *dedicated hash-function 4* definito
+nella norma ISO/IEC 10118-3, corrispondente alla funzione **sha-256**. È
+consentito l’uso della funzione **sha-512**.
+
 
 Identity Provider
 -----------------
@@ -218,110 +327,6 @@ le condizioni di seguito indicate:
 -  TelephoneNumber (0 o 1 occorrenze) — Contiene il numero di telefono,
    per contattare il SP; *senza spazi* e comprensivo del prefisso
    internazionale (esempio: “+39” per l’Italia).
-
-
-Certificati 
-^^^^^^^^^^^
-
-
-I certificati di sigillo elettronico utilizzati dai SP
-pubblici e privati sono conformi a `RFC-5280 <https://tools.ietf.org/html/rfc5280>`_
-e devono contenere le seguenti estensioni, valorizzate con il corretto uso di minuscole, maiuscole, lettere
-accentate e altri segni diacritici:
-
-1. Nel campo **SubjectDN**:
-
-   a. **commonName** (oid `2.5.4.3 <http://oid-info.com/get/2.5.4.3>`__) —
-      Entity id del SP, così come riportato nell’attributo entityID del
-      tag xml <EntityDescriptor> del metadata del SP.
-
-   b. **organizationName** (oid `2.5.4.10 <http://oid-info.com/get/2.5.4.10>`__) — Denominazione
-      *completa e per esteso* del SP, così indicata nei pubblici
-      registri e come riportata nel tag xml <OrganizatioName> del
-      metadata del SP (esempio: “Comune di Forlì” e *non* “COMUNE DI FORLI'”);
-
-   c. **organizationIdentifier** (oid `2.5.4.97 <http://oid-info.com/get/2.5.4.97>`__) 
-         Codice identificativo unico del SP all’interno della federazione SPID,
-         conforme alla sintassi prevista dalla norma ETSI `en 319-412-1 <http://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.01.01_60/en_31941201v010101p.pdf>`__,
-         §5.1.4:
-
-      **SP pubblici**
-      valorizzato con il prefisso ‘PA:IT-’ seguito dal
-      codice ipa dell’Ente — esempio, per il Comune di Roma
-      (codice ipa ‘c_h501’) tale estensione è valorizzata come
-      “PA:IT-c_h501”;
-
-      **SP privati** — la seguente alternativa di codici
-      utilizzando, in ordine di preferenza:
-
-            il numero di partita iva, preceduto dal prefisso ‘VAT,’ seguito dal
-            codice ISO 3166-1 α-2 del Paese, seguito dal carattere ‘-’
-            (esempio, “VAT IT-12345678901”);
-
-            per i soggetti *non* provvisti di partita iva, il codice
-            fiscale, preceduto dal prefisso ‘CF:IT-’ (esempio: “CF: IT-XYZABCAAMGGJ000W”);
-
-      Altro codice alternativo fornito da AgID in casi particolari.
-
-   d. **countryName** (oid `2.5.4.6 <http://oid-info.com/get/2.5.4.6>`__) —
-      il codice ISO 3166-1  del Paese ove è situata la sede legale
-      del SP (esempio: “IT”);
-
-   e. **localityName** (oid `2.5.4.7 <http://oid-info.com/get/2.5.4.7>`__) —
-      il nome completo della città ove è situata la sede legale del SP
-      (esempio: *Forlì* e **non** *Forli'*).
-
-2. Nel campo **CertificatePolicies**:
-
-   **policyIdentifier** — contenente almeno uno dei seguenti
-   identificatori:
-
-    - **SP pubblici** — spid-publicsector-SP (oid
-      `1.3.76.16 <http://oid-info.com/get/1.3.76.16>`__.\ **4.2.1**);
-
-    - **SP privati** — spid-privatesector-SP (oid
-      `1.3.76.16 <http://oid-info.com/get/1.3.76.16>`__.\ **4.3.1**).
-
-Trattandosi di certificati di *sigillo elettronico* e non di certificati
-di firma elettronica, gli attributi name (oid `2.5.4.41 <http://oid-info.com/get/2.5.4.41>`__), 
-surname (oid `2.5.4.4 <http://oid-info.com/get/2.5.4.4>`__), 
-givenName (oid `2.5.4.42 <http://oid-info.com/get/2.5.4.42>`__), 
-initials (oid `2.5.4.43 <http://oid-info.com/get/2.5.4.43>`__) e 
-pseudonym (oid `2.5.4.65 <http://oid-info.com/get/2.5.4.65>`__) non devono essere
-utilizzati. 
-Altre estensioni, come ad esempio emailAddress (oid `1.2.840.113549.1.9.1 <http://oid-info.com/get/1.2.840.113549.1.9.1>`__),
-se presenti, non sono valorizzate con dati personali afferenti a persone fisiche.
-
-Gli SP pubblici possono creare autonomamente i certificati elettronici
-necessari. I certificati possono anche essere di tipo *self-signed*.
-Qualora il SP pubblico utilizzi un certificato dedicato all’apposizione
-del sigillo elettronico sul proprio metadata e un altro certificato
-dedicato all’apposizione di sigilli elettronici sulle proprie *request*,
-il presente Avviso si applica ad entrambi.
-
-A seguito dell’accreditamento presso AgID, i SP privati ricevono un
-**certificato di federazione** emesso dall’infrastruttura a
-chiave pubblica (**pki**) che AgID ha istituito appositamente per la
-gestione dell’intera federazione SPID. Al fine di ottenere detto
-certificato si deve far riferimento all’Avviso SPID n23/2016 e s.m.i. e
-compilare il previsto
-`modulo <http://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n23-allegato-mod-richiesta-registrazione.pdf>`__
-di richiesta. La chiave privata cui tale certificato afferisce è
-utilizzata dal SP privato per apporre sigilli elettronici avanzati sia
-sul proprio metadata che sulle proprie *request*.
-
-Ulteriori estensioni stabilite dagli standard e dalle normative sono
-liberamente utilizzabili.
-
-
-Algoritmi crittografici, di *hash* e tipologia delle chiavi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Per la generazione delle chiavi crittografiche i SP utilizzano l’algoritmo **rsa** (Rivest-Shamir-Adleman) con
-lunghezza delle chiavi non inferiore a 2048 bit. L’algoritmo impiegato
-per le impronte crittografiche è il *dedicated hash-function 4* definito
-nella norma ISO/IEC 10118-3, corrispondente alla funzione **sha-256**. È
-consentito l’uso della funzione **sha-512**.
 
 
 Informazioni obbligatorie per la fatturazione
