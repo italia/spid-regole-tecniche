@@ -76,7 +76,7 @@ Gestione della sicurezza sul canale di trasmissione
 
 .. Important::
 
-    Il profilo SAML SSO raccomanda l'uso di **TLS 1.2** nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
+    Il profilo SAML SSO raccomanda l'uso di *TLS 1.2* nei colloqui tra Asserting party (Identity Provider e Attribute Authority), le Relaying Party (Service Provider) e lo user agent.
     In ambito  SPID si rende obbligatorio l'impiego di TLS 1.2.
     In casi particolari e temporanei,  può  essere  adottata  la  versione  1.1,  fermo  restando  che  la  versione  1.2 deve  essere  adottata  lato server.
     Conseguentemente, le versioni più obsolete dei browser, che non supportano le versioni del protocollo indicate, non devono essere utilizzate e, i livelli minimi accettati per l’accesso ai servizi SPID, devono essere documentati nei confronti degli utenti.
