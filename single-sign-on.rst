@@ -27,7 +27,7 @@ Il meccanismo di autenticazione è innescato dalla selezione, da parte dell'uten
 
 AuthnRequest
 ------------
-Il messaggio ``AuthnRequest`` è inviato dal Service Provider, per tramite dello User Agent, al SingleSignOnService dell'Identity Provider ed ha la funzione di avviare il flusso di autenticazione. 
+Il messaggio ``AuthnRequest`` è inviato dal Service Provider, per tramite dello User Agent, al SingleSignOnService dell'Identity Provider ed ha la funzione di avviare il flusso di autenticazione.
 Può essere inoltrato da un Service Provider all’Identity Provider usando il binding HTTP-Redirect o il binding HTTP-POST. Il messaggio deve essere conforme allo standard SAML v2.0 (cfr. [SAML-Core]) e rispettare le condizioni di seguito indicate.
 
 .. admonition:: SI DEVE
@@ -37,10 +37,10 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
         * l'attributo ``ID`` univoco, per esempio basato su un *Universally Unique Identifier* (UUID) o su una combinazione *origine + timestamp* (quest'ultimo generato con una precisione di almeno un millesimo di secondo per garantire l'univocità)
         * l'attributo ``Version``, che deve valere sempre ``2.0``, coerentemente con la versione della specifica SAML adottata;
         * l'attributo ``IssueInstant`` a indicare l'istante di emissione della richiesta, in formato UTC (esempio: ``2017-03-05T18:03:10.531Z``)
-        * l'attributo ``Destination``, a indicare l'indirizzo (URI reference) dell'Identity Provider a cui è inviata la richiesta, come risultante nell'attributo entityID presente nel metadata IdP dell'Identity Provider a cui viene inviata la richiesta
-        
+        * l'attributo ``Destination``, valore dell'attributo Location esposto dal SingleSignOnService dell'IdP al quale è inviata la richiesta.
+
             .. WARNING::
-                Il valore richiesto per l'attributo *Destination* differisce da quanto previsto dalle specifiche SAML.
+                Il valore richiesto per l'attributo *Destination* in SPID può corrispondere all'entityID dell'Identity Provider a cui è inviata la richiesta. Tuttavia l'`Avviso 11 SPID <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n11-regolamento_recante_le_regole_tecniche-_specifica_saml-attributo_destination.pdf>`_ consente ai Service Provider di implementare questo parametro come da standard Saml2.
 
         * l'attributo ``ForceAuthn`` nel caso in cui si richieda livelli di autenticazione superiori a SpidL1 (SpidL2 o SpidL3)
         * l'attributo ``AssertionConsumerServiceIndex``, riportante un indice posizionale facente riferimento ad uno degli elementi ``<AssertionConsumerService>`` presenti nei metadata del Service Provider, atto ad indicare, mediante l'attributo ``Location``, l'URL a cui inviare il messaggio di risposta alla richiesta di autenticazione, e mediante l'attributo ``Binding``, il binding da utilizzare, quest'ultimo valorizzato obbligatoriamente con ``urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST``. In alternativa all'attributo ``AssertionConsumerServiceIndex`` (scelta sconsigliata) possono essere presenti:
@@ -117,13 +117,13 @@ Autenticazione con identità digitale uso professionale o per la persona giuridi
 
 Per i casi in cui il fornitore di servizi richieda una Autenticazione per i seguenti profili:
 
-- Identità digitale della persona giuridica 
+- Identità digitale della persona giuridica
 - Identità digitale ad uso professionale della persona fisica
 - Identità digitale ad uso professionale per la persona giuridica
 
 si applicano le seguenti specifiche tecniche:
 
-- `Avviso AgID numero 15 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n15-_rilascio_identita_uso_professionale.pdf>`_ 
+- `Avviso AgID numero 15 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n15-_rilascio_identita_uso_professionale.pdf>`_
 - `Avviso AgID numero 18 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>`_
 - `Avviso AgID numero 18 v2 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18_v.2-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>`_
 
@@ -163,7 +163,7 @@ La risposta inviata dall'Identity Provider al Service Provider può essere tras
         (Messaggi di errore SPID)
 
     * Deve essere presente l'elemento ``<Issuer>`` a indicare l'entityID dell'entità emittente, cioè l'Identity Provider stesso. L'attributo ``Format`` deve essere omesso o fissato al valore ``urn:oasis:names:tc:SAML:2.0:nameid-format:entity``.
-    
+
     * Deve essere presente un elemento ``<Assertion>`` ad attestare l’avvenuta autenticazione, contenente almeno un elemento ``<AuthnStatement>``; nel caso l’Identity Provider abbia riscontrato un errore nella gestione della richiesta di autenticazione l’elemento ``<Assertion>`` non deve essere presente.
 
 .. admonition:: SI PUÒ
@@ -209,9 +209,9 @@ Assertion
     * Deve essere presente l'elemento ``<AuthStatement>`` a sua volta contenente l'elemento:
 
         * ``<AuthnContext>`` riportante nel sotto elemento ``<AuthnContextClassRef>`` la classe relativa all'effettivo contesto di autenticazione (es. ``https://www.spid.gov.it/SpidL2``);
-        
+
         Nel caso di asserzioni emesse a seguito di richieste di autenticazione per il livello SPID 1 l’elemento ``<AuthStatement>`` deve avere l'attributo ``SessionIndex`` specificante l'indice della sessione di autenticazione instaurata per l’utente presso il gestore dell’identità; tale elemento non dovrà essere presente nel caso di asserzioni emesse a seguito di richieste di autenticazione per i livelli SPID 2 e SPID 3.
-    
+
     * Deve essere presente l'elemento ``<Signature>`` riportante la firma che l'entità emittente (SP) appone sull'envelope XML da inoltrare. La firma deve essere prodotta secondo il profilo specificato per SAML (cfr [SAML-Core] cap5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore.
 
 .. admonition:: SI PUÒ
