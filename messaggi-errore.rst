@@ -7,7 +7,7 @@ Autenticazione corretta
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 1 (Autenticazione corretta)
     * - Binding:
@@ -25,7 +25,7 @@ Anomalie del sistema
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 2 (Indisponibilità sistema)
     * - Binding:
@@ -40,7 +40,7 @@ Anomalie del sistema
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 3 (Errore di sistema)
     * - Binding:
@@ -62,7 +62,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 4 (Formato binding non corretto)
     * - Binding:
@@ -87,7 +87,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 5 (Verifica della firma fallita)
     * - Binding:
@@ -108,7 +108,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 6 (Binding su metodo HTTP errato)
     * - Binding:
@@ -129,7 +129,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 7 (Errore sulla verifica della firma della richiesta)
     * - Binding:
@@ -150,7 +150,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 8 (Formato della richiesta non conforme alle specifiche SAML)
     * - Binding:
@@ -169,7 +169,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 9 (Parametro version non presente, malformato o diverso da ``2.0``)
     * - Binding:
@@ -186,7 +186,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 10 (Issuer non presente, malformato o non corrispondete all'entità che sottoscrive la richiesta)
     * - Binding:
@@ -205,7 +205,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 11 (ID non presente, malformato o non conforme)
     * - Binding:
@@ -224,7 +224,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 12 (``RequestAuthnContext`` non presente, malformato o non previsto da SPID)
     * - Binding:
@@ -247,7 +247,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 13 (``IssueInstant`` non presente, malformato o non coerente con l'orario di arrivo della richiesta)
     * - Binding:
@@ -266,7 +266,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 14 (``Destination`` non presente, malformata o non coincidente con il Gestore delle identità ricevente la richiesta)
     * - Binding:
@@ -285,7 +285,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 15 (Attributo ``IsPassive`` presente e attualizzato al valore true)
     * - Binding:
@@ -304,7 +304,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 16 (``AssertionConsumerService`` non correttamente valorizzato)
     * - Binding:
@@ -328,7 +328,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 17 (Attributo ``Format`` dell'elemento ``NameIDPolicy`` assente o non valorizzato secondo specifica)
     * - Binding:
@@ -349,7 +349,7 @@ Anomalie delle richieste
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 18 (``AttributeConsumerServiceIndex`` malformato o che riferisce a un valore non registrato nei metadati di SP)
     * - Binding:
@@ -371,7 +371,7 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 19 (Autenticazione fallita per ripetuta sottomissione di credenziali errate - superato numero tentativi secondo le policy adottate)
     * - Binding:
@@ -396,7 +396,7 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 20 (Utente privo di credenziali compatibili con il livello HTTP richiesto dal fornitore del servizio)
     * - Binding:
@@ -417,7 +417,7 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 21 (Timeout durante l’autenticazione utente)
     * - Binding:
@@ -438,7 +438,7 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 22 (Utente nega il consenso all’invio di dati al SP in caso di sessione vigente)
     * - Binding:
@@ -461,7 +461,7 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 23 (Utente con identità sospesa/revocata o con credenziali bloccate)
     * - Binding:
@@ -482,16 +482,16 @@ Anomalie derivanti dall'utente
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 24 (Riservato)
-    * - 
-      - 
+    * -
+      -
 
 .. list-table::
     :widths: 20 80
     :header-rows: 1
-    
+
     * - Error code:
       - 25 (Processo di autenticazione annullato dall’utente)
     * - Binding:
@@ -508,5 +508,21 @@ Anomalie derivanti dall'utente
       - Fornire una pagina di cortesia notificando all'utente le ragioni che hanno determinato il mancato accesso al servizio richiesto
 
 
+.. list-table::
+    :widths: 20 80
+    :header-rows: 1
 
-
+    * - Error code:
+      - 30 (tentativo dell’utente di utilizzare una tipologia di identità digitale diversa da quanto richiesto dal SP)
+    * - Binding:
+      - HTTP-Redirect, HTTP-POST
+    * - SAML StatusCode:
+      - ``urn:oasis:names:tc:SAML:2.0:status:Requester``
+    * - SAML sub-StatusCode:
+      - ``urn:oasis:names:tc:SAML:2.0:statuss:AuthnFailed``
+    * - SAML StatusMessage:
+      - ErrorCode nr30
+    * - Destinatario notifica:
+      - Fornitore del servizio (SP)
+    * - Troubleshooting SP:
+      - Fornire una pagina di cortesia notificando all'utente le ragioni che hanno determinato il mancato accesso al servizio richiesto. Per maggiori dettagli consultare `Avviso 18 <https://www.agid.gov.it/sites/default/files/repository_files/spid-avviso-n18_v.2-_autenticazione_persona_giuridica_o_uso_professionale_per_la_persona_giuridica.pdf>_`
