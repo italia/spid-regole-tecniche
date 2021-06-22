@@ -507,7 +507,6 @@ Anomalie derivanti dall'utente
     * - Troubleshooting SP:
       - Fornire una pagina di cortesia notificando all'utente le ragioni che hanno determinato il mancato accesso al servizio richiesto
 
-
 .. list-table::
     :widths: 20 80
     :header-rows: 1
