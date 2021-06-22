@@ -3,7 +3,7 @@
     ID="_4d38c302617b5bf98951e65b4cf304711e2166df20"
     Version="2.0"
     IssueInstant="2015-01-29T10:00:31Z"
-    Destination="https://spid.identityprovider.it"
+    Destination="https://spid.identityprovider.it/redirect-Post-saml2sso"
     AssertionConsumerServiceURL="http://spid.serviceprovider.it"
     ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     AttributeConsumingServiceIndex="1">

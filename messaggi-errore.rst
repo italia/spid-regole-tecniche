@@ -517,7 +517,7 @@ Anomalie derivanti dall'utente
     * - Binding:
       - HTTP-Redirect, HTTP-POST
     * - SAML StatusCode:
-      - ``urn:oasis:names:tc:SAML:2.0:status:Requester``
+      - ``urn:oasis:names:tc:SAML:2.0:status:Responder``
     * - SAML sub-StatusCode:
       - ``urn:oasis:names:tc:SAML:2.0:statuss:AuthnFailed``
     * - SAML StatusMessage:
