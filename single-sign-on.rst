@@ -87,10 +87,6 @@ Può essere inoltrato da un Service Provider all’Identity Provider usando il b
 
 .. admonition:: SI PUÒ
 
-    * nell'elemento ``<AuthnRequest>`` può essere opzionalmente presente l'attributo:
-
-        * ``AttributeConsumingServiceIndex`` riportante un indice posizionale in riferimento alla struttura ``<AttributeConsumingService>`` presente nei metadata del Service Provider, atta a specificare gli attributi che devono essere presenti nell'asserzione prodotta. Nel caso l'attributo fosse assente l'asserzione prodotta non riporterà alcuna attestazione di attributo
-
     * può essere presente l'elemento ``<Subject>`` a indicare il soggetto per cui si chiede l'autenticazione in cui deve comparire:
 
         * l'elemento ``<NameID>`` atto a qualificare il soggetto in cui sono presenti i seguenti attributi:
@@ -218,7 +214,7 @@ Assertion
 
     * Può essere presente l'elemento ``<AttributeStatement>`` riportante gli attributi identificativi certificati dall'Identity Provider. Tale elemento se presente dovrà comprendere:
 
-        * uno o più elementi di tipo ``<Attribute>`` relativi ad attributi che l'Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l'attributo ``AttributeConsumingServiceIndex`` quando presente nella AuthnRequest;
+        * uno o più elementi di tipo ``<Attribute>`` relativi ad attributi che l'Identity Provider può rilasciare (cfr. Tabella attributi SPID) su richiesta del Service Provider espressa attraverso l'attributo ``AttributeConsumingServiceIndex`` nella AuthnRequest;
         * per gli elementi ``<AttributeValue>`` si raccomanda l'uso dell'attributo ``xsi:type`` attualizzato come specificato nella Tabella attributi SPID;
 
     * Può essere presente un elemento ``<Advice>``, contenente a sua volta altri elementi ``<Assertion>``. La possibile presenza dell'elemento, prevista per futuri usi, consente, nei casi in cui gli statement emessi dall'Identity Provider si basino su altre asserzioni SAML ottenute da altre authority, di fornire evidenza delle stesse in forma originale unitamente alla risposta alla richiesta di autenticazione.
