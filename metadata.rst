@@ -42,8 +42,7 @@ accentate e altri segni diacritici:
 1. Nel campo **SubjectDN**:
 
    a. **commonName** (oid `2.5.4.3 <http://oid-info.com/get/2.5.4.3>`__) —
-      Entity id del SP, così come riportato nell’attributo entityID del
-      tag xml <EntityDescriptor> del metadata del SP.
+      La denominazione che valorizza l’estensione organizationName, eventualmente senza esplicitazione degli acronimi, come riportata nel tag XML <OrganizationDisplayName> del metadata del SP (esempio: “AgID”).
 
    b. **organizationName** (oid `2.5.4.10 <http://oid-info.com/get/2.5.4.10>`__) — Denominazione
       *completa e per esteso* del SP, così indicata nei pubblici
