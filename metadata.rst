@@ -46,7 +46,7 @@ accentate e altri segni diacritici:
 
    b. **organizationName** (oid `2.5.4.10 <http://oid-info.com/get/2.5.4.10>`__) — Denominazione
       *completa e per esteso* del SP, così indicata nei pubblici
-      registri e come riportata nel tag xml <OrganizatioName> del
+      registri e come riportata nel tag xml <OrganizationName> del
       metadata del SP (esempio: “Comune di Forlì” e *non* “COMUNE DI FORLI'”);
 
    c. **uri** (oid `2.5.4.83 <http://oid-info.com/get/2.5.4.83>`__)  — EntityID del SP, così come riportato nell’attributo entityID del tag XML
@@ -355,7 +355,7 @@ Informazioni obbligatorie per la fatturazione
                 Denominazione, *ovvero* Nome e Cognome; opzionalmente
                 Titolo; opzionalmente CodiceEORI);
     
-          -  Sede (1 occorrenza) — con figli: Indirizzo, NumeroCivivo
+          -  Sede (1 occorrenza) — con figli: Indirizzo, NumeroCivico
              (opzionale), CAP, Comune, Provincia (opzionale), Nazione.
     
        -  **TerzoIntermediarioSoggettoEmittente** (0 o 1 occorrenze) —
