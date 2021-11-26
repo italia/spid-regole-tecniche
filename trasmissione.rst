@@ -56,7 +56,7 @@ Nel caso del binding HTTP-POST, l'entità mittente invia allo User Agent (il bro
    * Il parametro deve essere denominato ``SAMLRequest`` nel trasporto dei messaggi ``<AuthnRequest>`` e ``LogoutRequest``, mentre deve essere denominato ``SAMLResponse`` nel trasporto dei messaggi ``<Response>`` e ``<LogoutResponse>``.
 
 2. La form HTML contiene un secondo *hidden form control* di nome ``RelayState`` che contiene il corrispondente valore del Relay State, cioè della risorsa originariamente richiesta dall'utente e alla quale dovrà essere trasferito il controllo al termine della fase di autenticazione
-3. La form HTML è corredata da uno script che la rende auto-postante all'indirizzo indicato nell'attributo ``action``
+3. La form HTML è corredata da uno script che la rende auto-postante all'indirizzo indicato nell'attributo ``action`` corrispondente alla *Location* del *SingleSignOnService*.
 4. Il browser dell'utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST verso il servizio dell'entità destinataria.
 
 Un esempio di form HTML per trasferire in HTTP-POST la richiesta di autenticazione è descritto nell'esempio successivo. Osservando attentamente il codice riportato in figura si può notare il valore del parametro ``SAMLRequest`` (ridotto per brevità); il valore del parametro ``RelayState`` reso non immediatamente intellegibile (cfr. sez. precedente); l'elemento ``<input type="submit" value="Invia"/>``, che ha lo scopo di visualizzare all'interno del web browser il pulsante di invio della form utilizzabile dall'utente, non strettamente necessario in quanto la form è resa autopostante.
