@@ -151,7 +151,7 @@ Le caratteristiche dell'Identity provider sono definite attraverso metadata conf
     * L'elemento ``<IDPSSODescriptor>`` contraddistingue l'entità di tipo Identity Provider e deve riportare i seguenti attributi:
 
         * ``protocolSupportEnumeration``: che enumera gli URI indicanti i protocolli supportati dall'entità (poiché si tratta di un'entità SAML 2.0, deve indicare almeno il valore del relativo protocollo: ``urn:oasis:names:tc:SAML:2.0:protocol``)
-        * ``WantAuthnRequestSigned``: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l'obbligo della firma delle richieste di autenticazione;
+        * ``WantAuthnRequestsSigned``: attributo con valore booleano che impone ai Service Provider che fanno uso di questo Identity provider l'obbligo della firma delle richieste di autenticazione;
 
         all'interno di ``<IDPSSODescriptor>`` devono essere presenti:
 
