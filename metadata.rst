@@ -68,7 +68,7 @@ accentate e altri segni diacritici:
 
             il numero di partita iva, preceduto dal prefisso ‘VAT,’ seguito dal
             codice ISO 3166-1 α-2 del Paese, seguito dal carattere ‘-’
-            (esempio, “VAT IT-12345678901”);
+            (esempio, “VATIT-12345678901”);
 
             per i soggetti *non* provvisti di partita iva, il codice
             fiscale, preceduto dal prefisso ‘CF:IT-’ (esempio: “CF: IT-XYZABCAAMGGJ000W”);
