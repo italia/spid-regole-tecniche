@@ -2,7 +2,8 @@
 
 [![Join the #spid channel](https://img.shields.io/badge/Slack%20channel-%23spid-blue.svg?logo=slack)](https://developersitalia.slack.com/messages/C73R3UQE8)
 [![Get invited](https://slack.developers.italia.it/badge.svg)](https://slack.developers.italia.it/)
-[![SPID on forum.italia.it](https://img.shields.io/badge/Forum-SPID-blue.svg)](https://forum.italia.it/c/spid) [![Build Status](https://readthedocs.org/projects/spid-regole-tecniche2/badge/?version=latest&style=plastic)](https://spid-regole-tecniche2.readthedocs.io/)
+[![SPID on forum.italia.it](https://img.shields.io/badge/Forum-SPID-blue.svg)](https://forum.italia.it/c/spid)
+[![Build Status](http://docs.italia.it/projects/spid-regole-tecniche/badge/?version=stabile)](https://docs.italia.it/italia/spid/spid-regole-tecniche/it/stabile/index.html)
 
 # Regole Tecniche
 
