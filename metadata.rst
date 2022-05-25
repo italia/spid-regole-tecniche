@@ -219,11 +219,11 @@ le condizioni di seguito indicate:
 
 * Nell'elemento ``<EntityDescriptor>`` deve essere presente il seguente attributo:
 
-    * entityID (1 occorrenza) - Attributo valorizzato con l’Entity id,
-      così come riportato nell’estensione commonName del certificato
+    * entityID (1 occorrenza) - Attributo valorizzato con l’EntityID,
+      così come riportato nell’estensione uri del certificato
       elettronico del SP. In caso il SP svolga più attività - come ad
       esempio quella di SP pubblico e di SP privato - si dota di metadata
-      saml differenti, ciascuno con un diverso Entity id.
+      saml differenti, ciascuno con un diverso EntityID.
 
 * Deve essere presente l'elemento ``<KeyDescriptor>`` contenenete il certificato della corrispondente chiave pubblica dell'entità, utile per la verifica della firma dei messaggi prodotti da tale entità nelle sue interazioni con le altre (SAML-Metadata, par. 2.4.1.1);
 * Deve essere presente l'elemento ``<Signature>`` riportante la firma sui metadata. La firma deve essere prodotta secondo il profilo specificato per SAML (SAML-Metadata, cap. 3) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore;
