@@ -55,7 +55,20 @@ Nel caso del binding HTTP-POST, l'entità mittente invia allo User Agent (il bro
 
    * Il parametro deve essere denominato ``SAMLRequest`` nel trasporto dei messaggi ``<AuthnRequest>`` e ``LogoutRequest``, mentre deve essere denominato ``SAMLResponse`` nel trasporto dei messaggi ``<Response>`` e ``<LogoutResponse>``.
 
-2. La form HTML contiene un secondo *hidden form control* di nome ``RelayState`` che contiene il corrispondente valore del Relay State, cioè della risorsa originariamente richiesta dall'utente e alla quale dovrà essere trasferito il controllo al termine della fase di autenticazione
+2. Parimenti allo use case precedente Binding HTTP-Redirect, devono essere presenti, ad es. come valore di un hidden form control, anche i seguenti parametri nella richiesta POST (tutti URL-encoded, anche vuoti):
+
+``SAMLRequest``
+  Un costrutto SAML codificato in formato Base64 e compresso con algoritmo DEFLATE. Come da specifica, il messaggio SAML **non contiene la firma** in formato XML Digital Signature esteso (come avviene in generale nel caso di binding HTTP-POST). Ciò a causa delle dimensioni eccessive che esso raggiungerebbe per essere veicolato in una query string. La specifica indica come modalità alternativa quella di specificare con parametri aggiuntivi l'algoritmo utilizzato per firmare (``SigAlg``) e la stringa con la codifica Base64 URL-encoded dei byte del messaggio SAML (``Signature``).
+
+``RelayState``
+  Identifica la risorsa (servizio) originariamente richiesta dall'utente e a cui trasferire il controllo alla fine del processo di autenticazione. Il Service Provider a tutela della privacy dell'utente nell'utilizzare questo parametro deve mettere in atto accorgimenti tali da rendere minima l'evidenza possibile sulla natura o tipologia della risorsa (servizio) richiesta
+
+``SigAlg``
+  Identifica l'algoritmo usato per la firma prodotta secondo il profilo specificato per SAML (SAML-Core, cap. 5) utilizzando chiavi RSA almeno a 2048 bit e algoritmo di digest SHA-256 o superiore; il valore esteso di questo parametro è contestualizzato da un namespace appartenente allo standard XML Digital Signature. Come indicato al punto 1, tuttavia, la firma prodotta non fa uso della struttura XML definita in tale standard
+
+``Signature``
+  Contiene la firma digitale della query string, così come prodotta prima di aggiungere questo parametro, utilizzando l'algoritmo indicato al parametro precedente;
+
 3. La form HTML è corredata da uno script che la rende auto-postante all'indirizzo indicato nell'attributo ``action`` corrispondente alla *Location* del *SingleSignOnService*.
 4. Il browser dell'utente elabora quindi la risposta HTTP e invia una richiesta HTTP POST verso il servizio dell'entità destinataria.
 
