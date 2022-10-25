@@ -40,9 +40,9 @@
         </md:AttributeConsumingService>
     </md:SPSSODescriptor>
     <md:Organization>
-        <OrganizationName xml:lang="it">Service provider</OrganizationName>
-        <OrganizationDisplayName xml:lang="it">Nome service provider</OrganizationDisplayName>
-        <OrganizationURL xml:lang="it">http://spid.serviceprovider.it</OrganizationURL>
+        <md:OrganizationName xml:lang="it">Service provider</md:OrganizationName>
+        <md:OrganizationDisplayName xml:lang="it">Nome service provider</md:OrganizationDisplayName>
+        <md:OrganizationURL xml:lang="it">http://spid.serviceprovider.it</md:OrganizationURL>
     </md:Organization>
     <md:ContactPerson contactType="other">
         <md:Extensions>
